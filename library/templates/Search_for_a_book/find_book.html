@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container">
+      <h2 style="text-align:left;">Search for a book:</h2>
+      <div class="container">
+          <form action="/Displaybook" method="POST">
+              <label><b>Book Title:</b></label>
+              <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
+              <br>
+              <label><b>Author:</b></label>
+              <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
+              <br>
+              <label><b>Release year:</b></label>
+              <input type="text" class="form-control" id="release_year" name="Release_year" placeholder="Release year">
+              <br>
+              <label><b>Publisher:</b></label>
+              <input type="text" class="form-control" id="Publisher" name="Publisher" placeholder="Publisher">
+              <br>
+              <button type="submit" class="searchButton">Search</button>
+              <error>{{error}}</error>
+          </form>
+
+
+
+      </div>
+</div>
+
+{% block Display%}
+{% endblock%}
+
+{% endblock %}

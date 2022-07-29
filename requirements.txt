@@ -1,0 +1,7 @@
+pytest
+Flask==1.1.4
+flask-wtf==0.14.2
+python-dotenv==0.13.0
+Werkzeug==0.16.0
+password-validator==1.0
+better_profanity==0.7.0

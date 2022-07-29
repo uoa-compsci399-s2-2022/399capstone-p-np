@@ -1,0 +1,15 @@
+<nav id="nav">
+  <img id="logo" src="{{ url_for('static', filename='library Catalogue Image.png') }}" width="200" height="200" title="Library logo"/>
+  <h1 id="nav-header">Navigation</h1>
+  <h3 id="nav-footer">{{user}}</h3>
+
+  <a class="btn-nav" href="{{ url_for('home_bp.home') }}">Home</a>
+  <a class="btn-nav" href="{{ url_for('find_book_bp.find_book') }}">Search</a>
+
+
+  <a class="btn-nav" href="{{ url_for('authentication_bp.register') }}">Register</a>
+  <a class="btn-nav" href="{{ url_for('authentication_bp.login') }}">Login</a>
+  <a class="btn-nav" href="{{ url_for('authentication_bp.logout') }}">Logout</a>
+
+  <a class="btn-nav" href="{{ url_for('browse_bp.browse') }}">Browse Catalogue</a>
+</nav>

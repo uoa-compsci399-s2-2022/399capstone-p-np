@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/main.css') }}"
+        />
+
+    </head>
+
+    <body>
+    <div id="body">
+         <!-- Include navigation partial. -->
+        {% include 'navigation.html' %}
+
+      <div id="content-2">
+         <!-- Include header partial. -->
+        {% include 'header.html' %}
+
+          <div id="container">
+          <!-- Main content block to be supplied by page. -->
+          {% block content %} {% endblock %}
+        </div>
+        </div>
+    </div>
+  </body>
+
+

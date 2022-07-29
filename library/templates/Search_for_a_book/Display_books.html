@@ -1,0 +1,72 @@
+{% extends 'Search_for_a_book/find_book.html' %}
+
+{% block Display %}
+
+
+<div id="Displaybook", style="Discriptor">
+    <table>
+        <tr>
+            <td>
+                <form action="/PreviousBook" method="POST">
+                    <button type="submit" class="inline">Previous</button>
+                </form>
+            </td>
+            <td>
+                <form action="/NextBook" method="POST">
+                    <button type="submit" class="inline">Next</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+
+{% for book in books %}
+    <img CLASS="TextWrap" src={{book.Image}} alt="Image for {{Title}}" title={{book.title}} align="right", width = 200>
+    <ppp>Title:         {{book.title}}</ppp><br><br>
+    <ppp>Author/s:
+    {% for author in book.authors %}
+        {{author.full_name}}
+    {% endfor %}
+    </ppp>
+    <br><br>
+
+    <ppp>Publisher:     {{book.publisher.name}}</ppp>
+    <br><br>
+
+    <ppp>First Published: {{book.release_year}}</ppp>
+    <br><br>
+
+    <ppp>E-Book Avalible: {{book.ebook}}</ppp>
+    <br><br>
+
+
+
+        <form action="/Displaybook" method="POST">
+            <input type="hidden" class="form-control" id="MultipleSearchTextBox" name="MultipleSearchTextBox" value={{book.book_id}}>
+            <button type="submit" class="searchButton">Find out more</button>
+        </form>
+
+    <br><br>
+{% endfor %}
+<table>
+        <tr>
+            <td>
+                <form action="/PreviousBook" method="POST">
+                    <button type="submit" class="inline">Previous</button>
+                </form>
+            </td>
+            <td>
+                <form action="/NextBook" method="POST">
+                    <button type="submit" class="inline">Next</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+{% endblock%}
+
