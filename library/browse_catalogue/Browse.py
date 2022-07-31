@@ -16,7 +16,7 @@ def browse():
     global displayBookIndex
     error = found_book_errors
     found_book_errors = ""
-    book_library = repo.repositoryInstance.get_database(repo.repositoryInstance).get_books().values()
+    book_library = repo.repositoryInstance.get_database().get_books().values()
     bookList = []
     for item in book_library:
         bookList.append(item)
