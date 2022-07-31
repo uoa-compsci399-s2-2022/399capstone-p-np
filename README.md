@@ -26,6 +26,7 @@ $ py -3 -m venv venv
 $ venv\Scripts\activate
 $ pip install -r requirements.txt
 ```
+(You might need to also type in pip install markupsafe==2.0.1, if (ImportError: cannot import name 'soft_unicode' from 'markupsafe))
 
 When using PyCharm for requirements installation, set the virtual environment using 'File'->'Settings' and select your project from the left menu. Select 'Project Interpreter', click on the gearwheel button and select 'Add'. Click the 'Existing environment' radio button to select the virtual environment. 
 
