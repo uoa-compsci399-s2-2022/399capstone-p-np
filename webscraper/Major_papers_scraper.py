@@ -2,9 +2,7 @@
 import urllib.request as urlrq
 import certifi
 import ssl
-#import pandas as pd
 import numpy as np
-#import matplotlib.pyplot as plt
 from unicodedata import normalize
 from bs4 import BeautifulSoup
 import json
@@ -38,7 +36,7 @@ def downloadinfo(url, name):
     return course_info
     
 
-
+#Finds all majors anyone cant take in the science schedule
 response = urlrq.urlopen("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html", context=ssl.create_default_context(cafile=certifi.where()))
 html_doc = response.read()
 soup = BeautifulSoup(html_doc, 'html.parser')
@@ -54,6 +52,7 @@ json_object = json.dumps(course_info, indent=4)
 with open("all_courses.json", "w") as outfile:
     outfile.write(json_object)
 
+#Writes the courses and information into a dictionary
 total = 0
 all_course_info = {}
 for x in course_info:
@@ -62,6 +61,7 @@ for x in course_info:
     all_course_info.update({x[0]:papers})
     print("finished: ",x[0] , " ", total , "papers")
 
+#Saves all course information into a .JSON
 json_object = json.dumps(all_course_info, indent=4)
 with open("course_information.json", "w") as outfile:
     outfile.write(json_object)
