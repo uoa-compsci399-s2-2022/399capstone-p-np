@@ -16,6 +16,7 @@ for name in names:
     for x in course_information[name]:
         all_courses_list.append(x)
         
+final_list_of_rest = []       
 for course in all_courses_list:
     for req in course[3]:
         if req.split(" ")[0] == "Restriction:":
@@ -26,24 +27,58 @@ for course in all_courses_list:
             
             mainSubject = course[0]
             mainID = course[1]
-            currentSubject = "This is Problematic"
-            currentID = "this is also problematic"
+            currentSubject = "P"
+            currentID = "P"
             word_num = 0
+
+            toadd = []
+            temp_add = ''
             
             while word_num < len(clean_req.split(" ")[1:]):
-                
-                x =clean_req.split(" ")[1:][word_num]
+                temp_add = clean_req.split(" ")
+                x =clean_req.split(" ")[word_num]
                 if x not in course_names and x not in courseID:
                     word_num = 10000000000000
-                else:
-                    for restriction in clean_req.split(" ")[1:]:
-                        if restriction in course_names:
-                            currentSubject = restriction
-                        else:
-                            currentID = restriction
-                            restrictions.append((mainSubject, mainID, currentSubject, currentID))
-                            print(restrictions)
+                    temp_add = ''
                 word_num += 1
+
+            main_subj = course[0]
+            main_id = course[1]
+
+            if temp_add != '':
+                rest_subj = "bad"
+                rest_id = "bad"
+                for x in temp_add:
+                    if x in course_names:
+                        rest_subj = x
+                    if x in courseID:
+                        rest_id = x
+                        final_list_of_rest.append((main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
+
+database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\399courses.db"
+
+
+sqliteConnection = sqlite3.connect(database)
+
+cursor = sqliteConnection.cursor()
+print("Successfully Connected to SQLite")
+
+
+sqlite_insert_query = """INSERT INTO restriction
+                      (restrictionSubject, restrictionNumber, subject, courseNumber) 
+                       VALUES 
+                      (?,?,?,?);"""
+
+for x in final_list_of_rest:
+    try:
+        cursor.execute(sqlite_insert_query, x)
+    except sqlite3.IntegrityError as er:
+        print("Don't worry:", er.args[0], x)
+sqliteConnection.commit()
+print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
+cursor.close()
+
+        
 
 
 
