@@ -1,6 +1,6 @@
 import json
 import sqlite3
-  
+print("hi")
 # Opening JSON file
 f = open('course_information.json')
   
@@ -8,15 +8,19 @@ f = open('course_information.json')
 # a dictionary
 data = json.load(f)
 
+import os
+database = os.path.abspath(os.getcwd())
+print(database)
 
 
 names = list(data.keys())
 
-database = r"C:\Users\windows\Documents\GitHub\399capstone-p-np\399courses.db"
+database = r"C:\\Users\\windows\\Documents\\GitHub\\399capstone-p-np\\399courses.db"
 
 
 
-sqliteConnection = sqlite3.connect(database)
+sqliteConnection = sqlite3.connect(r"C:\\Users\\windows\\Documents\\GitHub\\399capstone-p-np\\399courses.db")
+
 cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")
 
@@ -27,11 +31,13 @@ sqlite_insert_query = """INSERT INTO course
                        VALUES 
                       (?,?,?,?,?,?,?,?,?);"""
 
+
 coursenames = []
 courseids = []
 counter = 0
 for name in names:
     for course in data[name]:
+        print(course)
         courseID = course[0].split(" ")[0]
         courseNumber = course[0].split(" ")[1]
         if sum(c.isdigit() for c in courseNumber) >=3 and courseNumber[0] in "0123456789":
@@ -69,7 +75,7 @@ for name in names:
 
         coursenames.append(courseID)
         courseids.append(courseNumber)
-        #print(courseID, courseNumber," ", courseLevel , " ", courseGPA," ", counter)
+        print(courseID, courseNumber," ", courseLevel , " ", courseGPA," ", counter)
         counter += 2
 sqliteConnection.commit()
 print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
@@ -108,7 +114,7 @@ for name in names:
                 for x in clean_req.split(" ")[1:]:
                     if x not in coursenames and x not in courseids and x not in ["and", "or"]:
                         break
-                        #print(clean_req)
+                        print(clean_req)
                     else:
                         
                         for restriction in clean_req.split(" ")[1:]:
@@ -120,7 +126,7 @@ for name in names:
                                 restrictions.append((mainSubject, mainID, currentSubject, currentID))
                                 print((mainSubject, mainID, currentSubject, currentID))
                             
-                #print(clean_req)
+                print(clean_req)
 
 
 
