@@ -16,7 +16,8 @@ for name in names:
     for x in course_information[name]:
         all_courses_list.append(x)
         
-final_list_of_rest = []       
+final_list_of_rest = []   
+problematics = []    
 for course in all_courses_list:
     for req in course[3]:
         if req.split(" ")[0] == "Restriction:":
@@ -38,6 +39,7 @@ for course in all_courses_list:
                 temp_add = clean_req.split(" ")
                 x =clean_req.split(" ")[word_num]
                 if x not in course_names and x not in courseID:
+                    problematics.append([course[0], clean_req])
                     word_num = 10000000000000
                     temp_add = ''
                 word_num += 1
@@ -55,6 +57,8 @@ for course in all_courses_list:
                         rest_id = x
                         final_list_of_rest.append((main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
 
+
+
 database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\399courses.db"
 
 
@@ -63,7 +67,15 @@ sqliteConnection = sqlite3.connect(database)
 cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")
 
+sqlite_append_query = """UPDATE course
+set problematicRestrictions = ?
+where courseNumber = ? and lower(subject) = lower(?);"""
+for x in problematics:
+    print(x[0].split(" ")[0], x[0].split(" ")[1])
+    tupER = ((x[1], x[0].split(" ")[1], x[0].split(" ")[0]))
+    cursor.execute(sqlite_append_query, tupER)
 
+sqliteConnection.commit()
 sqlite_insert_query = """INSERT INTO restriction
                       (restrictionSubject, restrictionNumber, subject, courseNumber) 
                        VALUES 
