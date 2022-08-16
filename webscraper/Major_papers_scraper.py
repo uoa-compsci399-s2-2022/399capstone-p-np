@@ -2,9 +2,9 @@
 import urllib.request as urlrq
 import certifi
 import ssl
-import pandas as pd
+#import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from unicodedata import normalize
 from bs4 import BeautifulSoup
 import json
