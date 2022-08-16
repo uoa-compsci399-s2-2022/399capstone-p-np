@@ -1,6 +1,8 @@
 import json
 import sqlite3
 import re
+import traceback
+import sys
 
 
 
@@ -31,9 +33,9 @@ print("Successfully Connected to SQLite")
 cursor.execute("""DELETE FROM course where 1= 1;""")
 
 sqlite_insert_query = """INSERT INTO course
-                      (subject, courseNumber, Bsc, Bsa, pointsValue, GPAreq, level, approvalNeeded, description) 
+                      (subject, courseNumber, MajorType, pointsValue, GPAreq, level, approvalNeeded, description) 
                        VALUES 
-                      (?,?,?,?,?,?,?,?,?);"""
+                      (?,?,?,?,?,?,?,?);"""
 
 
 coursenames = []
@@ -74,8 +76,18 @@ for name in names:
         coursePoints = float(course[1].split(" ")[0])
         courseDesc = course[2]
         
-        data_tuple = (courseID,courseNumber,1,0,coursePoints,courseGPA,courseLevel,courseApproval,courseDesc)
-        cursor.execute(sqlite_insert_query, data_tuple)
+        data_tuple = (courseID,courseNumber,name.split("_")[0],coursePoints,courseGPA,courseLevel,courseApproval,courseDesc)
+        
+        try:
+            cursor.execute(sqlite_insert_query, data_tuple)
+        except sqlite3.IntegrityError as er:
+            print("Don't worry:", er.args[0], courseID,courseNumber)
+            '''print('SQLite error: %s' % (' '.join(er.args)))
+            print("Exception class is: ", er.__class__)
+            print('SQLite traceback: ')
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            print(traceback.format_exception(exc_type, exc_value, exc_tb))'''
+            #print(data_tuple)
 
         coursenames.append(courseID)
         courseids.append(courseNumber)

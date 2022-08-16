@@ -22,6 +22,8 @@ for course in all_courses_list:
             restrictions = []
             clean_req =  " ".join(req.split(" ")[1:])
             clean_req=re.sub(",","",clean_req)
+            clean_req=clean_req.replace(".","")
+            
             mainSubject = course[0]
             mainID = course[1]
             currentSubject = "This is Problematic"
@@ -32,7 +34,6 @@ for course in all_courses_list:
                 
                 x =clean_req.split(" ")[1:][word_num]
                 if x not in course_names and x not in courseID:
-                    print(x)
                     word_num = 10000000000000
                 else:
                     for restriction in clean_req.split(" ")[1:]:
@@ -41,6 +42,7 @@ for course in all_courses_list:
                         else:
                             currentID = restriction
                             restrictions.append((mainSubject, mainID, currentSubject, currentID))
+                            print(restrictions)
                 word_num += 1
 
 

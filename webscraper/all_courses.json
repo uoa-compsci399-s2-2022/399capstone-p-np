@@ -1,162 +1,1946 @@
 [
     [
+        "Academic English Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/academic-english-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
         "Academic Integrity",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/academic-integrity.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Anthropology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/anthropology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Art History",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/art-history.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Arts General",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/arts-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Arts Scholars",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/arts-scholars.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Asian Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/asian-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Career",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/career.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Chinese",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/chinese.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Classical Studies and Ancient History",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/classical-studies-and-ancient-history.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Communication",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/communication.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Comparative Literature",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/comparative-literature.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Cook Islands M\u0101ori",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/cook-islands-m-ori.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Creative Writing",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/creative-writing.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Criminology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/criminology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Development Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/development-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Drama",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/drama.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "English",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/english.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "English Writing",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/english-writing.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "English for Academic Purposes",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/english-for-academic-purposes.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "European Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/european-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "French",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/french.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Gender Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/gender-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "German",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/german.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Global Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/global-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Greek",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/greek.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Health and Society",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/health-and-society.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "History",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/history.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Humanities",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/humanities.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Indigenous Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/indigenous-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Italian",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/italian.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Japanese",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/japanese.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Korean",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/korean.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Language Study Abroad",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/language-study-abroad.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Language Teaching and Learning",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/language-teaching-and-learning.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Languages and Literature",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/languages-and-literature.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Latin",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/latin.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Latin American Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/latin-american-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Linguistics",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/linguistics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Logic and Computation",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/logic-and-computation.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Media, Film and Television",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/media--film-and-television.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Museums and Cultural Heritage",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/museums-and-cultural-heritage.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "M\u0101ori Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/m-ori-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Pacific Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/pacific-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Philosophy",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/philosophy.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Politics and International Relations",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/politics-and-international-relations.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Public Policy",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/public-policy.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Russian",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/russian.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Samoan",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/samoan.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Screen Production",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/screen-production.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Social Science Research Methods",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/social-science-research-methods.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Social Science for Public Health",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/social-science-for-public-health.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Sociology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/sociology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Spanish",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/spanish.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tertiary Foundation Certificate Academic English",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tertiary-foundation-certificate-academic-english.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tertiary Foundation Certificate Arts General",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tertiary-foundation-certificate-arts-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tertiary Foundation Certificate English",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tertiary-foundation-certificate-english.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tertiary Foundation Certificate English Writing",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tertiary-foundation-certificate-english-writing.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tertiary Foundation Certificate History",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tertiary-foundation-certificate-history.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tertiary Foundation Certificate Pacific Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tertiary-foundation-certificate-pacific-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tertiary Foundation Certificate Sociology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tertiary-foundation-certificate-sociology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Theological and Religious Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/theological-and-religious-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Theology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/theology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Tongan",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/tongan.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Translation Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts/translation-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html",
+        "faculty-of-arts"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Astrosciences",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/astrosciences.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/astrosciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Bioinformatics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/bioinformatics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/bioinformatics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Biological Sciences",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biological-sciences.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biological-sciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Biomedical Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biomedical-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biomedical-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Biosecurity and Conservation",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biosecurity-and-conservation.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biosecurity-and-conservation.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Biotechnology",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biotechnology.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/biotechnology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Chemistry",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/chemistry.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/chemistry.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Computer Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/computer-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/computer-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Data Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/data-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/data-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Earth Sciences",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/earth-sciences.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/earth-sciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Ecology",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/ecology.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/ecology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Environmental Change",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-change.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-change.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Environmental Management",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-management.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Environmental Physics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-physics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-physics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Environmental Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/environmental-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Exercise Sciences",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/exercise-sciences.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/exercise-sciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Food Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/food-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/food-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Forensic Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/forensic-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/forensic-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Geographic Information Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/geographic-information-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/geographic-information-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Geography",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/geography.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/geography.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Geophysics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/geophysics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/geophysics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Information Management",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/information-management.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/information-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Marine Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/marine-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/marine-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Mathematics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/mathematics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/mathematics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Physics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/physics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/physics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Psychology",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/psychology.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/psychology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Science Enterprise",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/science-enterprise.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/science-enterprise.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Science General",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/science-general.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/science-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Science Scholars",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/science-scholars.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/science-scholars.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Speech Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/speech-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/speech-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Statistics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/statistics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/statistics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Sustainability",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/sustainability.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/sustainability.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Tertiary Foundation Certificate Biological Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-biological-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-biological-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Tertiary Foundation Certificate Chemistry",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-chemistry.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-chemistry.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Tertiary Foundation Certificate Environmental Stud",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-environmental-stud.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-environmental-stud.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Tertiary Foundation Certificate Mathematics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-mathematics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-mathematics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Tertiary Foundation Certificate Physics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-physics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-physics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Tertiary Foundation Certificate Statistics",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-statistics.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/tertiary-foundation-certificate-statistics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
     ],
     [
         "Wine Science",
-        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/wine-science.html"
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/wine-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html",
+        "faculty-of-science"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Accounting",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/accounting.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Accounting",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-accounting.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Administration",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-administration.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Analytics",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-analytics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Development",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-development.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Human Resource Management",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-human-resource-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Information Analytics",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-information-analytics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business International",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-international.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business MBA",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-mba.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Management",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Marketing",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-marketing.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Business Supply Chain Management",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/business-supply-chain-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Commercial Law",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/commercial-law.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Commercialisation and Entrepreneurship",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/commercialisation-and-entrepreneurship.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Economics",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/economics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Finance",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/finance.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Global Management and Innovation",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/global-management-and-innovation.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Information Governance",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/information-governance.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Information Systems",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/information-systems.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Innovation",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/innovation.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Innovation and Entrepreneurship",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/innovation-and-entrepreneurship.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "International Business",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/international-business.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Leadership and Governance",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/leadership-and-governance.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Management",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Marketing",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/marketing.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "M\u0101ori Development",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/m-ori-development.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Operations and Supply Chain Management",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/operations-and-supply-chain-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Property",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/property.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Property Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/property-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Tertiary Foundation Certificate Business",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics/tertiary-foundation-certificate-business.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html",
+        "faculty-of-business-and-economics"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Architectural Design",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/architectural-design.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Architectural History, Theory and Criticism",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/architectural-history--theory-and-criticism.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Architectural Media and Fabrication",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/architectural-media-and-fabrication.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Architectural Professional Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/architectural-professional-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Architectural Technology and Sustainability",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/architectural-technology-and-sustainability.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Architecture General",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/architecture-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Dance Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/dance-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Design",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/design.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Fine Arts",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/fine-arts.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Heritage Conservation",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/heritage-conservation.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Music",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/music.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Tertiary Foundation Certificate Creative Arts",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/tertiary-foundation-certificate-creative-arts.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Urban Design",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/urban-design.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Urban Planning",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries/urban-planning.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html",
+        "faculty-of-creative-arts-and-industries"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Academic Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/academic-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Disability Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/disability-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Curriculum M\u0101ori",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-curriculum-m-ori.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Curriculum Pasifika",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-curriculum-pasifika.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Curriculum Secondary Diploma",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-curriculum-secondary-diploma.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Curriculum Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-curriculum-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education M\u0101ori",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-m-ori.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Practice M\u0101ori",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-practice-m-ori.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Practice Pasifika",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-practice-pasifika.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Professional",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-professional.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Professional Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-professional-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Professional Studies M\u0101ori",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-professional-studies-m-ori.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Professional Studies Pasifika",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-professional-studies-pasifika.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Special",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-special.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Education and Social Work",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/education-and-social-work.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Health Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/health-education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Higher Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/higher-education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Human Services",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/human-services.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Physical Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/physical-education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Professional Counselling",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/professional-counselling.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Professional Supervision",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/professional-supervision.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Social Work",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/social-work.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Social Work Child and Family Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/social-work-child-and-family-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Social Work Health Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/social-work-health-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Social Work Youth Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/social-work-youth-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Social and Community Leadership",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/social-and-community-leadership.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Sport Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/sport-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Sport, Health and Physical Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/sport--health-and-physical-education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Tertiary Foundation Certificate Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/tertiary-foundation-certificate-education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Tertiary Foundation Certificate M\u0101ori",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/tertiary-foundation-certificate-m-ori.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Tertiary Foundation Certificate Social Work",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/tertiary-foundation-certificate-social-work.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Youth Work",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work/youth-work.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html",
+        "faculty-of-education-and-social-work"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Aerospace Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/aerospace-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Bioengineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/bioengineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Biomedical Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/biomedical-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Chemical and Materials Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/chemical-and-materials-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Civil Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/civil-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Computer Systems Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/computer-systems-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Disaster Management",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/disaster-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Electrical and Electronic Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/electrical-and-electronic-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Energy",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/energy.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Energy Technology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/energy-technology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Engineering General",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/engineering-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Engineering Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/engineering-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Environmental Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/environmental-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Global Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/global-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Mechanical Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/mechanical-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Mechatronics Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/mechatronics-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Polymer Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/polymer-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Software Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/software-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Structural Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering/structural-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html",
+        "faculty-of-engineering"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Commercial Law",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/commercial-law.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Law",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/law.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Law Commercial",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/law-commercial.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Law Environmental",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/law-environmental.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Law General",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/law-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Law Honours",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/law-honours.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Law Public",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law/law-public.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html",
+        "faculty-of-law"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Audiology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/audiology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Clinical Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/clinical-education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Clinical Imaging",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/clinical-imaging.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Dietetics",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/dietetics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Digital Health",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/digital-health.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Health Informatics",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/health-informatics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Health Management",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/health-management.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Health Psychology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/health-psychology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Health Sciences",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/health-sciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "MBChB",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/mbchb.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Medical Imaging",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/medical-imaging.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Medical Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/medical-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Medicine",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/medicine.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "M\u0101ori Health",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/m-ori-health.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Nursing",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/nursing.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Nursing Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/nursing-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Obstetrics and Gynaecology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/obstetrics-and-gynaecology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Ophthalmology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/ophthalmology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Optometry and Vision Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/optometry-and-vision-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Paediatrics",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/paediatrics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Pharmacology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/pharmacology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Pharmacy",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/pharmacy.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Physiology",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/physiology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Population Health",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/population-health.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Population Health Practice",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/population-health-practice.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Psychiatry",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences/psychiatry.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html",
+        "faculty-of-medical-and-health-sciences"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Accounting",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/accounting.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Anthropology",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/anthropology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Architectural History, Theory and Criticism",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/architectural-history--theory-and-criticism.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Art History",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/art-history.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Asian Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/asian-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Astrosciences",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/astrosciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Biological Sciences",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/biological-sciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Business",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/business.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Business Analytics",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/business-analytics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Career",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/career.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Chemical and Materials Engineering",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/chemical-and-materials-engineering.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Chemistry",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/chemistry.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Chinese",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/chinese.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Classical Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/classical-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Classical Studies and Ancient History",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/classical-studies-and-ancient-history.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Communication",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/communication.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Computer Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/computer-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Cook Islands M\u0101ori",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/cook-islands-m-ori.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Dance Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/dance-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Design",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/design.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Disability Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/disability-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Drama",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/drama.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Earth Sciences",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/earth-sciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Economics",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/economics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Education",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/education.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Engineering General",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/engineering-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "English",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/english.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Environmental Physics",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/environmental-physics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Environmental Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/environmental-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "European Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/european-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Exercise Sciences",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/exercise-sciences.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Fine Arts",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/fine-arts.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "French",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/french.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Gender Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/gender-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Geography",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/geography.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "German",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/german.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Global Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/global-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "History",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/history.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Humanities",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/humanities.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Innovation",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/innovation.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Innovation and Entrepreneurship",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/innovation-and-entrepreneurship.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "International Business",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/international-business.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Italian",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/italian.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Japanese",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/japanese.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Korean",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/korean.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Latin",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/latin.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Law",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/law.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Linguistics",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/linguistics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Marine Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/marine-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Marketing",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/marketing.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Mathematics",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/mathematics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Medical Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/medical-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Music",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/music.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "M\u0101ori Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/m-ori-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Optometry and Vision Science",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/optometry-and-vision-science.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Pacific Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/pacific-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Pharmacy",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/pharmacy.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Philosophy",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/philosophy.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Physics",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/physics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Planning",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/planning.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Politics and International Relations",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/politics-and-international-relations.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Population Health",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/population-health.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Psychology",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/psychology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Russian",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/russian.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Samoan",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/samoan.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Science General",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/science-general.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Sociology",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/sociology.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Spanish",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/spanish.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Sport Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/sport-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Statistics",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/statistics.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Sustainability",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/sustainability.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Theological and Religious Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/theological-and-religious-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Tongan",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/tongan.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Translation Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/translation-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Urban Planning",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/urban-planning.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Youth Work",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education/youth-work.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/general-education.html",
+        "general-education"
+    ],
+    [
+        "Academic Integrity",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland/academic-integrity.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland.html",
+        "the-university-of-auckland"
+    ],
+    [
+        "Foundation Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland/foundation-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland.html",
+        "the-university-of-auckland"
+    ],
+    [
+        "Internship",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland/internship.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland.html",
+        "the-university-of-auckland"
+    ],
+    [
+        "UoA Foundation Studies",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland/uoa-foundation-studies.html",
+        "https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland.html",
+        "the-university-of-auckland"
     ]
 ]

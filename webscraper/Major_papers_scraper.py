@@ -7,13 +7,19 @@ from unicodedata import normalize
 from bs4 import BeautifulSoup
 import json
 
-
-
-
 #This is required above normal website reading as the SSL certificate has a problem
 #Downloads website as HTML and reads it with BeautifulSoup
-def downloadinfo(url, name):
-    response = urlrq.urlopen(url, context=ssl.create_default_context(cafile=certifi.where()))
+def downloadinfo(url):
+    x = 0
+    while x < 10:
+        try:
+            response = urlrq.urlopen(url, context=ssl.create_default_context(cafile=certifi.where()))
+            x = 100
+        except:
+            x += 1
+    if x != 100:
+        print("read fail on ", url)
+        return []
     html_doc = response.read()
     soup = BeautifulSoup(html_doc, 'html.parser')
     strhtm = soup.prettify()
@@ -36,30 +42,44 @@ def downloadinfo(url, name):
     return course_info
     
 
-#Finds all majors anyone cant take in the science schedule
-response = urlrq.urlopen("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html", context=ssl.create_default_context(cafile=certifi.where()))
-html_doc = response.read()
-soup = BeautifulSoup(html_doc, 'html.parser')
-strhtm = soup.prettify()
-course_info = []
-courses = soup.find_all("div", class_="badge-text")
-for course in courses:
-    course_info.append([course.find("a").text.strip(), course.find("a")["href"]])
+def scrape_subject_links(url):
+    response = urlrq.urlopen(url, context=ssl.create_default_context(cafile=certifi.where()))
+    html_doc = response.read()
+    soup = BeautifulSoup(html_doc, 'html.parser')
+    strhtm = soup.prettify()
+    course_info = []
+    courses = soup.find_all("div", class_="badge-text")
+    for course in courses:
+        major_name = url.split("/")[len(url.split("/"))-1]
+        major_name = major_name[:-5]
+        course_info.append([course.find("a").text.strip(), course.find("a")["href"], url, major_name])
+    return course_info 
 
-
+list_of_subjects =  scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-education-and-social-work.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-engineering.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/general-education.html")
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland.html")
 #Writes file to JSON object 
-json_object = json.dumps(course_info, indent=4)
+json_object = json.dumps(list_of_subjects, indent=4)
 with open("all_courses.json", "w") as outfile:
     outfile.write(json_object)
 
 #Writes the courses and information into a dictionary
 total = 0
 all_course_info = {}
-for x in course_info:
-    papers = downloadinfo(x[1], x[0])
+for subject in list_of_subjects:
+    papers = downloadinfo(subject[1]) 
     total += len(papers)
-    all_course_info.update({x[0]:papers})
-    print("finished: ",x[0] , " ", total , "papers")
+    if (papers != []):
+        name = "{}:{}".format(subject[3],subject[0])
+        all_course_info.update({name:papers})
+    print("{} papers recorded, {} finished ".format(total, name))
 
 #Saves all course information into a .JSON
 json_object = json.dumps(all_course_info, indent=4)
