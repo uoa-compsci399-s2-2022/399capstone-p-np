@@ -1,5 +1,9 @@
 import json
 import sqlite3
+import re
+
+
+
 print("hi")
 # Opening JSON file
 f = open('course_information.json')
@@ -15,11 +19,11 @@ print(database)
 
 names = list(data.keys())
 
-database = r"C:\\Users\\windows\\Documents\\GitHub\\399capstone-p-np\\399courses.db"
+database = r"C:\Users\Zachary\Desktop\web\399courses.db"
+database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\399courses.db"
 
 
-
-sqliteConnection = sqlite3.connect(r"C:\\Users\\windows\\Documents\\GitHub\\399capstone-p-np\\399courses.db")
+sqliteConnection = sqlite3.connect(database)
 
 cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")
@@ -37,7 +41,7 @@ courseids = []
 counter = 0
 for name in names:
     for course in data[name]:
-        print(course)
+        #print(course)
         courseID = course[0].split(" ")[0]
         courseNumber = course[0].split(" ")[1]
         if sum(c.isdigit() for c in courseNumber) >=3 and courseNumber[0] in "0123456789":
@@ -75,7 +79,7 @@ for name in names:
 
         coursenames.append(courseID)
         courseids.append(courseNumber)
-        print(courseID, courseNumber," ", courseLevel , " ", courseGPA," ", counter)
+        #print(courseID, courseNumber," ", courseLevel , " ", courseGPA," ", counter)
         counter += 2
 sqliteConnection.commit()
 print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
@@ -85,48 +89,11 @@ cursor.close()
 coursenames = list(set(coursenames))
 courseids = list(set(courseids))
 
+with open('course_name_and_IDs.json', 'w') as outfile:
+    json.dump([coursenames,courseids], outfile)
 
 
 
-
-
-
-
-import re
-
-
-
-for name in names:
-    for course in data[name]:
-        for req in course[3]:
-            if req.split(" ")[0] == "Restriction:":
-                restrictions = []
-                
-                clean_req =  " ".join(req.split(" ")[1:])
-                
-                clean_req=re.sub(",","",clean_req)
-
-                mainSubject = course[0]
-                mainID = course[1]
-                currentSubject = "This is Problematic"
-                currentID = "this is also problematic"
-                        
-                for x in clean_req.split(" ")[1:]:
-                    if x not in coursenames and x not in courseids and x not in ["and", "or"]:
-                        break
-                        print(clean_req)
-                    else:
-                        
-                        for restriction in clean_req.split(" ")[1:]:
-                            if restriction in coursenames:
-                                currentSubject = restriction
-                            else:
-                                currentID = restriction
-                                
-                                restrictions.append((mainSubject, mainID, currentSubject, currentID))
-                                print((mainSubject, mainID, currentSubject, currentID))
-                            
-                print(clean_req)
 
 
 
