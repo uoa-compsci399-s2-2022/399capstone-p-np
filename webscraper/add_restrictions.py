@@ -2,6 +2,14 @@ import json
 import sqlite3
 import re
 
+f = open('all_courses.json')
+data = json.load(f)
+course_names = data[0]
+courseID = data[1]
+
+f = open('all_courses.json')
+data = json.load(f)
+
 for name in names:
     for course in data[name]:
         for req in course[3]:
@@ -14,13 +22,12 @@ for name in names:
                 mainID = course[1]
                 currentSubject = "This is Problematic"
                 currentID = "this is also problematic"
-
                 word_num = 0        
                 for x in clean_req.split(" ")[1:]:
-                    if x not in coursenames and x not in courseids and x not in ["and", "or"]:
+                    print("hi")
+                    if x not in course_names and x not in courseID and x not in ["and", "or"]:
                         break
                     else:
-                        print(clean_req)
                         for restriction in clean_req.split(" ")[1:]:
                             if restriction in coursenames:
                                 currentSubject = restriction
