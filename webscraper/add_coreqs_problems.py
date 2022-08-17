@@ -16,11 +16,18 @@ for name in names:
     for x in course_information[name]:
         all_courses_list.append(x)
     
+Restriction = """UPDATE course set problematicRestrictions = ? where courseNumber = ? and lower(subject) = lower(?);"""
+Prerequisite = """UPDATE course set problematicPreReqs = ? where courseNumber = ? and lower(subject) = lower(?);"""
+Corequisite = """UPDATE course set problematicCoReqs = ? where courseNumber = ? and lower(subject) = lower(?);"""
+
+RestrictionIns =  """INSERT INTO "restriction"   (?, ?, subject, courseNumber) VALUES (?,?,?,?);"""
+PrerequisiteIns = """INSERT INTO "preReqSubject" (?, ?, subject, courseNumber) VALUES (?,?,?,?);"""
+CorequisiteIns =  """INSERT INTO "corequisite"   (?, ?, subject, courseNumber) VALUES (?,?,?,?);"""
 
 requriment_pointers = [
-    ["Restriction:","restrictionSubject", "restrictionNumber", "problematicRestrictions","restriction"],
-    ["Prerequisite:","preReqSubject", "preReqNumber", "problematicPreReqs","preReq"],
-    ["Corequisite:","corequisiteSubject", "corequisite", "problematicCoReqs","corequisite"]
+    ["Restriction:","restrictionSubject", "restrictionNumber", Restriction,"restriction",RestrictionIns],
+    ["Prerequisite:","preReqSubject", "preReqNumber", Prerequisite,"preReq",PrerequisiteIns],
+    ["Corequisite:","corequisiteSubject", "corequisite", Corequisite,"corequisite",CorequisiteIns]
 ]
 for requriment_pointer in requriment_pointers:
     final_list_of_rest = []   
@@ -62,7 +69,7 @@ for requriment_pointer in requriment_pointers:
                             rest_subj = x
                         if x in courseID:
                             rest_id = x
-                            final_list_of_rest.append((requriment_pointer[4],requriment_pointer[1],requriment_pointer[2],main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
+                            final_list_of_rest.append((requriment_pointer[1],requriment_pointer[2],main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
 
 
 
@@ -74,23 +81,19 @@ for requriment_pointer in requriment_pointers:
     cursor = sqliteConnection.cursor()
     print("Successfully Connected to SQLite")
 
-    sqlite_append_query = """UPDATE course
-    set ? = ?
-    where courseNumber = ? and lower(subject) = lower(?);"""
+    sqlite_append_query = requriment_pointer[3]
     for x in problematics:
-        tupER = ((requriment_pointer[3], x[1], x[0].split(" ")[1], x[0].split(" ")[0]))
-        tupER = ((requriment_pointer[3], "test", x[0].split(" ")[1], x[0].split(" ")[0]))
+        tupER = ((x[1], x[0].split(" ")[1], x[0].split(" ")[0]))
         print(tupER)
         cursor.execute(sqlite_append_query, tupER)
 
     sqliteConnection.commit()
-    sqlite_insert_query = """INSERT INTO ?
-                        (?, ?, subject, courseNumber) 
-                        VALUES 
-                        (?,?,?,?);"""
+    sqlite_insert_query = requriment_pointer[5]
+    print(sqlite_insert_query)
 
     for x in final_list_of_rest:
         try:
+            print(x)
             cursor.execute(sqlite_insert_query, x)
         except sqlite3.IntegrityError as er:
             print("Don't worry:", er.args[0], x)

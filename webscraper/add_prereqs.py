@@ -67,12 +67,15 @@ sqliteConnection = sqlite3.connect(database)
 cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")
 
-sqlite_append_query = """UPDATE course
-set problematicPreReqs = ?
-where courseNumber = ? and lower(subject) = lower(?);"""
+sqlite_append_query = """
+UPDATE course
+set ? = ?
+where courseNumber = ? and lower(subject) = lower(?)
+"""
 for x in problematics:
     print(x[0].split(" ")[0], x[0].split(" ")[1])
     tupER = ((x[1], x[0].split(" ")[1], x[0].split(" ")[0]))
+    tupER = (("problematicPreReqs","test", "100", "ACADENG"))
     cursor.execute(sqlite_append_query, tupER)
 
 sqliteConnection.commit()
