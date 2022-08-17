@@ -20,9 +20,9 @@ Restriction = """UPDATE course set problematicRestrictions = ? where courseNumbe
 Prerequisite = """UPDATE course set problematicPreReqs = ? where courseNumber = ? and lower(subject) = lower(?);"""
 Corequisite = """UPDATE course set problematicCoReqs = ? where courseNumber = ? and lower(subject) = lower(?);"""
 
-RestrictionIns =  """INSERT INTO "restriction"   (?, ?, subject, courseNumber) VALUES (?,?,?,?);"""
-PrerequisiteIns = """INSERT INTO "preReqSubject" (?, ?, subject, courseNumber) VALUES (?,?,?,?);"""
-CorequisiteIns =  """INSERT INTO "corequisite"   (?, ?, subject, courseNumber) VALUES (?,?,?,?);"""
+RestrictionIns =  """INSERT INTO "restriction"   (restrictionSubject, restrictionNumber, subject, courseNumber) VALUES (?,?,?,?);"""
+PrerequisiteIns = """INSERT INTO "preReqSubject" (preReqSubject, preReqNumber, subject, courseNumber) VALUES (?,?,?,?);"""
+CorequisiteIns =  """INSERT INTO "corequisite"   (corequisiteSubject, corequisiteNumber, subject, courseNumber) VALUES (?,?,?,?);"""
 
 requriment_pointers = [
     ["Restriction:","restrictionSubject", "restrictionNumber", Restriction,"restriction",RestrictionIns],
@@ -69,7 +69,7 @@ for requriment_pointer in requriment_pointers:
                             rest_subj = x
                         if x in courseID:
                             rest_id = x
-                            final_list_of_rest.append((requriment_pointer[1],requriment_pointer[2],main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
+                            final_list_of_rest.append((main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
 
 
 
@@ -92,11 +92,12 @@ for requriment_pointer in requriment_pointers:
     print(sqlite_insert_query)
 
     for x in final_list_of_rest:
+        print(x)
         try:
-            print(x)
             cursor.execute(sqlite_insert_query, x)
-        except sqlite3.IntegrityError as er:
-            print("Don't worry:", er.args[0], x)
+        except:
+            print("FAIL", x)
+            pass
     sqliteConnection.commit()
     print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
     cursor.close()
