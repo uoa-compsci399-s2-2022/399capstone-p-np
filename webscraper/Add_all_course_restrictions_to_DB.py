@@ -15,6 +15,18 @@ all_courses_list = []
 for name in names:
     for x in course_information[name]:
         all_courses_list.append(x)
+
+database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\399courses.db"
+
+
+sqliteConnection = sqlite3.connect(database)
+
+cursor = sqliteConnection.cursor()
+print("Successfully Connected to SQLite")
+
+cursor.execute("""delete from restriction where 1 = 1""")
+cursor.execute("""delete from preReq where 1 = 1""")
+cursor.execute("""delete from corequisite where 1 = 1""")
     
 Restriction = """UPDATE course set problematicRestrictions = ? where courseNumber = ? and lower(subject) = lower(?);"""
 Prerequisite = """UPDATE course set problematicPreReqs = ? where courseNumber = ? and lower(subject) = lower(?);"""
@@ -33,6 +45,7 @@ for requriment_pointer in requriment_pointers:
     final_list_of_rest = []   
     problematics = []    
     for course in all_courses_list:
+        other_problems = ""
         for req in course[3]:
             if req.split(" ")[0] == requriment_pointer[0]:
                 restrictions = []
@@ -71,15 +84,15 @@ for requriment_pointer in requriment_pointers:
                             rest_id = x
                             final_list_of_rest.append((main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
 
+            else:
+                query = """UPDATE course set problematicOther = ? where courseNumber = ? and lower(subject) = lower(?);"""
+                other_problems = other_problems + req
+                cursor.execute(query, (other_problems, course[1],course[0]))
 
 
-    database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\399courses.db"
+    
 
-
-    sqliteConnection = sqlite3.connect(database)
-
-    cursor = sqliteConnection.cursor()
-    print("Successfully Connected to SQLite")
+    
 
     sqlite_append_query = requriment_pointer[3]
     for x in problematics:
@@ -98,9 +111,10 @@ for requriment_pointer in requriment_pointers:
         except:
             print("FAIL", x)
             pass
-    sqliteConnection.commit()
-    print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
-    cursor.close()
+
+sqliteConnection.commit()
+print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
+cursor.close()
 
         
 
