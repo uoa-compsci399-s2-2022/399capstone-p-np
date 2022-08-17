@@ -1,6 +1,7 @@
 import json
 import sqlite3
 import re
+import time
 
 f = open('course_name_and_IDs.json')
 data = json.load(f)
@@ -27,13 +28,17 @@ print("Successfully Connected to SQLite")
 cursor.execute("""delete from restriction where 1 = 1""")
 cursor.execute("""delete from preReq where 1 = 1""")
 cursor.execute("""delete from corequisite where 1 = 1""")
+cursor.execute("""UPDATE course set problematicPreReqs = NULL where 1=1;""")
+cursor.execute("""UPDATE course set problematicRestrictions = NULL where 1=1;""")
+cursor.execute("""UPDATE course set problematicCoReqs = NULL where 1=1;""")
+cursor.execute("""UPDATE course set problematicOther = NULL where 1=1;""")
     
 Restriction = """UPDATE course set problematicRestrictions = ? where courseNumber = ? and lower(subject) = lower(?);"""
 Prerequisite = """UPDATE course set problematicPreReqs = ? where courseNumber = ? and lower(subject) = lower(?);"""
 Corequisite = """UPDATE course set problematicCoReqs = ? where courseNumber = ? and lower(subject) = lower(?);"""
 
 RestrictionIns =  """INSERT INTO "restriction"   (restrictionSubject, restrictionNumber, subject, courseNumber) VALUES (?,?,?,?);"""
-PrerequisiteIns = """INSERT INTO "preReqSubject" (preReqSubject, preReqNumber, subject, courseNumber) VALUES (?,?,?,?);"""
+PrerequisiteIns = """INSERT INTO "preReq" (preReqSubject, preReqNumber, subject, courseNumber) VALUES (?,?,?,?);"""
 CorequisiteIns =  """INSERT INTO "corequisite"   (corequisiteSubject, corequisiteNumber, subject, courseNumber) VALUES (?,?,?,?);"""
 
 requriment_pointers = [
@@ -84,10 +89,13 @@ for requriment_pointer in requriment_pointers:
                             rest_id = x
                             final_list_of_rest.append((main_subj.split(" ")[0], main_subj.split(" ")[1], rest_subj, x))
 
-            else:
+            if req.split(" ")[0] not in ["Restriction:","Prerequisite:","Corequisite:"] :
+                course_subject = course[0].split(" ")[0]
+                course_number = course[0].split(" ")[1]
                 query = """UPDATE course set problematicOther = ? where courseNumber = ? and lower(subject) = lower(?);"""
                 other_problems = other_problems + req
-                cursor.execute(query, (other_problems, course[1],course[0]))
+                cursor.execute(query, (other_problems, course_number,course_subject))
+                sqliteConnection.commit()
 
 
     
@@ -97,7 +105,6 @@ for requriment_pointer in requriment_pointers:
     sqlite_append_query = requriment_pointer[3]
     for x in problematics:
         tupER = ((x[1], x[0].split(" ")[1], x[0].split(" ")[0]))
-        print(tupER)
         cursor.execute(sqlite_append_query, tupER)
 
     sqliteConnection.commit()
@@ -105,7 +112,6 @@ for requriment_pointer in requriment_pointers:
     print(sqlite_insert_query)
 
     for x in final_list_of_rest:
-        print(x)
         try:
             cursor.execute(sqlite_insert_query, x)
         except:
