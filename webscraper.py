@@ -22,6 +22,7 @@ course_info = []
 #Extracts all of the different courses as a HTML objects into a list
 courses = soup.find_all("div", class_="coursePaper section")
 for course in courses:
+    print("test")
     code = course.find("div", class_="courseA").text.strip()
     title = course.find("div", class_="points").text.strip()
     descrition = course.find("p", class_="description").text.strip()
