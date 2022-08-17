@@ -68,16 +68,10 @@ for name in names:
         if courseGPA > 9 or courseGPA < 0:
             courseGPA = 0
 
-        courseApproval = ""
-        for x in course[3]:
-            if "approval" in x.lower():
-                courseApproval = courseApproval + x[len("Prerequisite: "):]
-                
-                
         coursePoints = float(course[1].split(" ")[0])
         courseDesc = course[2]
         
-        data_tuple = (courseID,courseNumber,name.split("_")[0],coursePoints,courseGPA,courseLevel,courseApproval,courseDesc)
+        data_tuple = (courseID,courseNumber,name.split("_")[0],coursePoints,courseGPA,courseLevel,"",courseDesc)
         
         try:
             cursor.execute(sqlite_insert_query, data_tuple)

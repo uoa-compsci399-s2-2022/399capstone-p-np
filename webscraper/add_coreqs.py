@@ -20,7 +20,7 @@ final_list_of_rest = []
 problematics = []    
 for course in all_courses_list:
     for req in course[3]:
-        if req.split(" ")[0] == "Prerequisite:":
+        if req.split(" ")[0] == "Restriction:":
             restrictions = []
             clean_req =  " ".join(req.split(" ")[1:])
             clean_req=re.sub(",","",clean_req)
@@ -68,7 +68,7 @@ cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")
 
 sqlite_append_query = """UPDATE course
-set problematicPreReqs = ?
+set problematicRestrictions = ?
 where courseNumber = ? and lower(subject) = lower(?);"""
 for x in problematics:
     print(x[0].split(" ")[0], x[0].split(" ")[1])
@@ -76,8 +76,8 @@ for x in problematics:
     cursor.execute(sqlite_append_query, tupER)
 
 sqliteConnection.commit()
-sqlite_insert_query = """INSERT INTO "preReq"
-                      (preReqSubject, preReqNumber, subject, courseNumber) 
+sqlite_insert_query = """INSERT INTO restriction
+                      (restrictionSubject, restrictionNumber, subject, courseNumber) 
                        VALUES 
                       (?,?,?,?);"""
 
