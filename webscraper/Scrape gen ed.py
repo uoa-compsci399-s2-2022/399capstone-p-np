@@ -56,8 +56,9 @@ for x in schedules:
     gen_ed_list.append((name,url))
 
 for x in gen_ed_list:
-    print(x[1])
+    print(x[0])
     print(downloadinfo(x[1]))
+    print(" ")
 
 
 
