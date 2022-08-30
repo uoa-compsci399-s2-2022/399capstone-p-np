@@ -26,10 +26,6 @@ def create_app():
         from .find_book import find_book
         app.register_blueprint(find_book.find_book_blueprint)
 
-        from .authentication import authentication
-        app.register_blueprint(authentication.authentication_blueprint)
 
-        #temp patch
-        app.secret_key = 'the random string'
 
     return app

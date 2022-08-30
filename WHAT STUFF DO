@@ -1,0 +1,43 @@
+domain/model
+This stores our classes for objects this will store our courses class that holds a courses requirements it's points
+excetera these are then imported into a file's code by going:
+
+from library.domain.model import User, Book, Author, Publisher
+
+This is where the python check logic will be held and any requirements enforced if it's not a GUI
+or the database or web scraper it's here
+
+
+
+
+
+
+
+
+orm
+A petentialy redundant file but it will show Zac how to create access the database in python and port it to an object
+if he needs a refresher
+
+
+
+
+
+
+jsondata reader
+This creates objects and sets there values it may be used simmilarly to orm
+
+
+
+
+
+
+Database reposorory
+This interfaces with the database and allowes python to query the database and set stuff through pre made querys this
+is the ONLY place that will pull from the database all other functions MUST go through here
+
+
+
+
+all init's
+these initalise a spesific part of the website these allow flask to use our code they can remain untouched as long as
+we don't rename stuff shit won't hit the fan

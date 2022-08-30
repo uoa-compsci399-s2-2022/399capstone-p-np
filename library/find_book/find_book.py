@@ -8,10 +8,7 @@ from wtforms.validators import DataRequired, Length, ValidationError
 
 import library.adapters.jsondatareader as bookdata
 
-from library.authentication.authentication import login_required
 import library.adapters.repository as repo
-import library.find_book.services as services
-import library.authentication.services as authServices
 
 find_book_blueprint = Blueprint(
     'find_book_bp', __name__
@@ -218,7 +215,6 @@ def display_one_book(found_book):
 
 
 @find_book_blueprint.route('/review', methods=['GET', 'POST'])
-@login_required
 def review_book():
     global currentBook
     user_name = session['user_name']

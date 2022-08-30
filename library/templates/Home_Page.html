@@ -12,6 +12,21 @@
             <a href="{{ find_book }}">Search for a book</a>
         </p>
     </div>
+
+
+
+    <div id="MainCourseBox">
+    {% for semester in semesters %}
+        <div id="Semester">
+        {% for course in semester %}
+            <div id="Course",>
+                <p>Course</p>
+            </div>
+
+        {% endfor %}
+        </div>
+    {% endfor %}
+    </div>
 </main>
 
 {% endblock %}
