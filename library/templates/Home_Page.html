@@ -18,12 +18,15 @@
     <div id="MainCourseBox">
     {% for semester in semesters %}
         <div id="Semester">
-        {% for course in semester %}
+            <p>{{semester[0]}}</p>
+        {% for course in semester[1:] %}
             <div id="Course",>
-                <p>Course</p>
+                <p>Course: {{course[0]}}</p>
+                <p>Requirements: {{course[1]}}</p>
             </div>
 
         {% endfor %}
+            <button type="submit" class="AddCourseHomeButton">+</button>
         </div>
     {% endfor %}
     </div>

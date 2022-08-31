@@ -3,7 +3,8 @@ body,
 html {
   height: 100%;
   font-family: "Lato", sans-serif;
-  background-color: #FFF8DC;
+  background-color: #FFFFFF;
+  margin: 0px;
 }
 
 h1 {
@@ -94,10 +95,10 @@ img {
 }
 
 #header {
-  padding: 20px;
-  background: #FFF8DC;
+  padding: 1px;
+  background: #e3e3e3;
   border-bottom: 1px solid #cccccc;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
   text-align: left;
   font-family: "Lato", sans-serif;
@@ -164,7 +165,7 @@ img {
 
 #main {
   margin: 20px;
-  color: #717171;
+  color: #FFFFFF;
   line-height: 25px;
   padding: 10px;
   width: 66.666667%;
@@ -264,4 +265,75 @@ input[type='submit']:hover {
 #Displaybook inline {
    display:inline-block;
    margin-right:5px;
+}
+
+#Semester {
+  overflow: auto;
+  background: #d6edff;
+  border: 1px solid blue;
+  padding: 25px;
+  margin: 2px;
+}
+
+#Course {
+  width: 250px;
+  height: 100px;
+  float: left;
+  background-color: #4298f5;/* Blue */
+  border: 1px solid blue;
+  padding: 25px;
+  margin: 2px;
+}
+
+.AddCourseHomeButton {
+  background-color: #4298f5; /* Blue */
+  border: none;
+  color: white;
+  width: 100px;
+  height: 100px;
+  padding: 15px 32px;
+  border: 1px solid blue;
+  text-align: center;
+  text-decoration: none;
+  display: block ;
+  font-size: 64px;
+  margin-top: 40px;
+  margin-left:40px;
+}
+
+.AddCourseHomeButton:hover {
+    background-color: #83bdfc;
+}
+
+
+
+.button-default {
+  color: white;
+  background-color: #2f3c7a;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.button-slanted {
+  -ms-transform: skewX(-20deg);
+  -webkit-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  float: right;
+}
+
+.button-slanted-content {
+  -ms-transform: skewX(20deg);
+  -webkit-transform: skewX(20deg);
+  transform: skewX(20deg);
+  display: inline-block;
+}
+
+a:link, a:visited {
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
