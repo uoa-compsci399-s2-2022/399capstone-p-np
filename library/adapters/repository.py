@@ -20,33 +20,6 @@ class RepositoryException(Exception):
         pass
 
 
-class AbstractRepository(abc.ABC):
-    @abc.abstractmethod
-    def add_user(self, user: User):
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def get_user(self, user_name) -> User:
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def add_review(self, review: Review):
-        if review.user is None or review not in review.user.reviews:
-            raise RepositoryException('Review is not correctly attached to a User')
-        if review.user is None or review not in review.book.reviews:
-            raise RepositoryException('Review is not correctly attached to a Book')
-
-    @abc.abstractmethod
-    def get_reviews(self):
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def get_book(self, id: int) -> Book:
-        raise NotImplementedError
-
-    def get_book_by_id(self, id):
-        raise NotImplementedError
-
 import abc
 from typing import List
 from datetime import date, datetime
