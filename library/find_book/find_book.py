@@ -5,7 +5,7 @@ from flask import request, render_template, redirect, url_for, session
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, SubmitField, TextAreaField, HiddenField
 from wtforms.validators import DataRequired, Length, ValidationError
-
+import library.adapters.399DbFunctions.py as searchEngine
 import library.adapters.jsondatareader as bookdata
 
 import library.adapters.repository as repo
@@ -48,7 +48,6 @@ def display_book():
         global displayBookIndex
         displayBookIndex = 0
         req = request.form
-
 
         values = None
         try:
