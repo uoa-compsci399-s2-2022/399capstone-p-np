@@ -49,6 +49,7 @@ def return_course_points(course_subject, course_number):
 
 def problems_with_timetable(timetable):
     #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2) 
+    #code code code
     for x in timetable:
         pass
     
