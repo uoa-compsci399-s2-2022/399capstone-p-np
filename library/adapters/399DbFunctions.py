@@ -53,6 +53,7 @@ def problems_with_course(courseName, courseNumber, timetable):
     #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2) 
     timetable = []
     done_courses = []
+    doing = []
     for sem in timetable:
         if (courseName, courseNumber) not in sem:
             for course in sem:
@@ -78,8 +79,13 @@ def problems_with_course(courseName, courseNumber, timetable):
     return (problems_with_course)
 
 
-problems_with_course("CHINESE", "200", [])
 
+timetable = [
+    
+    [("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
+    [("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230")]
+]
+print(problems_with_major(timetable))
 #a function of all courses they need to take to graduate required courses,(group courses, points))
 #given name of courses they are taking and what time, return same matrix with null, or error message
 #given list of courses if they will graduate
