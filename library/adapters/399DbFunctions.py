@@ -15,8 +15,9 @@ def return_all_courses():
 
 def return_isolated_problems_with_course(course_subject, course_number):
     a = cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
-    if len(a.fetchall()) == 1:
-        course = a.fetchall()[0]
+    list_of_courses = a.fetchall()
+    if len(list_of_courses) == 1:
+        course = list_of_courses[0]
         return course[8:]
     else:
         return "does not exist"
@@ -51,6 +52,7 @@ def problems_with_course(courseName, courseNumber, timetable):
     #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2) 
     timetable = []
     done_courses = []
+    doing = []
     for sem in timetable:
         if (courseName, courseNumber) not in sem:
             for course in sem:
@@ -76,8 +78,22 @@ def problems_with_course(courseName, courseNumber, timetable):
     return (problems_with_course)
 
 
-problems_with_course("computer science", "110", [])
+def problems_with_major(timetable):
+    problems = []
+    temp_timetable = []
+    for sem in timetable:
+        temp_timetable.append(sem)
+        problems.append([problems_with_course(course[0],course[1], temp_timetable) for course in sem])
 
+    return problems
+
+
+timetable = [
+    
+    [("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
+    [("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230")]
+]
+print(problems_with_major(timetable))
 #a function of all courses they need to take to graduate required courses,(group courses, points))
 #given name of courses they are taking and what time, return same matrix with null, or error message
 #given list of courses if they will graduate
