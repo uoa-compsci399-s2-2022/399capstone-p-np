@@ -3,13 +3,13 @@ import sqlite3
 import time
 
 class searchTool:
-    def __int__(self):
+    def __init__(self):
         sqliteConnection = sqlite3.connect(os.path.abspath(os.getcwd()) + "\\data\\399courses.db")
-        cursor = sqliteConnection.cursor()
+        self.__cursor = sqliteConnection.cursor()
 
 
     def return_all_courses(self):
-        a = cursor.execute("select * from course")
+        a = self.__cursor.execute("select * from course")
         course = a.fetchall()
         newlist = []
         for x in course:
@@ -17,7 +17,7 @@ class searchTool:
         return newlist
 
     def return_isolated_problems_with_course(self, course_subject, course_number):
-        a = cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
+        a = self.__cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
@@ -26,7 +26,7 @@ class searchTool:
             return "does not exist"
 
     def return_course_description(self, course_subject, course_number):
-        a = cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
+        a = self.__cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
@@ -35,7 +35,7 @@ class searchTool:
             return "does not exist"
 
     def return_all_course_information(self, course_subject, course_number):
-        a = cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
+        a = self.__cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
@@ -44,7 +44,7 @@ class searchTool:
             return "does not exist"
 
     def return_course_points(self, course_subject, course_number):
-        a = cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
+        a = self.__cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
@@ -67,13 +67,13 @@ class searchTool:
 
         problems_with_course = {}
 
-        a = cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (courseName, courseNumber))
+        a = self.__cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (courseName, courseNumber))
         problems_with_course.update({"prereqs" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]})
 
-        a = cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
+        a = self.__cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
         problems_with_course.update({"restrictions" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]})
 
-        a = cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
+        a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
         problems_with_course.update({"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]})
 
         problems_with_course.update({"other_problems": return_isolated_problems_with_course(courseName, courseNumber)})
