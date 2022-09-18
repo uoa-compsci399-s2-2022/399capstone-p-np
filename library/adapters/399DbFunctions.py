@@ -47,11 +47,31 @@ def return_course_points(course_subject, course_number):
     else:
         return "does not exist"
 
-def problems_with_timetable(timetable):
+def problems_with_course(courseName, courseNumber, timetable):
     #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2) 
-    #code code code
-    for x in timetable:
-        pass
+    timetable = []
+    done_courses = []
+    for sem in timetable:
+        if (courseName, courseNumber) not in sem:
+            for course in sem:
+                timetable.append(course)
+        else:
+            doing = sem
+            exit
+    
+    a = cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (course[0], course[1]))
+    pre_reqs_to_do = {"prereqs" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]}
+
+    a = cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (course[0], course[1]))
+    restrictions_to_do = {"restrictions" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]}
+
+    a = cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (course[0], course[1]))
+    corequisite = {"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]}
+
+    other_problems = {"other_problems": return_isolated_problems_with_course( (course[0], course[1]))}
+
+    return (pre_reqs_to_do,restrictions_to_do,corequisite,other_problems)
+
     
 
 #a function of all courses they need to take to graduate required courses,(group courses, points))
@@ -59,4 +79,3 @@ def problems_with_timetable(timetable):
 #given list of courses if they will graduate
 #Return all courses that can be taken at that time
 #return a list of courses they can take given what they are doing
-#given a coure return all course information
