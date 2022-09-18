@@ -18,6 +18,7 @@ for name in names:
         all_courses_list.append(x)
 
 database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\399courses.db"
+database = r"C:\Users\windows\Documents\GitHub\399capstone-p-np\webscraper\399courses.db"
 
 
 sqliteConnection = sqlite3.connect(database)
