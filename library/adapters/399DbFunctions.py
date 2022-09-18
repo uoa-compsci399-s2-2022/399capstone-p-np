@@ -59,20 +59,24 @@ def problems_with_course(courseName, courseNumber, timetable):
             doing = sem
             exit
     
-    a = cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (course[0], course[1]))
-    pre_reqs_to_do = {"prereqs" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]}
+    problems_with_course = {}
 
-    a = cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (course[0], course[1]))
-    restrictions_to_do = {"restrictions" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]}
+    a = cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (courseName, courseNumber))
+    problems_with_course.update({"prereqs" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]})
 
-    a = cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (course[0], course[1]))
-    corequisite = {"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]}
+    a = cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
+    problems_with_course.update({"restrictions" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]})
 
-    other_problems = {"other_problems": return_isolated_problems_with_course( (course[0], course[1]))}
+    a = cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
+    problems_with_course.update({"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]})
 
-    return (pre_reqs_to_do,restrictions_to_do,corequisite,other_problems)
+    problems_with_course.update({"other_problems": return_isolated_problems_with_course(courseName, courseNumber)})
 
-    
+    print(problems_with_course)
+    return (problems_with_course)
+
+
+problems_with_course("computer science", "110", [])
 
 #a function of all courses they need to take to graduate required courses,(group courses, points))
 #given name of courses they are taking and what time, return same matrix with null, or error message
