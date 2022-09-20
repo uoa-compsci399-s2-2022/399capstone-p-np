@@ -76,10 +76,37 @@ class searchTool:
         a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
         problems_with_course.update({"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]})
 
-        problems_with_course.update({"other_problems": return_isolated_problems_with_course(courseName, courseNumber)})
+        problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
 
         print(problems_with_course)
         return (problems_with_course)
+    
+    def worst_problems_with_course(self, courseName, courseNumber, timetable):
+        #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2)
+        timetable = []
+        done_courses = []
+        doing = []
+        for sem in timetable:
+            if (courseName, courseNumber) not in sem:
+                for course in sem:
+                    timetable.append(course)
+            else:
+                doing = sem
+                exit
+
+
+        res = [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]
+        if res != []:
+            return res
+        
+        preReq =  [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]
+        if preReq != []:
+            return preReq
+
+        coreq = [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]
+        if coreq != []:
+            return coreq
+        return []
 
 
 
