@@ -5,7 +5,7 @@ from flask import request, render_template, redirect, url_for, session
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, SubmitField, TextAreaField, HiddenField
 from wtforms.validators import DataRequired, Length, ValidationError
-
+import library.adapters.DbFunctions as SearchEngine
 import library.adapters.jsondatareader as bookdata
 
 import library.adapters.repository as repo
@@ -23,9 +23,9 @@ displayBookIndex = 0;
 
 @find_book_blueprint.route('/search', methods=['GET', 'POST'])
 def find_book():
-
+    search = SearchEngine.searchTool()
     global found_book_errors
-
+    countries = search.return_all_courses()
     error = found_book_errors
     found_book_errors = ""
     return render_template(
@@ -34,6 +34,7 @@ def find_book():
         home_url=url_for('home_bp.home'),
         find_book=url_for('find_book_bp.find_book'),
         error=error,
+        countries=countries
         #user=("Welcome " + str(session['user_name']))
     )
     pass
@@ -49,11 +50,11 @@ def display_book():
         displayBookIndex = 0
         req = request.form
 
-
         values = None
         try:
-            found_book = repo.repositoryInstance.data.search_book_by_id(req["MultipleSearchTextBox"])
-            values = display_one_book(found_book)
+            ahws=1
+            #found_book = SearchEngine.(req["MultipleSearchTextBox"])
+            #values = display_one_book(found_book)
         except:
             values = setvalues(req)
 
