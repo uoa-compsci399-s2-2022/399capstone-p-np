@@ -94,19 +94,30 @@ class searchTool:
                 doing = sem
                 exit
 
-
+        a = self.__cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (courseName, courseNumber))
         res = [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]
         if res != []:
             return res
         
+        a = self.__cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
         preReq =  [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]
         if preReq != []:
             return preReq
 
+        a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
         coreq = [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]
         if coreq != []:
             return coreq
         return []
+
+    def problems_with_timetable(self, timetable):
+        #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2)
+        timetable = []
+        done_courses = []
+        for sem in timetable:
+                for course in sem:
+                    timetable.append(course)
+    
 
 
 
