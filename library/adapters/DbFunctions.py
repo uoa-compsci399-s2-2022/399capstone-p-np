@@ -21,7 +21,11 @@ class searchTool:
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
-            return course[8:]
+            new_str = ""
+            for x in course[8:]:
+                if x != None:
+                    new_str = new_str + x
+            return new_str
         else:
             return "does not exist"
 
@@ -97,38 +101,31 @@ class searchTool:
         a = self.__cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (courseName, courseNumber))
         res = [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]
         if res != []:
-            return res
+            return "The pre-req for this course is" + res[0]
         
         a = self.__cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
         preReq =  [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]
         if preReq != []:
-            return preReq
+            return "One restriction for this course is: " +  preReq[0][0] +  preReq[0][1]
 
         a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
         coreq = [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]
         if coreq != []:
-            return coreq
+            return "The coreq for this course is" + coreq[0]
         return []
 
     def problems_with_timetable(self, timetable):
-        #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2)
-        timetable = []
-        done_courses = []
+        new_timetable = []
+        probs = []
         for sem in timetable:
-                for course in sem:
-                    timetable.append(course)
+            new_timetable.append(sem)
+            probs.append([[course[0]+ " " + course[1], self.worst_problems_with_course(course[0],course[1], new_timetable),self.return_isolated_problems_with_course( course[0],  course[1]) ] for course in sem])
+        return probs
     
 
 
-
-#timetable = [
-    
-    #[("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
-    #[("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230")]
-#]
-#print(problems_with_major(timetable))
-#a function of all courses they need to take to graduate required courses,(group courses, points))
-#given name of courses they are taking and what time, return same matrix with null, or error message
-#given list of courses if they will graduate
-#Return all courses that can be taken at that time
-#return a list of courses they can take given what they are doing
+a = searchTool()
+z = a.problems_with_timetable([[("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")]])
+for x in z:
+    for y in x:
+        print (y)
