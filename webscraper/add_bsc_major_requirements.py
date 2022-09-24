@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import json
 import re
 
-
+#Gets all links for majors under the Bachelor of Science 
 def getMajorLinks(url):
     x = 0
     while x < 10:
@@ -30,7 +30,7 @@ def getMajorLinks(url):
     
     return links
 
-
+#Gets all links for all versions of the major 
 def getSectionLinks(url):
     x = 0
     while x < 10:
@@ -51,6 +51,7 @@ def getSectionLinks(url):
 
     return links
 
+#Gets all the data it can recognise from the major page 
 def getMajorReq(url):
     x = 0
     while x < 10:
@@ -71,10 +72,7 @@ def getMajorReq(url):
     print(soup.title.string)
     #use url to get name of course, honours, and before/from 2019
     major.append(re.split("/", url[70:]))
-    #major.append(re.findall("\(B[A-z]+.*\s", soup.title.string))
-    #major.append(re.findall("in .+,", soup.title.string)[1:])
     for text in soup.strings:
-       # print(text + "*****")
         if re.search("[0-9]+\spoints.*", text):
             if len(courses) > 1:
                 reqs.append(courses)
@@ -86,7 +84,8 @@ def getMajorReq(url):
             courses.append(text)
         elif re.search("[A-Z][A-Z][A-Z]*\s[0-9][0-9][0-9].*", text) != None:
             courses.append(text.split()[:2])
-        
+    if len(courses) > 1:
+        reqs.append(courses)
     return (major,reqs[1:])
 
 
