@@ -81,7 +81,7 @@ def scrape_subject_links(url):
 
 list_of_subjects = []
 list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html")
-'''list_of_subjects =  scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html")
+list_of_subjects =  scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-arts.html")
 list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science.html")
 list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-business-and-economics.html")
 list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-creative-arts-and-industries.html")
@@ -90,7 +90,7 @@ list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en
 list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-law.html")
 list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/faculty-of-medical-and-health-sciences.html")
 list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/general-education.html")
-list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland.html")'''
+list_of_subjects += scrape_subject_links("https://www.calendar.auckland.ac.nz/en/courses/the-university-of-auckland.html")
 
 sqlite_insert_query = """INSERT INTO course
                       (subject, courseNumber, MajorType, pointsValue, GPAreq, level, approvalNeeded, description) 
