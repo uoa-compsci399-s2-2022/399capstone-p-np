@@ -19,6 +19,7 @@ cursor.execute("""DELETE FROM "majorRequirements" """)
 cursor.execute("""DELETE FROM "group" """)
 cursor.execute("""DELETE FROM "majorGroupLink" """)
 cursor.execute("""UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='majorRequirements' """)
+cursor.execute("""UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='group' """)
 
 major_reqs = open('major_reqs.json')
 major_information = json.load(major_reqs)
