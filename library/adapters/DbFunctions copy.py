@@ -141,7 +141,8 @@ inner join "group"
 inner join "course" 
 on "group".majorID = majorRequirements.majorID and 
 "group".subject = course.subject AND
-"group".courseNumber = course.courseNumber;""")
+"group".courseNumber = course.courseNumber AND
+majorRequirements.year = 2020;""")
         res = [x for x in a.fetchall()]
         groups = []
         major_groups = {}
