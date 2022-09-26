@@ -5,7 +5,7 @@ import time
 class searchTool:
     def __init__(self):
         #sqliteConnection = sqlite3.connect(os.path.abspath(os.getcwd()) + "\\data\\399courses.db")
-        database = r"C:\Users\windows\Documents\GitHub\399capstone-p-np\library\399adaptors\399courses.db"
+        database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\399adaptors\399courses.db"
         sqliteConnection = sqlite3.connect(database)
         self.__cursor = sqliteConnection.cursor()
 
@@ -152,7 +152,8 @@ on "group".majorID = majorRequirements.majorID and
                     major_groups[x[0]][1] = major_groups[x[0]][1] + x[5]
 
         for x in major_groups:
-            if major_groups[x][0] > major_groups[x][1]:
+            print(major_groups[x][0],  major_groups[x][1])
+            if float(major_groups[x][0]) > major_groups[x][1]:
                 return False
         
         probs = self.problems_with_timetable(timetable)
@@ -166,6 +167,7 @@ on "group".majorID = majorRequirements.majorID and
 a = searchTool()
 tim = [[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]]
 print(a.will_graduate(tim, "computer-science"))
+#print(a.return_all_courses())
 
 #z = a.problems_with_timetable([[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]])
 #for x in z:
