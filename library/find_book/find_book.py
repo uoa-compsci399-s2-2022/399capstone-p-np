@@ -8,9 +8,9 @@ from wtforms.validators import DataRequired, Length, ValidationError
 
 import library.Home.Home as home
 import library.adapters.DbFunctions as SearchEngine
-import library.adapters.jsondatareader as bookdata
+import library.adaptersold.jsondatareader as bookdata
 import json
-import library.adapters.repository as repo
+import library.adaptersold.repository as repo
 import re
 find_book_blueprint = Blueprint(
     'find_book_bp', __name__
@@ -19,7 +19,7 @@ find_book_blueprint = Blueprint(
 found_book_errors = ""
 form_data = None
 currentBookValues = ("","","","","","","","","")
-currentBook = None
+currentBook = ""
 displayBookIndex = 0;
 
 
@@ -81,7 +81,7 @@ def find_book():
 def display_book():
     global currentBookValues
     global currentBook
-    currentBook = repo.repositoryInstance
+
     if request.method == "POST":
         global displayBookIndex
         displayBookIndex = 0
@@ -99,7 +99,7 @@ def display_book():
         if(currentBook == ""):
             return redirect(url_for('find_book_bp.find_book'))
 
-        if type(currentBook) != string:
+        if not isinstance(currentBook, str):
             global form_data
             form_data = values
             return redirect(url_for('find_book_bp.display_books'))
@@ -108,7 +108,10 @@ def display_book():
 
     search = SearchEngine.searchTool()
 
-
+    title = "course title"
+    numberOfPoints = "about this much"
+    semestersOffered = "that one"
+    discription = "has this stuff in it"
     return render_template(
         'Search_for_a_book/Display_book.html',
         books=bookdata.reader_instance,

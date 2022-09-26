@@ -2,6 +2,19 @@
 {% block Display %}
 
 <div id="Displaybook">
+
+
+    <h1>{{ title }}</h1>
+    <p>Number of points offered: <b>{{ numberOfPoints }}</b></p>
+    <p>Semesters this course is offered: {{semestersOffered}}</p>
+    <p>Description: {{ discription }}</p>
+
+</div>
+
+{% endblock%}
+
+
+<!--
     <img class="img" src={{Image}} alt="Image for {{Title}}" title={{Title}} align="right" width = 200>
     <ppp>Title: {{Title}}</ppp><br><br>
     <ppp>Author/s: {{Author}}</ppp><br><br>
@@ -18,7 +31,7 @@
 
     <a class="btn-nav" href="{{ url_for('find_book_bp.review_book') }}">Write a review</a>
 
-    {% for review in book.reviews %}
+% for review in book.reviews %}
     <ppp>User:     {{review.user.user_name[0].upper()}}{{review.user.user_name[1:]}}</ppp>
     <br>
     <ppp>Time:     {{review.timestamp}}</ppp>
@@ -28,7 +41,5 @@
     <ppp>Review:     {{review.review_text}}</ppp>
     <br>
     <br>
-    {% endfor %}
-</div>
-
-{% endblock%}
+% endfor %}
+    -->
