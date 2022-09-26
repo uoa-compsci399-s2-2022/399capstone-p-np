@@ -7,8 +7,6 @@ import pathlib
 class searchTool:
     def __init__(self):
         #sqliteConnection = sqlite3.connect(os.path.abspath(os.getcwd()) + "\\data\\399courses.db")
-        
-        database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\399adaptors\399courses.db"
         sqliteConnection = sqlite3.connect(str(pathlib.Path().resolve()) + "\\399courses.db")
         self.__cursor = sqliteConnection.cursor()
 
