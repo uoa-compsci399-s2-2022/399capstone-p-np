@@ -1,8 +1,8 @@
 from flask import Flask, request, url_for
 
-import library.adapters.jsondatareader as reader
+import library.adaptersold.jsondatareader as reader
 
-import library.adapters.repository as repo
+import library.adaptersold.repository as repo
 
 #<!--from library.domain.model import Person-->
 

@@ -6,7 +6,7 @@ import csv
 from pathlib import Path
 
 from library.domain.model import User, Review, make_review, Book
-import library.adapters.jsondatareader as bookdata
+import library.adaptersold.jsondatareader as bookdata
 import library.domain.model as model
 from bisect import bisect, bisect_left, insort_left
 
@@ -28,7 +28,7 @@ import csv
 from pathlib import Path
 
 from library.domain.model import User, Review, make_review, Book
-import library.adapters.jsondatareader as bookdata
+import library.adaptersold.jsondatareader as bookdata
 import library.domain.model as model
 from bisect import bisect, bisect_left, insort_left
 
@@ -77,8 +77,8 @@ class MemoryRepository(AbstractRepository):
         self.__books = list()
         global repositoryInstance
         if repositoryInstance == None:
-            datareader = bookdata.BooksJSONReader("library/adapters/data/comic_books_excerpt.json",
-                                                  "library/adapters/data/book_authors_excerpt.json")
+            datareader = bookdata.BooksJSONReader("library/adaptersold/data/comic_books_excerpt.json",
+                                                  "library/adaptersold/data/book_authors_excerpt.json")
             datareader.read_json_files()
             books = datareader.dataset_of_books
 

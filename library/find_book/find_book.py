@@ -5,11 +5,13 @@ from flask import request, render_template, redirect, url_for, session
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, SubmitField, TextAreaField, HiddenField
 from wtforms.validators import DataRequired, Length, ValidationError
+
+import library.Home.Home as home
 import library.adapters.DbFunctions as SearchEngine
-import library.adapters.jsondatareader as bookdata
-
-import library.adapters.repository as repo
-
+import library.adaptersold.jsondatareader as bookdata
+import json
+import library.adaptersold.repository as repo
+import re
 find_book_blueprint = Blueprint(
     'find_book_bp', __name__
 )
@@ -17,7 +19,7 @@ find_book_blueprint = Blueprint(
 found_book_errors = ""
 form_data = None
 currentBookValues = ("","","","","","","","","")
-currentBook = None
+currentBook = ""
 displayBookIndex = 0;
 
 
@@ -25,26 +27,61 @@ displayBookIndex = 0;
 def find_book():
     search = SearchEngine.searchTool()
     global found_book_errors
-    countries = search.return_all_courses()
+    countries = str(search.return_all_courses())
+    #print(countries)
+    countries = countries[3:len(countries)-3]
+    countries = re.sub(r"[\'\,]", '', countries)
+    countries = countries.replace("', ' ", '')
+    #print(countries)
+    #print(countries)
+    #countries = "pears"
     error = found_book_errors
     found_book_errors = ""
+    semester = "1, 2"
+    year = "2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025"
+    count = 0
+    course = ""
+    falseflag = False
+    while count < len(countries):
+        if countries[count] == " ":
+            falseflag = not falseflag
+        if falseflag:
+            count+=1
+            continue
+        course = course + countries[count]
+        count+=1
+    course = course.split(" (")
+    courseArray = []
+    for item in course:
+        if item not in courseArray:
+            courseArray.append(item)
+    courseArray = str(courseArray)
+    courseArray = courseArray[2:len(courseArray) - 2]
+    courseArray = re.sub(r"[\'\,]", '', courseArray)
+    courseArray = courseArray.replace("', ' ", '')
+    #print(course)
+    #print(countries)
     return render_template(
         'Search_for_a_book/find_book.html',
         books=bookdata.reader_instance,
         home_url=url_for('home_bp.home'),
         find_book=url_for('find_book_bp.find_book'),
         error=error,
-        countries=countries
+        countries=countries,
+        Semester=semester,
+        year=year,
+        Course=courseArray
         #user=("Welcome " + str(session['user_name']))
     )
     pass
+
 
 
 @find_book_blueprint.route('/Displaybook', methods=['GET', 'POST'])
 def display_book():
     global currentBookValues
     global currentBook
-    currentBook = repo.repositoryInstance
+
     if request.method == "POST":
         global displayBookIndex
         displayBookIndex = 0
@@ -52,39 +89,39 @@ def display_book():
 
         values = None
         try:
-            ahws=1
+            course = req["MultipleSearchTextBox"]
+            currentBook = course.split("+")[0]
             #found_book = SearchEngine.(req["MultipleSearchTextBox"])
             #values = display_one_book(found_book)
         except:
             values = setvalues(req)
 
-        if(values == None):
+        if(currentBook == ""):
             return redirect(url_for('find_book_bp.find_book'))
 
-        if type(values) != tuple:
+        if not isinstance(currentBook, str):
             global form_data
             form_data = values
             return redirect(url_for('find_book_bp.display_books'))
 
         currentBookValues = values
 
+    search = SearchEngine.searchTool()
 
-
+    title = "course title"
+    numberOfPoints = "about this much"
+    semestersOffered = "that one"
+    discription = "has this stuff in it"
     return render_template(
         'Search_for_a_book/Display_book.html',
         books=bookdata.reader_instance,
         home_url=url_for('home_bp.home'),
         find_book=url_for('find_book_bp.find_book'),
 
-        Title=currentBookValues[0],
-        Author=currentBookValues[1],
-        Discription=currentBookValues[2],
-        Image=currentBookValues[3],
-        Publisher=currentBookValues[4],
-        Published_Date=currentBookValues[5],
-        Ebook=currentBookValues[6],
-        Reviews=currentBookValues[7],
-        book=currentBook
+        Title = title,
+        numberOfPoints = numberOfPoints,
+        semestersOffered = semestersOffered,
+        discription = discription
     )
 
 @find_book_blueprint.route('/Displaybooks', methods=['GET', 'POST'])
@@ -277,4 +314,3 @@ class ReviewForm(FlaskForm):
         ProfanityFree(message='Your review must NOT contain profanity')])
     book_id = HiddenField("Book id")
     submit = SubmitField('Submit')
-

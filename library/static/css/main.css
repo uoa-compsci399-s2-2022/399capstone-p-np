@@ -48,7 +48,25 @@ img {
   color: #1a1a1a;
 }
 
+.course-buttin {
+  padding: 10px;
+  border-bottom: 1px solid #0033cc;
+  border-top: 1px solid #0033cc;
+  font-family: "Lato", sans-serif;
+  display: inline-block;
+  padding: 1px;
+  vertical-align: middle;
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+  color: white;
+  background: #2f3c7a;
+}
 
+.course-buttin:hover {
+  background-color: #6c7dc6;
+  color: white;
+}
 
 .btn-general-disabled {
     background-color: #4b4276;
