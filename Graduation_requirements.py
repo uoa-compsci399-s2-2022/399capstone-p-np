@@ -4,16 +4,11 @@ conn = sqlite3.connect('399courses.db')
 
 print("Opened database successfully")
 
-cursor = conn.execute("SELECT subject, courseNumber, MajorType, pointsValue, GPAreq, level,  approvalNeeded, description, problematicPreReqs, problematicRestrictions, problematicCoReqs, problematicOther FROM course")
-#cursor = conn.execute("SELECT restrictionSubject, restrictionNumber, subject, courseNumber FROM restriction")
-# cursor = conn.execute("SELECT restrictionSubject, restrictionNumber, subject, courseNumber FROM restriction")
-
-#Major=user.get_Major()
-#Courses_Subject,Course_Number=user.get_courses();
-
-
-
-
+#the DATABASE does not currently hold this information so it has been hardcoded 
+Major_Requirements_Subject_Names = [COMPSCI,COMPSCI,COMPSCI,COMPSCI,COMPSCI,COMPSCI,COMPSCI]
+Major_Requirements_Subject_Numbers = [110,120,130,210,220,230,399]
+200_level_Points = 180
+300_Level_points = 70
 
 def meets_graduation_requirements(Faculty,Major,Couse_Subject,Course_Number):
     Number_of_papers_taken=len(Course_Subject) #Number of Papers in the Degree Planner
@@ -27,12 +22,7 @@ def meets_graduation_requirements(Faculty,Major,Couse_Subject,Course_Number):
     Combined_name_of_subject = list()  #this combines the Subject Name and Number into a single string
     List_of_MajorType = list()  #this lists the related Faculty each Paper is from
 
-    # these two lists need to be collected from the database
-    Major_Requirements_Subject_Names = []
-    Major_Requirements_Subject_Numbers = []
-    200_level_Points = 0
-    300_Level_points = 0
-
+  
 
     for i in range(0,Number_of_papers_taken):
         Combined_name_of_subject[i]=Couse_Subject[i]+Course_Number[i] # Combines the two lists together
