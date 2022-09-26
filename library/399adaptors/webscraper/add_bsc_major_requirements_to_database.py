@@ -65,7 +65,10 @@ for major in major_information:
         for group in groups:
             groupID += 1
             if len(group[0]) == 1:
-                cursor.execute("""INSERT INTO majorGroupLink("majorID", "groupID", pointsRequired) VALUES(?, ?, ?)""", (majorID[0], groupID, group[0][0]))
+                try:
+                    cursor.execute("""INSERT INTO majorGroupLink("majorID", "groupID", pointsRequired) VALUES(?, ?, ?)""", (majorID[0], groupID, group[0][0]))
+                except:
+                    print("something fucked up and its alexes fault")
                 for course in group[1:]:
                     cursor.execute("""INSERT INTO "group"(groupID, majorID, courseNumber, subject) VALUES(?, ?, ?, ?)""", (groupID, majorID[0], course[1], course[0]))
             else:

@@ -5,7 +5,7 @@ import time
 class searchTool:
     def __init__(self):
         #sqliteConnection = sqlite3.connect(os.path.abspath(os.getcwd()) + "\\data\\399courses.db")
-        database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399adaptors\data\399courses.db"
+        database = r"C:\Users\windows\Documents\GitHub\399capstone-p-np\library\399adaptors\399courses.db"
         sqliteConnection = sqlite3.connect(database)
         self.__cursor = sqliteConnection.cursor()
 
@@ -127,7 +127,34 @@ class searchTool:
             probs.append([[course[0]+ " " + course[1], self.worst_problems_with_course(course[0],course[1], new_timetable),self.return_isolated_problems_with_course( course[0],  course[1]) ] for course in sem])
         return probs
 
-    def will_graduate(self, timetable):
+    def will_graduate(self, timetable, majorname):
+        done_courses = []
+        for semester in timetable:
+            for course in semester:
+                done_courses.append(course)
+
+        
+        a = self.__cursor.execute("""select majorRequirements.majorID, majorRequirements.majorName, majorRequirements.totalPointsNeeded, "group".subject, "group".courseNumber, course.pointsValue
+from majorRequirements
+inner join "group"
+inner join "course" 
+on "group".majorID = majorRequirements.majorID and 
+"group".subject = course.subject AND
+"group".courseNumber = course.courseNumber;""")
+        res = [x for x in a.fetchall()]
+        groups = []
+        major_groups = {}
+        for x in res:
+            if x[1] == majorname:
+                if x[0] not in major_groups.keys():
+                    major_groups.update({x[0]:[x[2], 0]})
+                if (x[3],x[4]) in done_courses:
+                    major_groups[x[0]][1] = major_groups[x[0]][1] + x[5]
+
+        for x in major_groups:
+            if major_groups[x][0] > major_groups[x][1]:
+                return False
+        
         probs = self.problems_with_timetable(timetable)
         for x in probs:
             if x[1] != "":
@@ -138,7 +165,7 @@ class searchTool:
 
 a = searchTool()
 tim = [[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]]
-print(a.worst_problems_with_course("INFOGOV", "706",[[("INFOGOV", "706")]] ))
+print(a.will_graduate(tim, "computer-science"))
 
 #z = a.problems_with_timetable([[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]])
 #for x in z:
