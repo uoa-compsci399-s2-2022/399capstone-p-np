@@ -4,12 +4,12 @@ import time
 
 class searchTool:
     def __init__(self):
-        sqliteConnection = sqlite3.connect(os.path.abspath(os.getcwd()) + "\\399courses.db")
+        sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
         self.__cursor = sqliteConnection.cursor()
 
 
     def return_all_courses(self):
-        a = self.__cursor.execute("select * from course")
+        a = self.__cursor.execute("select * from 'course'")
         course = a.fetchall()
         newlist = []
         for x in course:
@@ -80,6 +80,7 @@ class searchTool:
 
         print(problems_with_course)
         return (problems_with_course)
+
 
 
 
