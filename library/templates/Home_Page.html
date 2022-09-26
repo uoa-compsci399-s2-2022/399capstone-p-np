@@ -20,11 +20,17 @@
         <div id="Semester">
             <p>{{semester[0]}}</p>
         {% for course in semester[1:] %}
-            <div id="Course">
+            <form action="/Displaybook" method="POST" class="course-buttin">
+                <input type="hidden" class="form-control" id="MultipleSearchTextBox" name="MultipleSearchTextBox" value="{{course[0]}}+{{semester[0]}}">
+                <button type="submit" class="course-buttin"> <p>Course: {{course[0]}}</p>
+                <p>Requirements: {{course[1]}}</p> </button>
+            </form>
+
+            <!--
+            <a class="btn-nav" id="Course" href="{{ url_for('find_book_bp.find_book') }}">
                 <p>Course: {{course[0]}}</p>
                 <p>Requirements: {{course[1]}}</p>
-            </div>
-
+            </a> -->
         {% endfor %}
             <button type="submit" class="AddCourseHomeButton">+</button>
         </div>

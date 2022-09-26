@@ -83,16 +83,22 @@ input[type=submit] {
           </form> -->
 
 
-
           <form autocomplete="off" action="/Displaybook" method="POST">
-                <div class="autocomplete" style="width:300px;">
-                <input id="Degree" type="text" name="Degree" placeholder="Degree">
+                <div class="autocomplete" style="width:300px;" onclick="addCourse('{{ Course }}')">
+                <input id="Courses" type="text" name="Course" placeholder="Faculty">
                 </div>
                 <br>
-                <div class="autocomplete" style="width:300px;">
-                <input id="Courses" type="text" name="Course" placeholder="Course">
+                <div class="autocomplete" style="width:300px;" onclick="addCountries('{{ countries }}');">
+                <input id="Degree" type="text" name="Degree" placeholder="Course">
                 </div>
-
+                <br>
+                <div class="autocomplete" style="width:300px;" onclick="addYear('{{ year }}')">
+                <input id="Year" type="text" name="Degree" placeholder="Year">
+                </div>
+                <br>
+                <div class="autocomplete" style="width:300px;" onclick="addSemester('{{ Semester }}')">
+                <input id="Semester" type="text" name="Course" placeholder="Semester">
+                </div>
                 <input type="submit">
           </form>
 
@@ -106,6 +112,10 @@ function autocomplete(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
+
+  /*console.log(arr);*/
+
+
   inp.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
@@ -133,6 +143,12 @@ function autocomplete(inp, arr) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+              /*###############################       ---   My Janky code     ---   ###########################*/
+              if(inp != document.getElementById("Degree"))
+              {
+              document.getElementById("Degree").value = document.getElementById("Courses").value + " ";
+              }
+
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -197,10 +213,42 @@ document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 }
-var countries =
 
-autocomplete(document.getElementById("Degree"), countries);
-autocomplete(document.getElementById("Courses"), countries);
+var countries = ["pra"];
+function addYear(arr)
+{
+      countries = arr.split(", ");
+      autocomplete(document.getElementById("Year"), countries);
+
+      autocomplete(document.getElementById("Semester"), countries);
+}
+
+function addSemester(arr)
+{
+      countries = arr.split(", ");
+      autocomplete(document.getElementById("Semester"), countries);
+}
+
+function addCountries(arr)
+{
+    countries = arr.split(") (");
+    autocomplete(document.getElementById("Degree"), countries);
+}
+function addCourse(arr)
+{
+    countries = arr.split(" ");
+    autocomplete(document.getElementById("Courses"), countries);
+}
+
+function causeInput()
+{
+var event = new Event('input', {
+      bubbles: true,
+      cancelable: true,
+      });
+
+      document.getElementById("Degree").dispatchEvent(event);
+}
 </script>
 
 {% block Display%}
