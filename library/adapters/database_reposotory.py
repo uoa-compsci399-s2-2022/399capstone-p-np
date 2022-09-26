@@ -4,7 +4,11 @@ import re
 
 
 #use OS to change path dynamically
+<<<<<<< HEAD
 database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\399courses.db"
+=======
+database = r"\\399courses.db"
+>>>>>>> 2c2662205865777b4f492744d2fe50bc08777311
 
 
 #Connects to database file
