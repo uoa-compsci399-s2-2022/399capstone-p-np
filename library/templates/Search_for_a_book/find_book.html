@@ -59,6 +59,9 @@ input[type=submit] {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+.nav{
+      scale = 0.75;
+}
 </style>
 <div class="container">
       <h2 style="text-align:left;">Search for a book:</h2>
@@ -85,19 +88,19 @@ input[type=submit] {
 
           <form autocomplete="off" action="/Displaybook" method="POST">
                 <div class="autocomplete" style="width:300px;" onclick="addCourse('{{ Course }}')">
-                <input id="Courses" type="text" name="Course" placeholder="Faculty">
+                <input id="Courses" type="text" name="Degree" placeholder="Faculty">
                 </div>
                 <br>
                 <div class="autocomplete" style="width:300px;" onclick="addCountries('{{ countries }}');">
-                <input id="Degree" type="text" name="Degree" placeholder="Course">
+                <input id="Degree" type="text" name="Course" placeholder="Course">
                 </div>
                 <br>
                 <div class="autocomplete" style="width:300px;" onclick="addYear('{{ year }}')">
-                <input id="Year" type="text" name="Degree" placeholder="Year">
+                <input id="Year" type="text" name="year" placeholder="Year">
                 </div>
                 <br>
                 <div class="autocomplete" style="width:300px;" onclick="addSemester('{{ Semester }}')">
-                <input id="Semester" type="text" name="Course" placeholder="Semester">
+                <input id="Semester" type="text" name="Semester" placeholder="Semester">
                 </div>
                 <input type="submit">
           </form>

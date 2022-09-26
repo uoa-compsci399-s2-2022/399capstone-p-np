@@ -25,52 +25,18 @@ displayBookIndex = 0;
 
 @find_book_blueprint.route('/search', methods=['GET', 'POST'])
 def find_book():
-    search = SearchEngine.searchTool()
-    global found_book_errors
-    countries = str(search.return_all_courses())
-    #print(countries)
-    countries = countries[3:len(countries)-3]
-    countries = re.sub(r"[\'\,]", '', countries)
-    countries = countries.replace("', ' ", '')
-    #print(countries)
-    #print(countries)
-    #countries = "pears"
-    error = found_book_errors
-    found_book_errors = ""
-    semester = "1, 2"
-    year = "2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025"
-    count = 0
-    course = ""
-    falseflag = False
-    while count < len(countries):
-        if countries[count] == " ":
-            falseflag = not falseflag
-        if falseflag:
-            count+=1
-            continue
-        course = course + countries[count]
-        count+=1
-    course = course.split(" (")
-    courseArray = []
-    for item in course:
-        if item not in courseArray:
-            courseArray.append(item)
-    courseArray = str(courseArray)
-    courseArray = courseArray[2:len(courseArray) - 2]
-    courseArray = re.sub(r"[\'\,]", '', courseArray)
-    courseArray = courseArray.replace("', ' ", '')
     #print(course)
     #print(countries)
+    data = getCountryesAndCourses()
     return render_template(
         'Search_for_a_book/find_book.html',
-        books=bookdata.reader_instance,
         home_url=url_for('home_bp.home'),
         find_book=url_for('find_book_bp.find_book'),
-        error=error,
-        countries=countries,
-        Semester=semester,
-        year=year,
-        Course=courseArray
+        error=data[0],
+        countries=data[1],
+        Semester=data[2],
+        year=data[3],
+        Course=data[4]
         #user=("Welcome " + str(session['user_name']))
     )
     pass
@@ -81,47 +47,62 @@ def find_book():
 def display_book():
     global currentBookValues
     global currentBook
-
+    values = ''
     if request.method == "POST":
         global displayBookIndex
         displayBookIndex = 0
         req = request.form
 
-        values = None
         try:
-            course = req["MultipleSearchTextBox"]
-            currentBook = course.split("+")[0]
-            #found_book = SearchEngine.(req["MultipleSearchTextBox"])
-            #values = display_one_book(found_book)
+            values = req["MultipleSearchTextBox"].split('+')
+            search = SearchEngine.searchTool()
+            print(values[0].split()[1]+values[0].split()[0])
+            values = search.return_all_course_information(str(values[0].split()[1]).upper(), str(values[0].split()[0]))
+
         except:
             values = setvalues(req)
 
-        if(currentBook == ""):
+
+
+        if(values == None):
             return redirect(url_for('find_book_bp.find_book'))
 
-        if not isinstance(currentBook, str):
+        if isinstance(values[0], list):
             global form_data
             form_data = values
             return redirect(url_for('find_book_bp.display_books'))
 
-        currentBookValues = values
+    title = values[0] + " " + values[1]
+    numberOfPoints = values[3]
+    semestersOffered = values[2]
+    discription = values[7]
+    requirements = values[8]
+    error = ""
+    if(values == "Error Course not found"):
+        title = ""
+        numberOfPoints = ""
+        semestersOffered = ""
+        discription = ""
+        requirements = ""
+        error = values
 
-    search = SearchEngine.searchTool()
-
-    title = "course title"
-    numberOfPoints = "about this much"
-    semestersOffered = "that one"
-    discription = "has this stuff in it"
+    data = getCountryesAndCourses()
     return render_template(
         'Search_for_a_book/Display_book.html',
         books=bookdata.reader_instance,
         home_url=url_for('home_bp.home'),
         find_book=url_for('find_book_bp.find_book'),
 
-        Title = title,
+        title = title,
         numberOfPoints = numberOfPoints,
         semestersOffered = semestersOffered,
-        discription = discription
+        discription = discription,
+        requirements=requirements,
+        error = error,
+        countries = data[1],
+        Semester = data[2],
+        year = data[3],
+        Course = data[4]
     )
 
 @find_book_blueprint.route('/Displaybooks', methods=['GET', 'POST'])
@@ -170,13 +151,23 @@ def addBook():
 
 def setvalues(req):
     global found_book_errors
+    search = SearchEngine.searchTool()
+    if req["Course"] != "":
+        if ' ' in req["Course"]:
+            courseIndex = req["Course"].split(" ")
+            CourseData = search.return_all_course_information(courseIndex[0], courseIndex[1])
+            print(CourseData)
+            return CourseData
 
-    if req["Title"] != "":
-        found_book = repo.repositoryInstance.data.search_book_by_title(req["Title"])
-        if (found_book == None):
-            found_book_errors = "We couldn't find a book that matches your search please try again."
-            return None
-        return display_one_book(found_book)
+        try:
+            courseIndex = req["Course"].split(" ")
+            courseIndex[1]
+        except:
+            return "Error Course not found"
+        courseIndex = search.return_all_course_information(courseIndex[0])
+        print(courseIndex)
+
+        return courseIndex
 
     if req["Author"] != "":
         found_books = repo.repositoryInstance.data.search_book_by_author(req["Author"])
@@ -314,3 +305,41 @@ class ReviewForm(FlaskForm):
         ProfanityFree(message='Your review must NOT contain profanity')])
     book_id = HiddenField("Book id")
     submit = SubmitField('Submit')
+
+def getCountryesAndCourses():
+
+    search = SearchEngine.searchTool()
+    global found_book_errors
+    countries = str(search.return_all_courses())
+    #print(countries)
+    countries = countries[3:len(countries)-3]
+    countries = re.sub(r"[\'\,]", '', countries)
+    countries = countries.replace("', ' ", '')
+    #print(countries)
+    #print(countries)
+    #countries = "pears"
+    error = found_book_errors
+    found_book_errors = ""
+    semester = "1, 2"
+    year = "2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025"
+    count = 0
+    course = ""
+    falseflag = False
+    while count < len(countries):
+        if countries[count] == " ":
+            falseflag = not falseflag
+        if falseflag:
+            count+=1
+            continue
+        course = course + countries[count]
+        count+=1
+    course = course.split(" (")
+    courseArray = []
+    for item in course:
+        if item not in courseArray:
+            courseArray.append(item)
+    courseArray = str(courseArray)
+    courseArray = courseArray[2:len(courseArray) - 2]
+    courseArray = re.sub(r"[\'\,]", '', courseArray)
+    courseArray = courseArray.replace("', ' ", '')
+    return (error, countries, semester, year, courseArray)

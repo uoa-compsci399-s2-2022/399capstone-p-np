@@ -40,12 +40,12 @@ img {
   display: block;
   overflow: hidden;
   width: 150px;
-  background: #acb1c2;
+  background: #2f3c7a;
 }
 
 .btn-nav:hover {
-  background-color: #2f3c7a;
-  color: #1a1a1a;
+  background-color: #475ab8;
+  color:white;
 }
 
 .course-buttin {
@@ -309,6 +309,8 @@ input[type='submit']:hover {
 
 .AddCourseHomeButton:hover {
     background-color: #83bdfc;
+
+  color: #1a1a1a;
 }
 
 
@@ -320,6 +322,13 @@ input[type='submit']:hover {
   padding: 5px 10px;
   margin: 10px;
   display: inline-block;
+}
+
+.button-default:hover {
+
+  background-color: #475ab8;
+
+  color: #1a1a1a;
 }
 
 .button-slanted {

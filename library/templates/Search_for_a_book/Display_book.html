@@ -1,14 +1,24 @@
 {% extends 'Search_for_a_book/find_book.html' %}
 {% block Display %}
+<style>
+    .Displaybook{
+        display: block;
+    }
+    .pRed{
+        color: red;
+        font-size: 40px;
+    }
+</style>
 
 <div id="Displaybook">
 
-
+    <br>
     <h1>{{ title }}</h1>
-    <p>Number of points offered: <b>{{ numberOfPoints }}</b></p>
-    <p>Semesters this course is offered: {{semestersOffered}}</p>
-    <p>Description: {{ discription }}</p>
-
+    <h2>{{semestersOffered}}</h2>
+    <h3>Number of points offered: </h3><b><p>{{ numberOfPoints }}</b></p>
+    <h3>Description: </h3><p>{{ discription }}</p>
+    <h3>Requirements: </h3><p>{{ requirements }}</p>
+    <pRed>{{error}}</pRed>
 </div>
 
 {% endblock%}
