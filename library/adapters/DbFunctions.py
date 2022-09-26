@@ -4,7 +4,7 @@ import time
 
 class searchTool:
     def __init__(self):
-        sqliteConnection = sqlite3.connect(os.path.abspath(os.getcwd()) + "\\library\\adapters\\data\\399courses.db")
+        sqliteConnection = sqlite3.connect(os.path.abspath(os.getcwd()) + "\\data\\399courses.db")
         self.__cursor = sqliteConnection.cursor()
 
 
