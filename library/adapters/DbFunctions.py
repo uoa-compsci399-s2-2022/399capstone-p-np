@@ -162,8 +162,27 @@ majorRequirements.year = 2020;""")
         return True
     
     def is_gened(self, couresSubject, courseNumber):
-        pass
+        a = self.__cursor.execute("""select * from  courseScheduleLink""")
+        res = [x for x in a.fetchall()]
+        for x in res:
+            if (x[1] == couresSubject and x[2] == courseNumber):
+                return True
+        return False
         
+    def def_what_gened_schedule(self, couresSubject, courseNumber):
+        a = self.__cursor.execute("""select * from  courseScheduleLink""")
+        res = [x for x in a.fetchall()]
+        for x in res:
+            if (x[1] == couresSubject and x[2] == courseNumber):
+                return x[0]
+        return "This is not a gen ed"
+
+
+    def required_courses_to_graduate(self,  major_type, year = "2020"):
+        pass
+
+
+
 
 a = searchTool()
 
