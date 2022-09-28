@@ -160,6 +160,10 @@ majorRequirements.year = 2020;""")
             if x[1] != "":
                 return False
         return True
+    
+    def is_gened(self, couresSubject, courseNumber):
+        pass
+        
 
 a = searchTool()
 

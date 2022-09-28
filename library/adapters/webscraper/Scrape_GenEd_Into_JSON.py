@@ -6,11 +6,22 @@ import numpy as np
 from unicodedata import normalize
 from bs4 import BeautifulSoup
 import json
+import sqlite3
 
-f = open('course_name_and_IDs.json')
-data = json.load(f)
-course_names = data[0]
-courseID = data[1]
+
+sqliteConnection = sqlite3.connect(r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
+cursor = sqliteConnection.cursor()
+
+cursor.execute("delete from courseScheduleLink where 1 == 1")
+
+a = cursor.execute("select * from course")
+course = a.fetchall()
+newlist = []
+course_names =[]
+courseID = []
+for x in course:
+    course_names.append(x[0])
+    courseID.append(x[1])
 
 
 def downloadinfo(url):
@@ -56,11 +67,14 @@ for x in schedules:
     gen_ed_list.append((name,url))
 
 for x in gen_ed_list:
-    print(x[0])
-    print(downloadinfo(x[1]))
-    print(" ")
+    for y in downloadinfo(x[1]):
+        print(x[0], y[0], y[1])
+        cursor.execute("insert into courseScheduleLink (scheduleID, subject, courseNumber) values  (?,?,?)", (x[0], y[0], y[1]))
 
 
+sqliteConnection.commit()
+print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
+cursor.close()
 
 #gen_ed_list.append(("open",downloadinfo("https://www.auckland.ac.nz/en/study/study-options/undergraduate-study-options/general-education/course-schedules/open-schedule.html")))
 
