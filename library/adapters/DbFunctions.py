@@ -4,7 +4,7 @@ import time
 
 class searchTool:
     def __init__(self):
-        sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
+        sqliteConnection = sqlite3.connect(r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
         self.__cursor = sqliteConnection.cursor()
 
 
@@ -102,19 +102,19 @@ class searchTool:
         res = [(x[0],str(x[1])) for x in a.fetchall()]
         for pre in res:
             if pre not in done_courses:
-                return "You need to take: " + pre[0] + " " + pre[1]
+                return "You need to take: " + pre[0] + " " + pre[1] + " before taking "+  courseName + " " + courseNumber
         
         a = self.__cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
-        res = [(x[0],str(x[1])) for x in a.fetchall()]
+        res = [(x[2],str(x[3])) for x in a.fetchall()]
         for pre in res:
             if  pre in doing or pre in done_courses:
-                return "You cannot take: " + pre[0] + " " + pre[1]
+                return "You cannot take: " + pre[0] + " " + pre[1] + " and " +  courseName + " " + courseNumber
 
         a = self.__cursor.execute("select * from corequisite where subject = ? and courseNumber = ?;", (courseName, courseNumber))
         res = [(x[0],str(x[1])) for x in a.fetchall()]
         for pre in res:
             if pre not in doing:
-                return "You need to take: " + pre[0] + " " + pre[1]
+                return "You need to take: " + pre[0] + " " + pre[1] + " with taking "+  courseName + " " + courseNumber
         return ""
 
     def problems_with_timetable(self, timetable):
@@ -177,9 +177,104 @@ majorRequirements.year = 2020;""")
                 return x[0]
         return "This is not a gen ed"
 
+    def points_from(self,couresSubject, courseNumber ):
+    
+        a = self.__cursor.execute("""select course.pointsValue from course WHERE course.subject = ? and course.courseNumber = ?;""", (couresSubject, courseNumber))
+        res = [x for x in a.fetchall()]
+        for x in res:
+            return x[0]
+        return "This is not a gen ed"
 
     def required_courses_to_graduate(self,  major_type, year = "2020"):
-        pass
+        a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)), sum(course.pointsValue) as "combined points"
+        from "group"
+        inner join majorGroupLink
+        inner join majorRequirements
+        inner join "course"
+        on "group".groupID = majorGroupLink.groupID AND
+        majorRequirements.majorID = "group".majorID AND 
+        majorGroupLink.majorID = majorRequirements.majorID AND
+        "group".subject = course.subject AND
+        "group".courseNumber  = course.courseNumber 
+        group by  "group".groupID ,"group".majorID
+        having CAST(sum(course.pointsValue) as FLOAT) =  cast(majorGroupLink.pointsRequired as float) and 
+        majorRequirements.majorName = ? AND
+        majorRequirements.year = ?;""",(major_type, year))
+        res = [x for x in a.fetchall()]
+        needed = []
+        for x in res:
+            for y in x[0].split(","):
+                needed.append((y.split("-")[0], y.split("-")[1]))
+        return needed
+
+    def might_want_to_take(self,  major_type, timetable,  year = "2020"):
+        done_courses = []
+        for semester in timetable:
+            for course in semester:
+                done_courses.append(course)
+
+        a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)), sum(course.pointsValue) as "combined points"
+        from "group"
+        inner join majorGroupLink
+        inner join majorRequirements
+        inner join "course"
+        on "group".groupID = majorGroupLink.groupID AND
+        majorRequirements.majorID = "group".majorID AND 
+        majorGroupLink.majorID = majorRequirements.majorID AND
+        "group".subject = course.subject AND
+        "group".courseNumber  = course.courseNumber 
+        group by  "group".groupID ,"group".majorID
+        having CAST(sum(course.pointsValue) as FLOAT) >  cast(majorGroupLink.pointsRequired as float)  AND
+        majorRequirements.majorName = ? AND
+        majorRequirements.year = ?;""",(major_type, year))
+        res = [x for x in a.fetchall()]
+        needed = []
+        group = []
+        totake = []
+        for x in res:
+            group.append([x[1],[(z.split("-")[0],z.split("-")[1]) for z in x[0].split(",")]])
+        
+        for x in group:
+            totalpoints = x[0]
+            done_points = 0
+            for course in x[1]:
+                
+                if course in done_courses:
+                    done_points += self.points_from(course[0], course[1])
+
+            if done_points < totalpoints:
+                totake += x[1]
+        print(done_points,totalpoints)
+        return totake 
+    
+    def reccomended_action(self, major_type, timetable):
+        done_courses = []
+        for semester in timetable:
+            for course in semester:
+                done_courses.append(course)
+
+        pro = self.problems_with_timetable(timetable)
+        for semester in pro:
+            for course in semester:
+                if course[1] != "":
+                    return course[1]
+        
+        req_grad = self.required_courses_to_graduate(major_type,"2020")
+        if req_grad != []:
+            for x in req_grad:
+                if x not in done_courses:
+                    return "You need to take: " +  x[0] + " " + x[1] + " in order to graduate"
+
+        might_take = self.might_want_to_take(  major_type, timetable,"2020")
+        if req_grad != []:
+            for x in might_take:
+                if x not in done_courses:
+                    return "You need to get points from something like " +  x[0] + " " + x[1] + " in order to graduate"
+        
+        return "Looks good"
+
+
+
 
 
 
@@ -188,11 +283,13 @@ a = searchTool()
 
 
 
-tim = [[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]]
-print(a.will_graduate(tim, "computer-science"))
-#print(a.return_all_courses())
+tim = [[("COMPSCI", "335"),("COMPSCI", "110"),('COMPSCI', '120'),("COMPSCI", "130"),("COMPSCI", "210"),("COMPSCI", "220")],[("COMPSCI", "210"),("COMPSCI", "215"),("COMPSCI", "230"),("COMPSCI", "289"),("COMPSCI", "225"),("COMPSCI", "235"),("COMPSCI", "315"),("COMPSCI", "313")],[("COMPSCI", "389")]]
+tim = [[("COMPSCI", "335")]]
+print(tim, a.reccomended_action("computer-science", tim))
 
-#z = a.problems_with_timetable([[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]])
-#for x in z:
-#    for y in x:
-#        print (y)
+tim = [[("COMPSCI", "110"),('COMPSCI', '120'),("COMPSCI", "130")]]
+print(tim, a.reccomended_action("computer-science", tim))
+
+tim = [[("COMPSCI", "350"),('COMPSCI', '313'),("COMPSCI", "320")],[("COMPSCI", "220"),('COMPSCI', '230'),("COMPSCI", "210")],[("COMPSCI", "110"),('COMPSCI', '120'),("COMPSCI", "130")]]
+print(tim, a.reccomended_action("computer-science", tim))
+
