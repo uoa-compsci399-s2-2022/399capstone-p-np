@@ -4,16 +4,12 @@ import time
 
 class searchTool:
     def __init__(self):
-<<<<<<< HEAD
         sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
-=======
-        sqliteConnection = sqlite3.connect("\\399courses.db")
->>>>>>> 2c2662205865777b4f492744d2fe50bc08777311
         self.__cursor = sqliteConnection.cursor()
 
 
     def return_all_courses(self):
-        a = self.__cursor.execute("select * from 'course'")
+        a = self.__cursor.execute("select * from course")
         course = a.fetchall()
         newlist = []
         for x in course:
@@ -25,7 +21,11 @@ class searchTool:
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
-            return course[8:]
+            new_str = ""
+            for x in course[8:]:
+                if x != None:
+                    new_str = new_str + x
+            return new_str
         else:
             return "does not exist"
 
@@ -80,22 +80,96 @@ class searchTool:
         a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
         problems_with_course.update({"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]})
 
-        problems_with_course.update({"other_problems": return_isolated_problems_with_course(courseName, courseNumber)})
+        problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
 
         print(problems_with_course)
         return (problems_with_course)
-
-
-
-
-#timetable = [
     
-    #[("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
-    #[("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230")]
-#]
-#print(problems_with_major(timetable))
-#a function of all courses they need to take to graduate required courses,(group courses, points))
-#given name of courses they are taking and what time, return same matrix with null, or error message
-#given list of courses if they will graduate
-#Return all courses that can be taken at that time
-#return a list of courses they can take given what they are doing
+    def worst_problems_with_course(self, courseName, courseNumber, timetable):
+        done_courses = []
+        doing = []
+        for semester in timetable:
+            
+            if (courseName, courseNumber) not in semester:
+                for course in semester:
+                    done_courses.append(course)
+            else:
+                for course in semester:
+                    
+                    doing.append(course)
+
+        a = self.__cursor.execute("select * from preReq where subject = ? and courseNumber = ?", (courseName, courseNumber))
+        res = [(x[0],str(x[1])) for x in a.fetchall()]
+        for pre in res:
+            if pre not in done_courses:
+                return "You need to take: " + pre[0] + " " + pre[1]
+        
+        a = self.__cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
+        res = [(x[0],str(x[1])) for x in a.fetchall()]
+        for pre in res:
+            if  pre in doing or pre in done_courses:
+                return "You cannot take: " + pre[0] + " " + pre[1]
+
+        a = self.__cursor.execute("select * from corequisite where subject = ? and courseNumber = ?;", (courseName, courseNumber))
+        res = [(x[0],str(x[1])) for x in a.fetchall()]
+        for pre in res:
+            if pre not in doing:
+                return "You need to take: " + pre[0] + " " + pre[1]
+        return ""
+
+    def problems_with_timetable(self, timetable):
+        new_timetable = []
+        probs = []
+        for sem in timetable:
+            new_timetable.append(sem)
+            probs.append([[course[0]+ " " + course[1], self.worst_problems_with_course(course[0],course[1], new_timetable),self.return_isolated_problems_with_course( course[0],  course[1]) ] for course in sem])
+        return probs
+
+    def will_graduate(self, timetable, majorname):
+        done_courses = []
+        for semester in timetable:
+            for course in semester:
+                done_courses.append(course)
+
+        
+        a = self.__cursor.execute("""select majorRequirements.majorID, majorRequirements.majorName, majorRequirements.totalPointsNeeded, "group".subject, "group".courseNumber, course.pointsValue
+from majorRequirements
+inner join "group"
+inner join "course" 
+on "group".majorID = majorRequirements.majorID and 
+"group".subject = course.subject AND
+"group".courseNumber = course.courseNumber AND
+majorRequirements.year = 2020;""")
+        res = [x for x in a.fetchall()]
+        groups = []
+        major_groups = {}
+        for x in res:
+            if x[1] == majorname:
+                if x[0] not in major_groups.keys():
+                    major_groups.update({x[0]:[x[2], 0]})
+                if (x[3],x[4]) in done_courses:
+                    major_groups[x[0]][1] = major_groups[x[0]][1] + x[5]
+
+        for x in major_groups:
+            print(major_groups[x][0],  major_groups[x][1])
+            if float(major_groups[x][0]) > major_groups[x][1]:
+                return False
+        
+        probs = self.problems_with_timetable(timetable)
+        for x in probs:
+            if x[1] != "":
+                return False
+        return True
+
+a = searchTool()
+
+
+
+tim = [[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]]
+print(a.will_graduate(tim, "computer-science"))
+#print(a.return_all_courses())
+
+#z = a.problems_with_timetable([[("COMPSCI", "101"),("COMPSCI", "120"),("COMPSCI", "130"),("PHYSICS", "140")],[("COMPSCI", "215"),("COMPSCI", "220"),("COMPSCI", "230"),("PHYSICS", "240")],[("COMPSCI", "313")]])
+#for x in z:
+#    for y in x:
+#        print (y)
