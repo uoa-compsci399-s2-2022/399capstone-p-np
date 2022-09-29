@@ -4,7 +4,7 @@ import time
 
 class searchTool:
     def __init__(self):
-        sqliteConnection = sqlite3.connect(r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
+        sqliteConnection = sqlite3.connect(r"C:\Users\windows\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
         self.__cursor = sqliteConnection.cursor()
 
 
@@ -82,7 +82,6 @@ class searchTool:
 
         problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
 
-        print(problems_with_course)
         return (problems_with_course)
     
     def worst_problems_with_course(self, courseName, courseNumber, timetable):
@@ -185,7 +184,7 @@ majorRequirements.year = 2020;""")
             return x[0]
         return "This is not a gen ed"
 
-    def required_courses_to_graduate(self,  major_type, year = "2020"):
+    def required_courses_to_graduate(self,  major_type, year = "2020", honours = "0"):
         a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)), sum(course.pointsValue) as "combined points"
         from "group"
         inner join majorGroupLink
@@ -199,7 +198,8 @@ majorRequirements.year = 2020;""")
         group by  "group".groupID ,"group".majorID
         having CAST(sum(course.pointsValue) as FLOAT) =  cast(majorGroupLink.pointsRequired as float) and 
         majorRequirements.majorName = ? AND
-        majorRequirements.year = ?;""",(major_type, year))
+        majorRequirements.year = ? AND
+        majorRequirements.honours = ?;""",(major_type, year,honours))
         res = [x for x in a.fetchall()]
         needed = []
         for x in res:
@@ -207,13 +207,13 @@ majorRequirements.year = 2020;""")
                 needed.append((y.split("-")[0], y.split("-")[1]))
         return needed
 
-    def might_want_to_take(self,  major_type, timetable,  year = "2020"):
+    def might_want_to_take(self,  major_type, timetable, year = "2020", honours = "0"):
         done_courses = []
         for semester in timetable:
             for course in semester:
                 done_courses.append(course)
 
-        a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)), sum(course.pointsValue) as "combined points"
+        a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)),  majorGroupLink.pointsRequired as "combined points"
         from "group"
         inner join majorGroupLink
         inner join majorRequirements
@@ -226,7 +226,8 @@ majorRequirements.year = 2020;""")
         group by  "group".groupID ,"group".majorID
         having CAST(sum(course.pointsValue) as FLOAT) >  cast(majorGroupLink.pointsRequired as float)  AND
         majorRequirements.majorName = ? AND
-        majorRequirements.year = ?;""",(major_type, year))
+        majorRequirements.year = ? AND
+        majorRequirements.honours = ?;""",(major_type, year, honours))
         res = [x for x in a.fetchall()]
         needed = []
         group = []
@@ -238,38 +239,66 @@ majorRequirements.year = 2020;""")
             totalpoints = x[0]
             done_points = 0
             for course in x[1]:
-                
+                print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
                 if course in done_courses:
                     done_points += self.points_from(course[0], course[1])
 
-            if done_points < totalpoints:
+            if float(done_points) < float(totalpoints):
                 totake += x[1]
-        print(done_points,totalpoints)
         return totake 
     
-    def reccomended_action(self, major_type, timetable):
+    def reccomended_action(self, major_type, timetable, year = "2020", honours = "0"):
         done_courses = []
         for semester in timetable:
             for course in semester:
                 done_courses.append(course)
 
+        #Checks co-req, pre-req and restrictions
         pro = self.problems_with_timetable(timetable)
         for semester in pro:
             for course in semester:
                 if course[1] != "":
                     return course[1]
-        
+
+        #Checks required courses
         req_grad = self.required_courses_to_graduate(major_type,"2020")
+        print(req_grad)
         if req_grad != []:
             for x in req_grad:
                 if x not in done_courses:
                     return "You need to take: " +  x[0] + " " + x[1] + " in order to graduate"
 
+        #CHecks if they are missing poitnfs from some group
         might_take = self.might_want_to_take(  major_type, timetable,"2020")
         if req_grad != []:
             for x in might_take:
                 if x not in done_courses:
-                    return "You need to get points from something like " +  x[0] + " " + x[1] + " in order to graduate"
+                    return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
+
+        #Checks total points done
+        done_points = 0
+        for x in done_courses:
+            done_points += self.return_course_points(x[0],x[1])
+        a = self.__cursor.execute("""select totalPointsNeeded from majorRequirements
+        where majorName = ? AND
+         year = ? AND
+         honours = ?""", (major_type,year, honours))
+        if float(done_points) < float(a.fetchall()[0][0]):
+            return "You need to do more points in general"
+
+
+        #Checks gen ed points, the right shhedules needs to be implemented
+        gen_points = 0
+        for x in done_courses:
+            if self.is_gened(x[0],x[1]):
+                gen_points += self.return_course_points(x[0],x[1])
+        a = self.__cursor.execute("""select pointsGenEd from majorRequirements
+        where majorName = ? AND
+         year = ? AND
+         honours = ?""", (major_type,year, honours))
+        if float(gen_points) < float(a.fetchall()[0][0]):
+            return "You need to do more points gen ed papers"
+            
         
         return "Looks good"
 
@@ -281,15 +310,7 @@ majorRequirements.year = 2020;""")
 
 a = searchTool()
 
-
-
-tim = [[("COMPSCI", "335"),("COMPSCI", "110"),('COMPSCI', '120'),("COMPSCI", "130"),("COMPSCI", "210"),("COMPSCI", "220")],[("COMPSCI", "210"),("COMPSCI", "215"),("COMPSCI", "230"),("COMPSCI", "289"),("COMPSCI", "225"),("COMPSCI", "235"),("COMPSCI", "315"),("COMPSCI", "313")],[("COMPSCI", "389")]]
-tim = [[("COMPSCI", "335")]]
-print(tim, a.reccomended_action("computer-science", tim))
-
-tim = [[("COMPSCI", "110"),('COMPSCI', '120'),("COMPSCI", "130")]]
-print(tim, a.reccomended_action("computer-science", tim))
-
-tim = [[("COMPSCI", "350"),('COMPSCI', '313'),("COMPSCI", "320")],[("COMPSCI", "220"),('COMPSCI', '230'),("COMPSCI", "210")],[("COMPSCI", "110"),('COMPSCI', '120'),("COMPSCI", "130")]]
-print(tim, a.reccomended_action("computer-science", tim))
+tim = [[("COMPSCI", "210"),('COMPSCI', '350'),("COMPSCI", "230")],
+       [("COMPSCI", "210"),('COMPSCI', '220'),("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130"),("COMPSCI", "315"),("COMPSCI", "335") ]]
+print(a.reccomended_action("computer-science", tim))
 
