@@ -287,10 +287,11 @@ majorRequirements.year = 2020;""")
             return "You need to do more points in general"
 
 
-        #Checks gen ed points, the right shhedules needs to be implemented
+        #Checks gen ed points, the right shedules needs to be implemented
         gen_points = 0
         for x in done_courses:
-            if self.is_gened(x[0],x[1]):
+            if self.is_gened(x[0],x[1]) or self.is_gened(x[0],x[1] + "G"):
+                print(x, " is a gened")
                 gen_points += self.return_course_points(x[0],x[1])
         a = self.__cursor.execute("""select pointsGenEd from majorRequirements
         where majorName = ? AND
@@ -310,7 +311,6 @@ majorRequirements.year = 2020;""")
 
 a = searchTool()
 
-tim = [[("COMPSCI", "210"),('COMPSCI', '350'),("COMPSCI", "230")],
-       [("COMPSCI", "210"),('COMPSCI', '220'),("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130"),("COMPSCI", "315"),("COMPSCI", "335") ]]
+tim = [[("COMPSCI", "210"),('COMPSCI', '220'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "350")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
 print(a.reccomended_action("computer-science", tim))
 
