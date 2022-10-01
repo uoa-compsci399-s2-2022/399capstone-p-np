@@ -17,6 +17,7 @@ database = os.path.abspath(os.getcwd())
 print(database)
 
 
+database = r"C:\Users\Zachary\Desktop\web\399courses.db"
 database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
 
 
@@ -24,14 +25,6 @@ sqliteConnection = sqlite3.connect(database)
 cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")
 
-cursor.execute("""DELETE FROM course where 1= 1;""")
-cursor.execute("""delete from restriction where 1 = 1""")
-cursor.execute("""delete from preReq where 1 = 1""")
-cursor.execute("""delete from corequisite where 1 = 1""")
-cursor.execute("""UPDATE course set problematicPreReqs = NULL where 1=1;""")
-cursor.execute("""UPDATE course set problematicRestrictions = NULL where 1=1;""")
-cursor.execute("""UPDATE course set problematicCoReqs = NULL where 1=1;""")
-cursor.execute("""UPDATE course set problematicOther = NULL where 1=1;""")
 
 #This is required above normal website reading as the SSL certificate has a problem
 #Downloads website as HTML and reads it with BeautifulSoup
