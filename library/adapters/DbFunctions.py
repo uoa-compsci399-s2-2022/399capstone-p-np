@@ -303,12 +303,6 @@ majorRequirements.year = 2020;""")
         
         return "Looks good"
 
-
-
-
-
-
-
 a = searchTool()
 
 tim = [[("COMPSCI", "210"),('COMPSCI', '220'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "350")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]

@@ -17,8 +17,7 @@ database = os.path.abspath(os.getcwd())
 print(database)
 
 
-database = r"C:\Users\Zachary\Desktop\web\399courses.db"
-database = r"C:\Users\windows\Documents\GitHub\399capstone-p-np\library\399adaptors\399courses.db"
+database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
 
 
 sqliteConnection = sqlite3.connect(database)

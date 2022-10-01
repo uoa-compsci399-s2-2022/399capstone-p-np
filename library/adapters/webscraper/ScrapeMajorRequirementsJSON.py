@@ -104,10 +104,3 @@ for link in links:
 json_data = json.dumps(majors, indent = 4)
 with open("major_reqs.json", "w") as outfile:
     outfile.write(json_data)
-
-            
-            
-
-
-
-
