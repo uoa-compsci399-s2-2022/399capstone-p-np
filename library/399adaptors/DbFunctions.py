@@ -133,7 +133,7 @@ class searchTool:
     def major_specific_points_check(Subject,Subject_number,Major):
         a = self.__cursor.execute("""select 300_LEVEL_POINTS_MAJOR_SPECIFIC from majorRequirements WHERE majorNAME=?""", (Major))
         points = a.fethall()
-        paper = points / 15  # assuming paper worth 15 points
+
         point_count = 0
 
         for i in len(Subject):
