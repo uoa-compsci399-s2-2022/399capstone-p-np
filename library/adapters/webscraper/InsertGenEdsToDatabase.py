@@ -38,10 +38,6 @@ def downloadinfo(url):
         return []
     html_doc = response.read()
     soup = BeautifulSoup(html_doc, 'html.parser')
-    strhtm = soup.prettify()
-
-
-    course_info = []
 
     #Extracts all of the different courses as a HTML objects into a list
     courses = soup.find("div", class_="table section")
@@ -75,6 +71,3 @@ for x in gen_ed_list:
 sqliteConnection.commit()
 print("Record inserted successfully into SqliteDb_developers table ", cursor.rowcount)
 cursor.close()
-
-#gen_ed_list.append(("open",downloadinfo("https://www.auckland.ac.nz/en/study/study-options/undergraduate-study-options/general-education/course-schedules/open-schedule.html")))
-

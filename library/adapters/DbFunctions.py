@@ -4,7 +4,7 @@ import time
 
 class searchTool:
     def __init__(self):
-        sqliteConnection = sqlite3.connect(r"C:\Users\windows\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
+        sqliteConnection = sqlite3.connect(r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
         self.__cursor = sqliteConnection.cursor()
 
 
@@ -283,8 +283,11 @@ majorRequirements.year = 2020;""")
         where majorName = ? AND
          year = ? AND
          honours = ?""", (major_type,year, honours))
-        if float(done_points) < float(a.fetchall()[0][0]):
-            return "You need to do more points in general"
+        dat = a.fetchall()
+        if len(dat) > 0:
+
+            if float(done_points) < float(dat[0][0]):
+                return "You need to do more points in general"
 
 
         #Checks gen ed points, the right shedules needs to be implemented
@@ -296,9 +299,11 @@ majorRequirements.year = 2020;""")
         a = self.__cursor.execute("""select pointsGenEd from majorRequirements
         where majorName = ? AND
          year = ? AND
-         honours = ?""", (major_type,year, honours))
-        if float(gen_points) < float(a.fetchall()[0][0]):
-            return "You need to do more points gen ed papers"
+         honours = ?""", (major_type, year, honours))
+        dat = a.fetchall()
+        if len(dat) > 0:
+            if float(gen_points) < float(dat[0][0]):
+                return "You need to do more points gen ed papers"
             
         
         return "Looks good"

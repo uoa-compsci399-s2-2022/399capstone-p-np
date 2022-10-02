@@ -230,5 +230,5 @@ for course in requirement_data:
     
 #commits and saves changes to DB
 sqliteConnection.commit()
-print("Records inserted successfully into SqliteDb_developers table ", cursor.rowcount)
+print("Records inserted successfully into 399courses.db")
 cursor.close()
