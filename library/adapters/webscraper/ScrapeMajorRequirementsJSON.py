@@ -6,6 +6,17 @@ from unicodedata import normalize
 from bs4 import BeautifulSoup
 import json
 import re
+import sqlite3
+
+database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
+
+
+sqliteConnection = sqlite3.connect(database)
+
+cursor = sqliteConnection.cursor()
+print("Successfully Connected to SQLite")
+
+query = """SELECT courseNumber FROM course WHERE subject=? AND courseNumber BETWEEN ? AND ?"""
 
 #Gets all links for majors under the Bachelor of Science 
 def getMajorLinks(url):
@@ -83,7 +94,21 @@ def getMajorReq(url):
             courses.append("Manual entry required")
             courses.append(text)
         elif re.search("[A-Z][A-Z][A-Z]*\s[0-9][0-9][0-9].*", text) != None:
-            courses.append(text.split()[:2])
+            a = text.split()[:2]
+            if '-'in a[1]:
+                b = a[1].split('-')
+                cursor.execute(query, (a[0], b[0], b[1]))
+                courseNumbers = cursor.fetchall()
+                for courseNumber in courseNumbers:
+                    courses.append([a[0], ''.join(courseNumber)])
+            elif '–' in a[1]:
+                b = a[1].split('–')
+                cursor.execute(query, (a[0], b[0], b[1]))
+                courseNumbers = cursor.fetchall()
+                for courseNumber in courseNumbers:
+                    courses.append([a[0], ''.join(courseNumber)])
+            else:
+                courses.append(text.split()[:2])
     if len(courses) > 1:
         reqs.append(courses)
     return (major,reqs[1:])
