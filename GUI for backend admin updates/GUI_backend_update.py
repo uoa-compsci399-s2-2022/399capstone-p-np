@@ -23,7 +23,7 @@ def create_modal(table_array,header):
         enable_events=True,
         )],
     [sg.B("return",key="-RETURN-",bind_return_key=True)],
-    [sg.Input(key="-INPUT-"),sg.Input(key="-INPUT1-"),sg.B("DELETE",key="-delete-")],
+    [sg.Input(key="-INPUT-"),sg.Input(key="-INPUT1-"),sg.B("DELETE",key="-delete-"),sg.B("UPDATE",key="-update-")],
     ]
 
     table_array = sg.Window("information",database_layout,modal=True)
@@ -45,6 +45,9 @@ def create_modal(table_array,header):
             exe.delete_course(values['-INPUT-'],values['-INPUT1-'])
             sg.popup(f"deleted {values['-INPUT-'],values['-INPUT1-']}")
             break
+
+        if event == '-update-':
+            create_modal2(values['-INPUT-'],values['-INPUT1-'])
 
     table_array.close()
 
@@ -70,10 +73,47 @@ def create_modal1(table_array1,header1):
 
     table_array1.close()
 
+def create_modal2(subject1, courseNumber1):
+    database_layout2 = [ 
+        text_row('MajorType: ','-MajorType-',False),
+        text_row('pointsValue: ','-pointsValue-',False),
+        text_row('GPAreq: ','-GPAreq-',False),
+        text_row('level: ','-level-',False),
+        text_row('approvalNeeded: ','-approvalNeeded-',False),
+        text_row1('description: ','-description-',False),
+        text_row('problematicPreReqs: ','-problematicPreReqs-',False),
+        text_row('problematicRestrictions: ','-problematicRestrictions-',False),
+        text_row('problematicCoReqs: ','-problematicCoReqs-',False),
+        text_row('problematicOther: ','-problematicOther-',False),
+        [sg.B('update_course',key='-update_course-')],
+        [sg.B("return",key="-RETURN-",bind_return_key=True)],
+        ]
+
+    table_array2 = sg.Window("update_course",database_layout2,modal=True)
+
+    while True:
+        event, values = table_array2.read()
+        if event == None or event == "-RETURN-":
+            break
+
+        if event == '-update_course-':
+            exe.update_course(values['-MajorType-'],values['-pointsValue-']
+                                ,values['-GPAreq-'],values['-level-']
+                                ,values['-approvalNeeded-'],values['-description-']
+                                ,values['-problematicPreReqs-'],values['-problematicRestrictions-']
+                                ,values['-problematicCoReqs-'],values['-problematicOther-']
+                                ,subject1, courseNumber1)
+            
+            database = exe.data_fetch()
+            database = [list(data) for data in database]
+            create_modal(database,header)
+
+    table_array2.close()
+
 ################　main window ##################
-header = ["subject","couseNumber","MajorType","pointValue","GPAreq","level","approvalNeeded","description"]
-header1 = ["majorID"]
-table_array = []
+header = ["subject","couseNumber","MajorType","pointsValue","GPAreq","level","approvalNeeded","description"]
+header1 = ["majorID","majorName","totalPointsNeeded","pointGenEd","year","honours","level"]
+subject_array = []
 
 def text_row(category,key,focus_check) -> list:
     return [sg.Text(category,s=(14,1),justification="right"),\
@@ -87,7 +127,7 @@ layout = [
     text_row('subject: ','-subject-',True),
     text_row('couseNumber: ','-couseNumber-',True),
     text_row('MajorType: ','-MajorType-',False),
-    text_row('pointValue: ','-pointValue-',False),
+    text_row('pointsValue: ','-pointsValue-',False),
     text_row('GPAreq: ','-GPAreq-',False),
     text_row('level: ','-level-',False),
     text_row('approvalNeeded: ','-approvalNeeded-',False),
@@ -111,17 +151,17 @@ while True:
         if values['-subject-'] == "":
             sg.popup('need subject')
         else:
-            if not len(table_array) == 0:
-                table_array.clear()
+            if not len(subject_array) == 0:
+                subject_array.clear()
 
-            table_array.append([values['-subject-'],values['-couseNumber-']
-                                ,values['-MajorType-'],values['-pointValue-']
+            subject_array.append([values['-subject-'],values['-couseNumber-']
+                                ,values['-MajorType-'],values['-pointsValue-']
                                 ,values['-GPAreq-'],values['-level-']
                                 ,values['-approvalNeeded-'],values['-description-']
                                 ,values['-problematicPreReqs-'],values['-problematicRestrictions-']
                                 ,values['-problematicCoReqs-'],values['-problematicOther-']])
             
-            exe.insert_paper_to_database(table_array[0])
+            exe.insert_paper_to_database(subject_array[0])
             
             database = exe.data_fetch()
             database = [list(data) for data in database]
