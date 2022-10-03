@@ -21,7 +21,7 @@ form_data = None
 currentBookValues = ("","","","","","","","","")
 currentBook = ""
 displayBookIndex = 0;
-
+Coordinates = ""
 
 @find_book_blueprint.route('/search', methods=['GET', 'POST'])
 def find_book():
@@ -48,6 +48,7 @@ def display_book():
     global currentBookValues
     global currentBook
     values = ''
+    global Coordinates
     if request.method == "POST":
         global displayBookIndex
         displayBookIndex = 0
@@ -56,7 +57,7 @@ def display_book():
         try:
             values = req["MultipleSearchTextBox"].split('+')
             search = SearchEngine.searchTool()
-            print(values[0].split()[1]+values[0].split()[0])
+            Coordinates = values[2]
             values = search.return_all_course_information(str(values[0].split()[1]).upper(), str(values[0].split()[0]))
 
         except:
@@ -85,7 +86,10 @@ def display_book():
         discription = ""
         requirements = ""
         error = values
+    if Coordinates == "":
 
+        Coordinates = home.semesters[0][0]
+        print(Coordinates + " Coordinates")
     data = getCountryesAndCourses()
     return render_template(
         'Search_for_a_book/Display_book.html',
@@ -99,6 +103,9 @@ def display_book():
         discription = discription,
         requirements=requirements,
         error = error,
+
+        Coordinates=Coordinates,
+
         countries = data[1],
         Semester = data[2],
         year = data[3],
@@ -342,4 +349,13 @@ def getCountryesAndCourses():
     courseArray = courseArray[2:len(courseArray) - 2]
     courseArray = re.sub(r"[\'\,]", '', courseArray)
     courseArray = courseArray.replace("', ' ", '')
+
+
+
+
+
+
+
+
+
     return (error, countries, semester, year, courseArray)

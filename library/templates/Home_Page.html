@@ -19,7 +19,7 @@
             <p>{{semester[0]}}</p>
         {% for course in semester[1:] %}
             <form action="/Displaybook" method="POST" class="course-buttin">
-                <input type="hidden" class="form-control" id="MultipleSearchTextBox" name="MultipleSearchTextBox" value="{{course[0]}}+{{semester[0]}}">
+                <input type="hidden" class="form-control" id="MultipleSearchTextBox" name="MultipleSearchTextBox" value="{{course[0]}}+{{semester[0]}}+{{semester[0]}}">
                 <button type="submit" class="course-buttin"> <p>Course: {{course[0]}}</p>
                 <p>Requirements: {{course[1]}}</p> </button>
             </form>
@@ -30,7 +30,10 @@
                 <p>Requirements: {{course[1]}}</p>
             </a> -->
         {% endfor %}
-            <button type="submit" class="AddCourseHomeButton">+</button>
+            <form action="/Displaybook" method="POST" class="AddCourse">
+                <input type="hidden" class="AddCourse" id="AddCourse" name="AddCourse" value="{{semester[0]}}">
+                <button type="submit" class="AddCourse"> <p>+</p></button>
+            </form>
         </div>
     {% endfor %}
     </div>

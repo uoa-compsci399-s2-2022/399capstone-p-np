@@ -219,14 +219,33 @@ input[type='password']:focus {
 }
 
 input[type='submit'] {
-     width: 20%;
+     width: 100px;
      background-color: #abcbff;
      color: white;
      padding: 14px 20px;
      margin: 8px 0;
-     border: none;
+     border: 20px 20px;
      border-radius: 4px;
      cursor: pointer;
+}
+
+.AddCourse{
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-weight: bold;
+    background: #2f3c7a;
+    display: inline-block;
+    float: middle;
+}
+AddCourse:hover {
+    background-color: #abcbff;
+    color: white;
+}
+
+.addRemoveButtons{
+    min-width: 50px;
+    float: left;
 }
 
 input[type='submit']:hover {
