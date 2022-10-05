@@ -4,7 +4,9 @@ import time
 
 class searchTool:
     def __init__(self):
-        sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
+        #sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
+        
+        sqliteConnection = sqlite3.connect(r"C:\Users\zhan806\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
 
         self.__cursor = sqliteConnection.cursor()
 
@@ -209,6 +211,19 @@ majorRequirements.year = 2020;""")
                 needed.append((y.split("-")[0], y.split("-")[1]))
         return needed
 
+    def required_100_level_courses_to_graduate(self,  major_type, year = "2020", honours = "0"):
+        return [x for x in self.required_courses_to_graduate(major_type, year , honours) if x[1][0] == "1"]
+
+    def required_200_level_courses_to_graduate(self,  major_type, year = "2020", honours = "0"):
+        return [x for x in self.required_courses_to_graduate(major_type, year , honours) if x[1][0] == "2"]
+
+    def required_300_level_courses_to_graduate(self,  major_type, year = "2020", honours = "0"):
+        return [x for x in self.required_courses_to_graduate(major_type, year , honours) if x[1][0] == "3"]
+
+    def required_over_300_level_courses_to_graduate(self,  major_type, year = "2020", honours = "0"):
+        return [x for x in self.required_courses_to_graduate(major_type, year , honours) if x[1][0] == "4" or x[1][0] == "5" or x[1][0] == "6" or x[1][0] == "7" or x[1][0] == "8" or x[1][0] == "9"]
+        
+
     def might_want_to_take(self,  major_type, timetable, year = "2020", honours = "0"):
         done_courses = []
         for semester in timetable:
@@ -313,5 +328,5 @@ majorRequirements.year = 2020;""")
 a = searchTool()
 
 tim = [[("COMPSCI", "210"),('COMPSCI', '220'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "350")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
-print(a.reccomended_action("computer-science", tim))
+print(a.required_100_level_courses_to_graduate("computer-science"))
 
