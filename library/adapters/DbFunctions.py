@@ -5,7 +5,7 @@ import time
 class searchTool:
     def __init__(self):
         #sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
-        
+        #This connects to the database YOU NEED TO CHANGE IT....
         sqliteConnection = sqlite3.connect(r"C:\Users\zhan806\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
 
         self.__cursor = sqliteConnection.cursor()
@@ -20,6 +20,7 @@ class searchTool:
         return newlist
 
     def return_isolated_problems_with_course(self, course_subject, course_number):
+        #This function returns problems with the course entered. It will be anything written in english, that we can't parse. So it might make the course untakeable for user, or not matter we don't know
         a = self.__cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
@@ -51,6 +52,7 @@ class searchTool:
             return "does not exist"
 
     def return_course_points(self, course_subject, course_number):
+        #Returns the points that the course is worth. Can be 7.5 and invalid, as that is half a course. 
         a = self.__cursor.execute("select * from course where subject = ? and courseNumber = ?", (course_subject, course_number))
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
@@ -128,7 +130,7 @@ class searchTool:
             probs.append([[course[0]+ " " + course[1], self.worst_problems_with_course(course[0],course[1], new_timetable),self.return_isolated_problems_with_course( course[0],  course[1]) ] for course in sem])
         return probs
 
-    def will_graduate(self, timetable, majorname):
+    def will_graduate_depreciated(self, timetable, majorname):
         done_courses = []
         for semester in timetable:
             for course in semester:
@@ -325,8 +327,15 @@ majorRequirements.year = 2020;""")
 
         return "Looks good"
 
+    def will_graduate(self, timetable, majorname):
+        action = self.reccomended_action(majorname, timetable)
+        if action == "Looks good":
+            return True
+        else:
+            return False
+
 a = searchTool()
 
-tim = [[("COMPSCI", "210"),('COMPSCI', '220'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "350")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
-print(a.required_100_level_courses_to_graduate("computer-science"))
+tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "350")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
+print(a.will_graduate(tim, "computer-science"))
 
