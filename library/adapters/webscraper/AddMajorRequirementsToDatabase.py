@@ -7,7 +7,7 @@ major_reqs = json.load(f)
 
 
 
-database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
+database = r"library\adapters\399courses.db"
 
 
 sqliteConnection = sqlite3.connect(database)
@@ -24,7 +24,7 @@ cursor.execute("""UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='group' """)
 major_reqs = open('major_reqs.json')
 major_information = json.load(major_reqs)
 
-query = """INSERT INTO majorRequirements(majorName, totalPointsNeeded, pointsGenEd, year, honours, level) VALUES(?, ?, ?, ?, ?, ?)"""
+query = """INSERT INTO majorRequirements(majorName, totalPointsNeeded, pointsGenEd, year, honours, level, pointsAboveStage1, pointsAboveStage2) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"""
 for major in major_information:
     total = 0
     for groups in major[1:]:
@@ -43,7 +43,7 @@ for major in major_information:
         honours = 0
  
 
-    cursor.execute(query, (major[0][0][0], total, 30, year, honours, major[0][0][1]))
+    cursor.execute(query, (major[0][0][0], total, 30, year, honours, major[0][0][1], 180, 75))
     sqliteConnection.commit()
 
 

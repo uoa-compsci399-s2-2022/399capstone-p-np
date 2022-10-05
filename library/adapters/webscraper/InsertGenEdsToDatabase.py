@@ -9,7 +9,7 @@ import json
 import sqlite3
 
 
-sqliteConnection = sqlite3.connect(r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
+sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
 cursor = sqliteConnection.cursor()
 
 cursor.execute("delete from courseScheduleLink where 1 == 1")
