@@ -327,8 +327,8 @@ majorRequirements.year = 2020;""")
 
         return "Looks good"
 
-    def will_graduate(self, timetable, majorname):
-        action = self.reccomended_action(majorname, timetable)
+    def will_graduate(self, timetable, majorname, year = "2020", honours = "0"):
+        action = self.reccomended_action(majorname, timetable, year, honours)
         if action == "Looks good":
             return True
         else:
