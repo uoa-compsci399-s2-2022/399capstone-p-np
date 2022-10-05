@@ -266,6 +266,50 @@ majorRequirements.year = 2020;""")
                 totake += x[1]
         return totake
 
+    #This function gives you a list of courses that you need to take some from to graduate. 
+    def take_from_these(self,  major_type, timetable, year = "2020", honours = "0"):
+        done_courses = []
+        for semester in timetable:
+            for course in semester:
+                done_courses.append(course)
+
+        a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)),  majorGroupLink.pointsRequired as "combined points"
+        from "group"
+        inner join majorGroupLink
+        inner join majorRequirements
+        inner join "course"
+        on "group".groupID = majorGroupLink.groupID AND
+        majorRequirements.majorID = "group".majorID AND 
+        majorGroupLink.majorID = majorRequirements.majorID AND
+        "group".subject = course.subject AND
+        "group".courseNumber  = course.courseNumber 
+        group by  "group".groupID ,"group".majorID
+        having CAST(sum(course.pointsValue) as FLOAT) >  cast(majorGroupLink.pointsRequired as float)  AND
+        majorRequirements.majorName = ? AND
+        majorRequirements.year = ? AND
+        majorRequirements.honours = ?;""",(major_type, year, honours))
+        res = [x for x in a.fetchall()]
+        needed = []
+        group = []
+        
+        for x in res:
+            group.append([x[1],[(z.split("-")[0],z.split("-")[1]) for z in x[0].split(",")]])
+
+        totake = []
+        temp_group = []
+        for x in group:
+            totalpoints = x[0]
+            done_points = 0
+            for course in x[1]:
+                print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
+                temp_group.append((course[0], course[1]))
+                if course in done_courses:
+                    done_points += self.points_from(course[0], course[1])
+
+            if float(done_points) < float(totalpoints):
+                totake += temp_group
+        return totake
+
     def reccomended_action(self, major_type, timetable, year = "2020", honours = "0"):
         done_courses = []
         for semester in timetable:
@@ -336,6 +380,6 @@ majorRequirements.year = 2020;""")
 
 a = searchTool()
 
-tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "350")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
-print(a.will_graduate(tim, "computer-science"))
+tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
+print(a.take_from_these("computer-science", tim))
 
