@@ -80,7 +80,7 @@ class searchTool:
         a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
         problems_with_course.update({"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]})
 
-        problems_with_course.update({"other_problems": return_isolated_problems_with_course(courseName, courseNumber)})
+        problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
 
         print(problems_with_course)
         return (problems_with_course)
