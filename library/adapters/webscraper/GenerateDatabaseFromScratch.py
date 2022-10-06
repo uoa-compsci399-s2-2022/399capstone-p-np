@@ -12,6 +12,7 @@ database = "\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399
 sqliteConnection = sqlite3.connect(database)
 cursor = sqliteConnection.cursor()
 
+#THIS ASSUMES EVERYTHING IS A SCIENCE MAJOR
 cursor.execute("""insert into scheduleMajorLink (scheduleID, majorID)
 select scheduleID, majorRequirements.majorID from  schedule 
 inner join majorRequirements 

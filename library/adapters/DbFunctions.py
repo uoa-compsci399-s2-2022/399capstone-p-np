@@ -54,7 +54,7 @@ class searchTool:
             course = list_of_courses[0]
             return course[3]
         else:
-            return "does not exist"
+            return 0
 
     def problems_with_course(self, courseName, courseNumber, timetable):
         #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2)
@@ -183,7 +183,7 @@ majorRequirements.year = 2020;""")
         res = [x for x in a.fetchall()]
         for x in res:
             return x[0]
-        return "This is not a gen ed"
+        return "Does not exist"
 
     def required_courses_to_graduate(self,  major_type, year = "2020", honours = "0"):
         a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)), sum(course.pointsValue) as "combined points"
@@ -336,7 +336,7 @@ majorRequirements.year = 2020;""")
         #Checks total points done
         done_points = 0
         for x in done_courses:
-            done_points += self.return_course_points(x[0],x[1])
+            done_points += float(self.return_course_points(x[0],x[1]))
         a = self.__cursor.execute("""select totalPointsNeeded from majorRequirements
         where majorName = ? AND
          year = ? AND
@@ -348,19 +348,55 @@ majorRequirements.year = 2020;""")
                 return "You need to do more points in general"
 
 
+        
+
+        
+
+        
+        a = self.__cursor.execute("""select courseScheduleLink.subject, SUBSTR(courseScheduleLink.courseNumber, 1,
+LENGTH(courseScheduleLink.courseNumber)-1) as "CourseNumber",
+course.pointsValue
+from courseScheduleLink inner join majorRequirements inner join scheduleMajorLink inner JOIN course
+on scheduleMajorLink.majorID = majorRequirements.majorID AND
+courseScheduleLink.scheduleID = scheduleMajorLink.scheduleID  AND
+course.subject = courseScheduleLink.subject AND
+course.courseNumber = courseScheduleLink.courseNumber
+where 
+majorRequirements.majorName = ? AND
+majorRequirements.year = ? AND
+majorRequirements.honours = ?
+
+union 
+
+select courseScheduleLink.subject, courseScheduleLink.courseNumber as "CourseNumber",
+course.pointsValue
+from courseScheduleLink inner join majorRequirements inner join scheduleMajorLink inner JOIN course
+on scheduleMajorLink.majorID = majorRequirements.majorID AND
+courseScheduleLink.scheduleID = scheduleMajorLink.scheduleID  AND
+course.subject = courseScheduleLink.subject AND
+course.courseNumber = courseScheduleLink.courseNumber
+where 
+majorRequirements.majorName = ? AND
+majorRequirements.year = ? AND
+majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, honours))
+        dat = a.fetchall()
+
+
         #Checks gen ed points, the right shedules needs to be implemented
         gen_points = 0
         for x in done_courses:
-            if self.is_gened(x[0],x[1]) or self.is_gened(x[0],x[1] + "G"):
-                print(x, " is a gened")
-                gen_points += self.return_course_points(x[0],x[1])
+            if (x[0],x[1]) in [(x[0],x[1]) for x in dat]:
+                print(x, " is a VALID gened")
+                gen_points += float(self.return_course_points(x[0],x[1]))
+
         a = self.__cursor.execute("""select pointsGenEd from majorRequirements
         where majorName = ? AND
          year = ? AND
-         honours = ?""", (major_type, year, honours))
+         honours = ?""", (major_type,year, honours))
         dat = a.fetchall()
+        
         if len(dat) > 0:
-            if float(gen_points) < float(dat[0][0]):
+            if gen_points < float(dat[0][0]):
                 return "You need to do more points gen ed papers"
 
 
@@ -375,11 +411,8 @@ majorRequirements.year = 2020;""")
 
 a = searchTool()
 
-tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
-print(a.take_from_these("computer-science", tim))
-
-print("hi")
-print(a.required_courses_to_graduate("computer-science"))
+tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
+print(a.reccomended_action("computer-science", tim))
 
 #timetable = [
 
