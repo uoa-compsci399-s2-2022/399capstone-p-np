@@ -152,7 +152,7 @@ CREATE TABLE scheduleMajorLink
   majorID int,
   PRIMARY key (scheduleID, majorID),
   FOREIGN KEY("majorID") REFERENCES "majorRequirements"("majorID"),
-  FOREIGN KEY("scheduleID") REFERENCES "courseScheduleLink"("scheduleID")
+  FOREIGN KEY("scheduleID") REFERENCES "schedule"("scheduleID")
   );""")
 
 print("created new tables")
