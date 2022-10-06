@@ -10,6 +10,21 @@ class searchTool:
         self.__cursor = sqliteConnection.cursor()
 
 
+    def return_misc_problems_with_degree(self,major_type, year = "2020",honours = 0):
+        
+        a = self.__cursor.execute(
+            """select miscProblems from majorRequirements where 
+        majorRequirements.majorName = ? AND
+        majorRequirements.year = ? AND
+        majorRequirements.honours = ?;""",(major_type, year,honours))
+        list_of_courses = a.fetchall()
+        if len(list_of_courses) == 0:
+            return []
+        else:
+            return [x[0] for x in list_of_courses]
+    
+
+
     def return_all_courses(self):
         a = self.__cursor.execute("select * from 'course'")
         course = a.fetchall()
@@ -409,19 +424,9 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         else:
             return False
 
+    
+
 a = searchTool()
 
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
-print(a.reccomended_action("computer-science", tim))
-
-#timetable = [
-
-    #[("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
-    #[("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230")]
-#]
-#print(problems_with_major(timetable))
-#a function of all courses they need to take to graduate required courses,(group courses, points))
-#given name of courses they are taking and what time, return same matrix with null, or error message
-#given list of courses if they will graduate
-#Return all courses that can be taken at that time
-#return a list of courses they can take given what they are doing
+print(a.return_misc_problems_with_degree("computer-science"))
