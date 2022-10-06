@@ -12,13 +12,24 @@ import library.domain.model as model
 home_blueprint = Blueprint(
     'home_bp', __name__
 )
-semesters = [["2020 Semester 1",["399 Compsci", "3 courses at 3rd level"], ["315 Compsci", "215 Compsci"], ["315 Compsci", "215 Compsci"],["399 Compsci", "3 courses at 3rd level"], ["315 Compsci", "215 Compsci"], ["315 Compsci", "215 Compsci"], ["315 Compsci", "215 Compsci"]],
-                 ["2020 Semester 2",["215 Compsci", "120 Compsci"]],
-                 ["2021 Semester 1",["230 Compsci", "130 Compsci"]]]
+semesters = [["2020 Semester 1",["110 COMPSCI", "3 courses at 3rd level"], ["120 COMPSCI", "215 COMPSCI"], ["315 COMPSCI", "215 COMPSCI"],["399 COMPSCI", "3 courses at 3rd level"], ["315 COMPSCI", "215 COMPSCI"], ["315 COMPSCI", "215 COMPSCI"], ["315 COMPSCI", "215 COMPSCI"]],
+                 ["2020 Semester 2",["230 Compsci", "120 Compsci"]],
+                 ["2021 Semester 1",["210 Compsci", "130 Compsci"]]]
 
 @home_blueprint.route('/', methods=['GET', 'POST'])
 def home():
     global semesters
+
+    boobydooby = SearchEngine.searchTool()
+
+    Zecester = TransferSemestersToZacesters(semesters)
+
+    print(boobydooby.reccomended_action("computer-science", Zecester))
+
+    print("############################################33")
+
+    reqFirstYearZacTest = boobydooby.required_100_level_courses_to_graduate("computer-science")
+
     if request.method == "POST":
         req = request.form
         destroy = False
@@ -50,7 +61,19 @@ def home():
         books=bookdata.reader_instance,
         home_url=url_for('home_bp.home'),
         find_book=url_for('find_book_bp.find_book'),
+        reqFirstYearZacTest = reqFirstYearZacTest
         #user = ("Welcome " + str(session['user_name']))
     )
 
 
+def TransferSemestersToZacesters(data):
+    newdata =[]
+    c = 0
+    for item in data:
+        newdata.append([])
+        newitem = item[1:]
+
+        for course in newitem:
+            newdata[c].append((course[0].split(" ")[1], course[0].split(" ")[0]))
+        c+=1
+    return newdata

@@ -6,7 +6,7 @@ class searchTool:
     def __init__(self):
         #sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
         #This connects to the database YOU NEED TO CHANGE IT....
-        sqliteConnection = sqlite3.connect(r"C:\Users\zhan806\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
+        sqliteConnection = sqlite3.connect(r"C:\\Users\\chris\\OneDrive\\Desktop\\399capstone-p-np\\library\\adapters\\399courses.db")
 
         self.__cursor = sqliteConnection.cursor()
 
