@@ -145,6 +145,16 @@ CREATE TABLE schedule
  
   );""")
 
+
+cursor.execute("""
+CREATE TABLE scheduleMajorLink
+( scheduleID CHAR not NULL,
+  majorID int,
+  PRIMARY key (scheduleID, majorID),
+  FOREIGN KEY("majorID") REFERENCES "majorRequirements"("majorID"),
+  FOREIGN KEY("scheduleID") REFERENCES "courseScheduleLink"("scheduleID")
+  );""")
+
 print("created new tables")
 sqliteConnection.commit()
 

@@ -378,6 +378,9 @@ a = searchTool()
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
 print(a.take_from_these("computer-science", tim))
 
+print("hi")
+print(a.required_courses_to_graduate("computer-science"))
+
 #timetable = [
 
     #[("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
