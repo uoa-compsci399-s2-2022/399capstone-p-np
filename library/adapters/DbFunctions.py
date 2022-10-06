@@ -4,13 +4,9 @@ import time
 
 class searchTool:
     def __init__(self):
-<<<<<<< HEAD
         #sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
         sqliteConnection = sqlite3.connect("\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db")
 
-=======
-        sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
->>>>>>> database-changes
         self.__cursor = sqliteConnection.cursor()
 
 

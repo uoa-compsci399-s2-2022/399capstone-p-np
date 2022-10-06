@@ -1,16 +1,13 @@
 import json
 import sqlite3
 import re
+import os
 
 f = open('major_reqs.json')
 major_reqs = json.load(f)
 
 
-
-database = r"library\adapters\399courses.db"
-
-
-sqliteConnection = sqlite3.connect(database)
+sqliteConnection = sqlite3.connect("\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db")
 
 cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")

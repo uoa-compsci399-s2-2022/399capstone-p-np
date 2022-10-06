@@ -7,8 +7,9 @@ from bs4 import BeautifulSoup
 import json
 import re
 import sqlite3
+import os
 
-database = r"library\adapters\399courses.db"
+database = "\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db"
 
 
 sqliteConnection = sqlite3.connect(database)
