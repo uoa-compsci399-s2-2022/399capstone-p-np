@@ -14,7 +14,7 @@ print("Inserting all courses and requirements into the database.")
 
 #Initalizing connection to the database
 database = os.path.abspath(os.getcwd())
-database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
+database = "\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db"
 sqliteConnection = sqlite3.connect(database)
 cursor = sqliteConnection.cursor()
 print("Successfully Connected to SQLite")

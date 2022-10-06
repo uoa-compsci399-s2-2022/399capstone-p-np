@@ -1,10 +1,10 @@
 from re import sub
 import sqlite3
+import os
 
 class execute:
     def __init__(self):
-        database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
-        self.__sqliteConnection = sqlite3.connect(database)
+        self.__sqliteConnection = sqlite3.connect("\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db")
         self.__cursor = self.__sqliteConnection.cursor()
 
     def list_all_majors(self):

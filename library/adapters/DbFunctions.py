@@ -5,8 +5,7 @@ import time
 class searchTool:
     def __init__(self):
         #sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
-        #This connects to the database YOU NEED TO CHANGE IT....
-        sqliteConnection = sqlite3.connect(r"C:\\Users\\chris\\OneDrive\\Desktop\\399capstone-p-np\\library\\adapters\\399courses.db")
+        sqliteConnection = sqlite3.connect("\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db")
 
         self.__cursor = sqliteConnection.cursor()
 
@@ -25,11 +24,7 @@ class searchTool:
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
-            new_str = ""
-            for x in course[8:]:
-                if x != None:
-                    new_str = new_str + x
-            return new_str
+            return course[8:]
         else:
             return "does not exist"
 
@@ -383,3 +378,14 @@ a = searchTool()
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
 print(a.take_from_these("computer-science", tim))
 
+#timetable = [
+
+    #[("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
+    #[("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230")]
+#]
+#print(problems_with_major(timetable))
+#a function of all courses they need to take to graduate required courses,(group courses, points))
+#given name of courses they are taking and what time, return same matrix with null, or error message
+#given list of courses if they will graduate
+#Return all courses that can be taken at that time
+#return a list of courses they can take given what they are doing
