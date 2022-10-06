@@ -3,7 +3,7 @@ import sqlite3
 import re
 import os
 
-database = r"library\adapters\399courses.db"
+database = "\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db"
 
 if os.path.exists(database):
   os.remove(database)
