@@ -8,7 +8,7 @@ import json
 import re
 import sqlite3
 
-database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
+database = r"library\adapters\399courses.db"
 
 
 sqliteConnection = sqlite3.connect(database)

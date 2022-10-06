@@ -3,7 +3,7 @@ import sqlite3
 
 class execute:
     def __init__(self):
-        database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
+        database = r"library\adapters\399courses.db"
         self.__sqliteConnection = sqlite3.connect(database)
         self.__cursor = self.__sqliteConnection.cursor()
 

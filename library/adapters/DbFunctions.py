@@ -4,10 +4,14 @@ import time
 
 class searchTool:
     def __init__(self):
+<<<<<<< HEAD
         #sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
         #This connects to the database YOU NEED TO CHANGE IT....
         sqliteConnection = sqlite3.connect(r"C:\Users\zhan806\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db")
 
+=======
+        sqliteConnection = sqlite3.connect(r"library\adapters\399courses.db")
+>>>>>>> database-changes
         self.__cursor = sqliteConnection.cursor()
 
 
@@ -25,11 +29,7 @@ class searchTool:
         list_of_courses = a.fetchall()
         if len(list_of_courses) == 1:
             course = list_of_courses[0]
-            new_str = ""
-            for x in course[8:]:
-                if x != None:
-                    new_str = new_str + x
-            return new_str
+            return course[8:]
         else:
             return "does not exist"
 
@@ -85,11 +85,12 @@ class searchTool:
         a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
         problems_with_course.update({"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]})
 
-        problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
+        problems_with_course.update({"other_problems": return_isolated_problems_with_course(courseName, courseNumber)})
 
         print(problems_with_course)
         return (problems_with_course)
 
+<<<<<<< HEAD
     def worst_problems_with_course(self, courseName, courseNumber, timetable):
         done_courses = []
         doing = []
@@ -382,4 +383,19 @@ a = searchTool()
 
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351")]]
 print(a.take_from_these("computer-science", tim))
+=======
 
+
+>>>>>>> database-changes
+
+#timetable = [
+    
+    #[("COMPSCI", "110"),("COMPSCI", "120"),("COMPSCI", "130")],
+    #[("COMPSCI", "210"),("COMPSCI", "220"),("COMPSCI", "230")]
+#]
+#print(problems_with_major(timetable))
+#a function of all courses they need to take to graduate required courses,(group courses, points))
+#given name of courses they are taking and what time, return same matrix with null, or error message
+#given list of courses if they will graduate
+#Return all courses that can be taken at that time
+#return a list of courses they can take given what they are doing

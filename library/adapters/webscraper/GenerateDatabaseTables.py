@@ -3,7 +3,7 @@ import sqlite3
 import re
 import os
 
-database = r"C:\Users\Zachary\Documents\GitHub\399capstone-p-np\library\adapters\399courses.db"
+database = r"library\adapters\399courses.db"
 
 if os.path.exists(database):
   os.remove(database)
@@ -92,14 +92,16 @@ CREATE TABLE "majorGroupLink" (
 
 cursor.execute("""
 CREATE TABLE "majorRequirements" (
-    "majorID"    INTEGER UNIQUE,
-    "majorName"    TEXT NOT NULL,
-    "totalPointsNeeded"    CHAR,
-    "pointsGenEd"    REAL NOT NULL,
-    "year"    INTEGER NOT NULL,
-    "honours"    INTEGER NOT NULL,
-    "level"    TEXT,
-    PRIMARY KEY("majorID" AUTOINCREMENT)
+	"majorID"	INTEGER UNIQUE,
+	"majorName"	TEXT NOT NULL,
+	"totalPointsNeeded"	CHAR,
+	"pointsGenEd"	REAL NOT NULL,
+	"year"	INTEGER NOT NULL,
+	"honours"	INTEGER NOT NULL,
+	"level"	TEXT,
+	"pointsAboveStage1"	INTEGER,
+	"pointsAboveStage2"	INTEGER,
+	PRIMARY KEY("majorID" AUTOINCREMENT)
 );""")
 
 cursor.execute("""
