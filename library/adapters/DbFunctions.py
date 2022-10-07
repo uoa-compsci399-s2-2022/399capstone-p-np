@@ -445,7 +445,6 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
 a = searchTool()
 
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
-<<<<<<< HEAD
 print(a.return_all_majorData())
 
 #timetable = [
@@ -459,6 +458,5 @@ print(a.return_all_majorData())
 #given list of courses if they will graduate
 #Return all courses that can be taken at that time
 #return a list of courses they can take given what they are doing
-=======
-print(a.return_misc_problems_with_degree("computer-science"))
->>>>>>> 446d75f2ec0a7f27a8a00a130e890523353c7adf
+
+#print(a.return_misc_problems_with_degree("computer-science"))
