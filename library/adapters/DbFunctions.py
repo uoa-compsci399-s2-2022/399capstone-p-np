@@ -9,6 +9,22 @@ class searchTool:
 
         self.__cursor = sqliteConnection.cursor()
 
+    def return_all_majorNames(self):
+        a = self.__cursor.execute("select DISTINCT majorName from majorRequirements;")
+        course = a.fetchall()
+        newlist = []
+        for x in course:
+            newlist.append(x[0])
+        return newlist
+
+    def return_all_majorData(self):
+        a = self.__cursor.execute("select majorName, honours, level from majorRequirements;")
+        course = a.fetchall()
+        newlist = []
+        for x in course:
+            newlist.append(x)
+        return newlist
+
 
     def return_all_courses(self):
         a = self.__cursor.execute("select * from 'course'")
@@ -409,10 +425,12 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         else:
             return False
 
+    
+
 a = searchTool()
 
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
-print(a.reccomended_action("computer-science", tim))
+print(a.return_all_majorData())
 
 #timetable = [
 
