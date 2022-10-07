@@ -101,6 +101,7 @@ CREATE TABLE "majorRequirements" (
 	"level"	TEXT,
 	"pointsAboveStage1"	INTEGER,
 	"pointsAboveStage2"	INTEGER,
+    "miscProblems" CHAR, 
 	PRIMARY KEY("majorID" AUTOINCREMENT)
 );""")
 
