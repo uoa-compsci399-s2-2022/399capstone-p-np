@@ -91,6 +91,8 @@ def display_book():
         Coordinates = home.semesters[0][0]
         print(Coordinates + " Coordinates")
     data = getCountryesAndCourses()
+
+
     return render_template(
         'Search_for_a_book/Display_book.html',
         books=bookdata.reader_instance,
