@@ -101,6 +101,7 @@ CREATE TABLE "majorRequirements" (
 	"level"	TEXT,
 	"pointsAboveStage1"	INTEGER,
 	"pointsAboveStage2"	INTEGER,
+    "miscProblems" CHAR, 
 	PRIMARY KEY("majorID" AUTOINCREMENT)
 );""")
 
@@ -143,6 +144,16 @@ CREATE TABLE schedule
   scheduleDesc char,
   PRIMARY key (scheduleID)
  
+  );""")
+
+
+cursor.execute("""
+CREATE TABLE scheduleMajorLink
+( scheduleID CHAR not NULL,
+  majorID int,
+  PRIMARY key (scheduleID, majorID),
+  FOREIGN KEY("majorID") REFERENCES "majorRequirements"("majorID"),
+  FOREIGN KEY("scheduleID") REFERENCES "schedule"("scheduleID")
   );""")
 
 print("created new tables")

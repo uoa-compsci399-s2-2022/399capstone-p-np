@@ -61,12 +61,15 @@ schedules = soup.findAll("li", class_="page-listing__item listing-item")
 for x in schedules:
     url = x.find("a")['href']
     name = x.find("p", class_="listing-item__heading").text
+    print(name)
+    cursor.execute("insert into schedule (scheduleID) values (?);", (name,))
     gen_ed_list.append((name,url))
 
 for x in gen_ed_list:
     for y in downloadinfo(x[1]):
         print(x[0], y[0], y[1])
         cursor.execute("insert into courseScheduleLink (scheduleID, subject, courseNumber) values  (?,?,?)", (x[0], y[0], y[1]))
+    
 
 
 sqliteConnection.commit()
