@@ -1257,11 +1257,8 @@
                     "BIOSCI",
                     "220"
                 ],
-                "Manual entry required",
                 "*From 2019 the course name for BIOSCI 101 has changed to Life! Origins and Mechanisms.",
-                "Manual entry required",
                 "**From 2019 the course name for BIOSCI 107 has changed to Biology for Biomedical Science: Cellular Processes.",
-                "Manual entry required",
                 "****In 2020 BIOSCI 220 replaced BIOSCI 209"
             ],
             [
@@ -1417,47 +1414,15 @@
                 ],
                 [
                     "BIOSCI",
-                    "351,"
+                    "351"
                 ],
                 [
                     "CHEM",
-                    "390,"
+                    "390"
                 ],
                 [
                     "MEDSCI",
-                    "306,"
-                ],
-                [
-                    "BIOSCI",
-                    "201"
-                ],
-                [
-                    "BIOSCI",
-                    "202"
-                ],
-                [
-                    "BIOSCI",
-                    "203"
-                ],
-                [
-                    "MEDSCI",
-                    "205,"
-                ],
-                [
-                    "MEDSCI",
-                    "201"
-                ],
-                [
-                    "MEDSCI",
-                    "309,"
-                ],
-                [
-                    "BIOSCI",
-                    "350,"
-                ],
-                [
-                    "MEDSCI",
-                    "301,"
+                    "306"
                 ],
                 [
                     "BIOSCI",
@@ -1477,15 +1442,19 @@
                 ],
                 [
                     "MEDSCI",
-                    "203,"
-                ],
-                [
-                    "BIOSCI",
-                    "350,"
+                    "201"
                 ],
                 [
                     "MEDSCI",
-                    "301,"
+                    "309"
+                ],
+                [
+                    "BIOSCI",
+                    "350"
+                ],
+                [
+                    "MEDSCI",
+                    "301"
                 ],
                 [
                     "BIOSCI",
@@ -1509,21 +1478,48 @@
                 ],
                 [
                     "BIOSCI",
-                    "351,"
-                ],
-                [
-                    "BIOSCI",
-                    "350,"
+                    "350"
                 ],
                 [
                     "MEDSCI",
-                    "301,"
+                    "301"
                 ],
-                "Manual entry required",
+                [
+                    "BIOSCI",
+                    "201"
+                ],
+                [
+                    "BIOSCI",
+                    "202"
+                ],
+                [
+                    "BIOSCI",
+                    "203"
+                ],
+                [
+                    "MEDSCI",
+                    "205"
+                ],
+                [
+                    "MEDSCI",
+                    "203"
+                ],
+                [
+                    "BIOSCI",
+                    "351"
+                ],
+                [
+                    "BIOSCI",
+                    "350"
+                ],
+                [
+                    "MEDSCI",
+                    "301"
+                ],
                 "BIOSCI 201\u2013203(BIOSCI 204 or MEDSCI 202)",
                 [
                     "MEDSCI",
-                    "203,"
+                    "203"
                 ],
                 [
                     "BIOSCI",
@@ -1531,11 +1527,11 @@
                 ],
                 [
                     "MEDSCI",
-                    "301,"
+                    "301"
                 ],
                 [
                     "BIOSCI",
-                    "347,"
+                    "347"
                 ],
                 [
                     "BIOSCI",
@@ -1571,15 +1567,15 @@
                 ],
                 [
                     "MEDSCI",
-                    "304,"
+                    "304"
                 ],
                 [
                     "BIOSCI",
-                    "350,"
+                    "350"
                 ],
                 [
                     "MEDSCI",
-                    "309,"
+                    "309"
                 ],
                 [
                     "PSYCH",
@@ -1601,7 +1597,6 @@
                     "MEDSCI",
                     "205"
                 ],
-                "Manual entry required",
                 "MEDSCI 203, 204, 206(MEDSCI 202 or BIOSCI 204)",
                 [
                     "BIOSCI",
@@ -1609,11 +1604,11 @@
                 ],
                 [
                     "MEDSCI",
-                    "312,"
+                    "312"
                 ],
                 [
                     "BIOSCI",
-                    "348,"
+                    "348"
                 ],
                 [
                     "FOODSCI",
@@ -1621,7 +1616,7 @@
                 ],
                 [
                     "MEDSCI",
-                    "301,"
+                    "301"
                 ],
                 [
                     "BIOSCI",
@@ -1641,7 +1636,7 @@
                 ],
                 [
                     "MEDSCI",
-                    "201,"
+                    "201"
                 ],
                 [
                     "BIOSCI",
@@ -1649,17 +1644,16 @@
                 ],
                 [
                     "MEDSCI",
-                    "312,"
+                    "312"
                 ],
                 [
                     "BIOSCI",
-                    "350,"
+                    "350"
                 ],
                 [
                     "MEDSCI",
-                    "301,"
+                    "301"
                 ],
-                "Manual entry required",
                 "Biomedical Science students with at least a B+ average in Year 1 may be eligible. Students wishing to be considered for an interview need to take POPLHLTH 111 as their elective course in Year 1. You will also be required to sit the UMAT examination in July of Year 1."
             ]
         ]
@@ -3341,17 +3335,11 @@
                     "GEOG",
                     "351"
                 ],
-                "Manual entry required",
                 "*From 2019 EARTHSCI 120 Planet Earth replaces EARTHSCI 103.",
-                "Manual entry required",
                 "\n **From 2019 MATHS 120 Algebra and MATHS 130 Calculus replace MATHS 150.",
-                "Manual entry required",
                 "\n ***From 2019 BIOSCI 101 has changed its name to Life! Origins and Mechanisms.",
-                "Manual entry required",
                 "\n ^^From 2019 EARTHSCI 202 has changed its name to Earth History.",
-                "Manual entry required",
                 "\n ^^^From 2019 EATHSCI 203 has changed its name to Rock and Minerals.",
-                "Manual entry required",
                 "\n ^^^^From 2019 EARTHSCI 303 has changed its name to Sedimentary Systems."
             ]
         ]
@@ -4209,7 +4197,6 @@
                     "URBPLAN",
                     "103:"
                 ],
-                "Manual entry required",
                 " at least one of these must be COMPSCI 130 or STATS 101"
             ],
             [
@@ -4323,7 +4310,6 @@
                     "GEOG",
                     "106"
                 ],
-                "Manual entry required",
                 "At 200-level you should take GEOG 250 plus at least two others, one of which must be either GEOG 202, 205, 261 or 262:",
                 [
                     "GEOG",
@@ -7066,7 +7052,6 @@
                     "PHIL",
                     "305"
                 ],
-                "Manual entry required",
                 "Note that students intending to continue to postgraduate study must include MATHS 332 and one of MATHS 320 and 328 in their Mathematics major."
             ]
         ]
@@ -7644,7 +7629,6 @@
                     "PHARMCOL",
                     "399"
                 ],
-                "Manual entry required",
                 " both MEDSCI 320 and PHARMCOL 399 are required if Pharmacology is the sole major."
             ]
         ]
@@ -7755,7 +7739,6 @@
                 [
                     "60"
                 ],
-                "Manual entry required",
                 "MATHS 253 Advancing Mathematics 3 or MATHS 260 Differential Equations",
                 [
                     "PHYSICS",
@@ -8243,7 +8226,6 @@
                     "MEDSCI",
                     "317"
                 ],
-                "Manual entry required",
                 "*Please note that the course MEDSCI 308 is no longer available for new enrolments.",
                 [
                     "BIOSCI",
@@ -9463,9 +9445,8 @@
                 ],
                 [
                     "MATHS",
-                    "208,"
+                    "208"
                 ],
-                "Manual entry required",
                 " or equivalent (for which MATHS 108 is a prerequisite) at the same time as ",
                 [
                     "STATS",

@@ -92,7 +92,6 @@ def getMajorReq(url):
             if len(courses) != 1:
                 courses = []
         if re.search("[a-z]+.*[A-Z][A-Z][A-Z]*\s[0-9][0-9][0-9].*", text):
-            courses.append("Manual entry required")
             courses.append(text)
         elif re.search("[A-Z][A-Z][A-Z]*\s[0-9][0-9][0-9].*", text) != None:
             a = text.split()[:2]
@@ -109,7 +108,7 @@ def getMajorReq(url):
                 for courseNumber in courseNumbers:
                     courses.append([a[0], ''.join(courseNumber)])
             else:
-                courses.append(text.split()[:2])
+                courses.append([text.split()[0], text.split()[1].strip(',')])
     if len(courses) > 1:
         reqs.append(courses)
     return (major,reqs[1:])

@@ -73,13 +73,13 @@ CREATE TABLE "courseScheduleLink" (
 
 cursor.execute("""
 CREATE TABLE "group" (
-    "groupID"    INTEGER NOT NULL,
-    "majorID"    INTEGER NOT NULL,
-    "courseNumber"    CHAR,
-    "subject"    CHAR,
-    "reqID"    INTEGER,
-    FOREIGN KEY("subject","courseNumber") REFERENCES "course"("subject","courseNumber"),
-    PRIMARY KEY("reqID" AUTOINCREMENT)
+	"groupID"	INTEGER NOT NULL,
+	"majorID"	INTEGER NOT NULL,
+	"courseNumber"	CHAR,
+	"subject"	CHAR,
+	"reqID"	INTEGER,
+	FOREIGN KEY("subject","courseNumber") REFERENCES "course"("subject","courseNumber"),
+	PRIMARY KEY("reqID" AUTOINCREMENT)
 );""")
 
 cursor.execute("""
@@ -155,6 +155,15 @@ CREATE TABLE scheduleMajorLink
   FOREIGN KEY("majorID") REFERENCES "majorRequirements"("majorID"),
   FOREIGN KEY("scheduleID") REFERENCES "schedule"("scheduleID")
   );""")
+
+cursor.execute("""
+CREATE TABLE "groupMiscData" (
+	"majorID"	INTEGER NOT NULL,
+	"groupID"	INTEGER NOT NULL,
+	"miscData"	TEXT NOT NULL,
+	FOREIGN KEY("majorID") REFERENCES "majorGroupLink"
+);""")
+
 
 print("created new tables")
 sqliteConnection.commit()

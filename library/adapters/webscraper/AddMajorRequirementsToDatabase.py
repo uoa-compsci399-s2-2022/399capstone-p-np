@@ -65,11 +65,14 @@ for major in major_information:
                 try:
                     cursor.execute("""INSERT INTO majorGroupLink("majorID", "groupID", pointsRequired) VALUES(?, ?, ?)""", (majorID[0], groupID, group[0][0]))
                 except:
-                    print("something fucked up and its alexes fault")
+                    print("something fucked up VVVVV")
+                    print(group)
                 for course in group[1:]:
+                    if type(course) == str:
+                        cursor.execute("""INSERT INTO "groupMiscData"(majorID, groupID, miscData) VALUES(?, ?, ?)""", (majorID[0], groupID, course))
                     cursor.execute("""INSERT INTO "group"(groupID, majorID, courseNumber, subject) VALUES(?, ?, ?, ?)""", (groupID, majorID[0], course[1], course[0]))
             else:
-                cursor.execute("""INSERT INTO majorGroupLink("majorID", "groupID", pointsRequired) VALUES(?, ?, ?)""", (majorID[0], groupID, "ERROR SCRAPING DATA"))
+                cursor.execute("""INSERT INTO majorGroupLink("majorID", "groupID", pointsRequired) VALUES(?, ?, ?)""", (majorID[0], groupID, 0))
             sqliteConnection.commit()
 
 cursor.close()
