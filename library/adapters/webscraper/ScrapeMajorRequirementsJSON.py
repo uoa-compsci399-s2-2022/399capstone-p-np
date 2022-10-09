@@ -123,8 +123,17 @@ for link in links:
         for section_link_2 in getSectionLinks(section_link):
             print(section_link_2)
             major = getMajorReq(section_link_2)
-            majors.append(major)
+            majors.append(major) 
             print(major)
+
+
+
+
+double_major = [[[majors[1][0][0][0]+ '-'+ majors[2][0][0][0], 'undergraduate', 'from-2019']] ,majors[1][1] + majors[2][1]]
+majors.append(double_major)
+
+
+
 
 json_data = json.dumps(majors, indent = 4)
 with open("major_reqs.json", "w") as outfile:
