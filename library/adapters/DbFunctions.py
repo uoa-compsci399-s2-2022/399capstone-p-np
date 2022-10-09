@@ -97,7 +97,6 @@ class searchTool:
 
         problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
 
-        print(problems_with_course)
         return (problems_with_course)
 
     def worst_problems_with_course(self, courseName, courseNumber, timetable):
@@ -166,7 +165,6 @@ majorRequirements.year = 2020;""")
                     major_groups[x[0]][1] = major_groups[x[0]][1] + x[5]
 
         for x in major_groups:
-            print(major_groups[x][0],  major_groups[x][1])
             if float(major_groups[x][0]) > major_groups[x][1]:
                 return False
 
@@ -274,7 +272,7 @@ majorRequirements.year = 2020;""")
             totalpoints = x[0]
             done_points = 0
             for course in x[1]:
-                print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
+                #print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
                 if course in done_courses:
                     done_points += self.points_from(course[0], course[1])
 
@@ -341,7 +339,6 @@ majorRequirements.year = 2020;""")
 
         #Checks required courses
         req_grad = self.required_courses_to_graduate(major_type,"2020")
-        print(req_grad)
         if req_grad != []:
             for x in req_grad:
                 if x not in done_courses:
@@ -407,7 +404,6 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         gen_points = 0
         for x in done_courses:
             if (x[0],x[1]) in [(x[0],x[1]) for x in dat]:
-                print(x, " is a VALID gened")
                 gen_points += float(self.return_course_points(x[0],x[1]))
 
         a = self.__cursor.execute("""select pointsGenEd from majorRequirements
