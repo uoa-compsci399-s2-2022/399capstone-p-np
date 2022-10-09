@@ -236,6 +236,12 @@ majorRequirements.year = 2020;""")
         return [x for x in self.required_courses_to_graduate(major_type, year , honours) if x[1][0] == "4" or x[1][0] == "5" or x[1][0] == "6" or x[1][0] == "7" or x[1][0] == "8" or x[1][0] == "9"]
         
 
+    def required_courses_in_right_order(self,  major_type, year = "2020", honours = "0"):
+        one = self.required_100_level_courses_to_graduate(major_type, year)
+        two = self.required_200_level_courses_to_graduate(major_type, year)
+        three = self.required_300_level_courses_to_graduate(major_type, year)
+        return [one,[],two, [], three]
+        
     def might_want_to_take(self,  major_type, timetable, year = "2020", honours = "0"):
         done_courses = []
         for semester in timetable:
@@ -424,9 +430,27 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         else:
             return False
 
+    def return_all_majorNames(self):
+        a = self.__cursor.execute("select DISTINCT majorName from majorRequirements;")
+        course = a.fetchall()
+        newlist = []
+        for x in course:
+            newlist.append(x[0])
+        return newlist
+
+    def return_all_majorData(self):
+        a = self.__cursor.execute("select majorName, honours, level from majorRequirements;")
+        course = a.fetchall()
+        newlist = []
+        for x in course:
+            newlist.append(x)
+        return newlist
+
+
     
 
 a = searchTool()
-
+#print(a.return_all_majorNames())
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
-print(a.return_misc_problems_with_degree("computer-science"))
+tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351')]]
+print(a.reccomended_action("chemistry", tim))
