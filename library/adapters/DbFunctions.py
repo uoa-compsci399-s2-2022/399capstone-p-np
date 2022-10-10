@@ -280,6 +280,46 @@ majorRequirements.year = 2020;""")
                 totake += x[1]
         return totake
 
+    def might_want_to_take_points(self,  major_type, timetable, year = "2020", honours = "0"):
+        done_courses = []
+        for semester in timetable:
+            for course in semester:
+                done_courses.append(course)
+
+        a = self.__cursor.execute("""select group_concat(DISTINCT ( "group".subject || "-" || "group".courseNumber)),  majorGroupLink.pointsRequired as "combined points"
+        from "group"
+        inner join majorGroupLink
+        inner join majorRequirements
+        inner join "course"
+        on "group".groupID = majorGroupLink.groupID AND
+        majorRequirements.majorID = "group".majorID AND 
+        majorGroupLink.majorID = majorRequirements.majorID AND
+        "group".subject = course.subject AND
+        "group".courseNumber  = course.courseNumber 
+        group by  "group".groupID ,"group".majorID
+        having CAST(sum(course.pointsValue) as FLOAT) >  cast(majorGroupLink.pointsRequired as float)  AND
+        majorRequirements.majorName = ? AND
+        majorRequirements.year = ? AND
+        majorRequirements.honours = ?;""",(major_type, year, honours))
+        res = [x for x in a.fetchall()]
+        needed = []
+        group = []
+        totake = []
+        for x in res:
+            group.append([x[1],[(z.split("-")[0],z.split("-")[1]) for z in x[0].split(",")]])
+
+        for x in group:
+            totalpoints = x[0]
+            done_points = 0
+            for course in x[1]:
+                #print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
+                if course in done_courses:
+                    done_points += self.points_from(course[0], course[1])
+
+            if float(done_points) < float(totalpoints):
+                totake += x[1]
+        return (totake,  float(totalpoints) - float(done_points))
+
     #This function gives you a list of courses that you need to take some from to graduate. 
     def take_from_these(self,  major_type, timetable, year = "2020", honours = "0"):
         done_courses = []
@@ -345,11 +385,13 @@ majorRequirements.year = 2020;""")
                     return "You need to take: " +  x[0] + " " + x[1] + " in order to graduate"
 
         #CHecks if they are missing poitnfs from some group
-        might_take = self.might_want_to_take(  major_type, timetable,"2020")
+        might_takea = self.might_want_to_take_points(  major_type, timetable,"2020")
+        might_take = might_takea[0]
+        might_points = might_takea[1]
         if req_grad != []:
             for x in might_take:
                 if x not in done_courses:
-                    return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
+                    return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
 
         #Checks total points done
         done_points = 0
@@ -449,4 +491,14 @@ a = searchTool()
 #print(a.return_all_majorNames())
 tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
 tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351')]]
+print("Not taken maths", a.reccomended_action("chemistry", tim))
+
+tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", ("108"))]]
+print("Not taken maths", a.reccomended_action("chemistry", tim))
+
+tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330")]]
+print("Not taken maths", a.reccomended_action("chemistry", tim))
+
+tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '260'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
 print(a.reccomended_action("chemistry", tim))
+
