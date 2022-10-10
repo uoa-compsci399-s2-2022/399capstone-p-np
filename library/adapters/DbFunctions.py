@@ -431,9 +431,10 @@ majorRequirements.year = 2020;""")
          honours = ?""", (major_type,year, honours))
         dat = a.fetchall()
         if len(dat) > 0:
-
+            #changed to specify points
             if float(done_points) < float(dat[0][0]):
-                return "You need to do more points in general"
+                diff=float(dat[0][0])-float(done_points)
+                return "You need to do % points from any level",diff
 
 
         
