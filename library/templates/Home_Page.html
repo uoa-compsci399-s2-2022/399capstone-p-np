@@ -62,6 +62,19 @@ input[type=submit] {
 .nav{
       scale = 0.75;
 }
+div.recomendedBox{
+     background-color: #ffc680;
+    padding: 10px;
+    border-color: coral;
+    border-style: solid;
+}
+div.WorkingDegreeBox{
+     background-color: #63ff66;
+    padding: 10px;
+    border-color: green;
+    border-style: solid;
+}
+
 </style>
 
 
@@ -70,13 +83,24 @@ input[type=submit] {
     <!-- To be put on the left on the Site Navagation pannel -->
 
     <h2>Degree Planner</h2>
-    <p>{{reqFirstYearZacTest}}</p>
     <form autocomplete="off" action="/" method="POST">
                 <div class="autocomplete" style="width:300px;" onclick="addCourse('{{ Course }}')">
                 <input id="Courses" name="Courses" type="text" name="Degree" placeholder="Major">
                 </div>
                 <input type="Submit">
     </form>
+
+    {% for suggestion in RecomendedAction %}
+        <div class="recomendedBox">
+            {{RecomendedAction[0]}}
+        </div>
+    {% endfor %}
+
+    {% for suggestion in WorkingDegree %}
+        <div class="WorkingDegreeBox">
+            {{WorkingDegree[0]}}
+        </div>
+    {% endfor %}
 
 
     <div id="home_page">
@@ -105,7 +129,7 @@ input[type=submit] {
             </a> -->
         {% endfor %}
             <form action="/Displaybook" method="POST" class="AddCourse">
-                <input type="hidden" class="AddCourse" id="AddCourse" name="AddCourse" value="{{semester[0]}}">
+                <input type="hidden" class="PlusBox" id="PlusBox" name="PlusBox" value="{{semester[0]}}">
                 <button type="submit" class="AddCourse"> <p>+</p></button>
             </form>
         </div>

@@ -58,10 +58,15 @@ def display_book():
             values = req["MultipleSearchTextBox"].split('+')
             search = SearchEngine.searchTool()
             Coordinates = values[2]
-            values = search.return_all_course_information(str(values[0].split()[1]).upper(), str(values[0].split()[0]))
+            values = search.return_all_course_information(str(values[0].split()[0]).upper(), str(values[0].split()[1]))
 
         except:
-            values = setvalues(req)
+            try:
+                values = req["PlusBox"]
+                Coordinates = values
+                values = None
+            except:
+                values = setvalues(req)
 
 
 
@@ -89,10 +94,7 @@ def display_book():
     if Coordinates == "":
 
         Coordinates = home.semesters[0][0]
-        print(Coordinates + " Coordinates")
     data = getCountryesAndCourses()
-
-
     return render_template(
         'Search_for_a_book/Display_book.html',
         books=bookdata.reader_instance,
@@ -151,8 +153,6 @@ def PreviousBook():
 def addBook():
     user=None
     user = authServices.get_whole_user(session['user_name'], repo.repo_instance)
-    print(currentBook)
-    print(type(currentBook))
     user.read_a_book(currentBook)
 
     return redirect(url_for("find_book_bp.display_book"))
@@ -165,7 +165,6 @@ def setvalues(req):
         if ' ' in req["Course"]:
             courseIndex = req["Course"].split(" ")
             CourseData = search.return_all_course_information(courseIndex[0], courseIndex[1])
-            print(CourseData)
             return CourseData
 
         try:
@@ -174,7 +173,6 @@ def setvalues(req):
         except:
             return "Error Course not found"
         courseIndex = search.return_all_course_information(courseIndex[0])
-        print(courseIndex)
 
         return courseIndex
 
