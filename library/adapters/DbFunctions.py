@@ -487,7 +487,7 @@ majorRequirements.year = 2020;""")
             #changed to specify points
             if float(done_points) < float(dat[0][0]):
                 diff=float(dat[0][0])-float(done_points)
-                return "You need to take {0} more points from at Stage 3 from the {1} schedule".format(diff,major_type)
+                return "You need to take {0} more points at Stage 3 from the {1} schedule".format(diff,major_type)
       
     #check if Capstone has been added 
         cap=0
