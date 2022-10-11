@@ -439,7 +439,7 @@ majorRequirements.year = 2020;""")
           
         #checks number of points Stage 2 or Above.
         for x in done_courses:
-            if(x[-3]=="2" OR [-3]=="3"  ):
+            if(x[-3]=="2" or [-3]=="3"  ):
                 done_points += float(self.return_course_points(x[0],x[1]))
         a = self.__cursor.execute("""select 200_LEVEL_POINTS from majorRequirements
         where majorName = ? AND
@@ -475,8 +475,9 @@ majorRequirements.year = 2020;""")
         #checks Major Specific Points at stage 3
         for x in done_courses:
             maj=len(major_type)
-            if(x[-3]=="3" AND x[:maj]==major_type):
-                done_points += float(self.return_course_points(x[0],x[1]))
+            if(x[-3]=="3"):
+                if(x[:maj]==major_type):
+                    done_points += float(self.return_course_points(x[0],x[1]))
         a = self.__cursor.execute("""select 300_LEVEL_POINTS_MAJOR_SPECIFIC from majorRequirements
         where majorName = ? AND
          year = ? AND
