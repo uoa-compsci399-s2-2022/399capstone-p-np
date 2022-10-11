@@ -437,9 +437,9 @@ majorRequirements.year = 2020;""")
                 diff=float(dat[0][0])-float(done_points)
                 return "You need to take {} more points from at Stage 3".format(diff)
           
-        #checks 200 level points done
+        #checks number of points Stage 2 or Above.
         for x in done_courses:
-            if(x[-3]=="2"):
+            if(x[-3]=="2" OR [-3]=="3"  ):
                 done_points += float(self.return_course_points(x[0],x[1]))
         a = self.__cursor.execute("""select 200_LEVEL_POINTS from majorRequirements
         where majorName = ? AND
@@ -451,7 +451,7 @@ majorRequirements.year = 2020;""")
             #changed to specify points
             if float(done_points) < float(dat[0][0]):
                 diff=float(dat[0][0])-float(done_points)
-                return "You need to take {} more points from at Stage 2".format(diff)
+                return "You need to take {} more points from at Stage 2 or Above".format(diff)
              
          
         #Checks total points done
