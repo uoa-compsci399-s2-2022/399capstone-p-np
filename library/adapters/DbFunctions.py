@@ -530,11 +530,13 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         dat = a.fetchall()
 
 
-        #Checks gen ed points, the right shedules needs to be implemented
+        #Checks gen ed points, the right schedule needs to be implemented
         gen_points = 0
+        gen_course=[] 
         for x in done_courses:
             if (x[0],x[1]) in [(x[0],x[1]) for x in dat]:
                 print(x, " is a VALID gened")
+                gen_course.append(x[0],x[1])
                 gen_points += float(self.return_course_points(x[0],x[1]))
 
         a = self.__cursor.execute("""select pointsGenEd from majorRequirements
@@ -548,6 +550,43 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
                 diff=float(dat[0][0])-gen_points
                 return "You need to take {} more points from the Gen Ed Schedule".format(diff)
 
+       #checks that there is at least 3 different subjects from within Science Schedule
+        count=1
+        a = self.__cursor.execute("""major_type from course where subject= ?""", ((major_type))
+        dat = a.fetchall()
+                                 
+        if len(dat)>0:
+            faculty=dat[0]                      
+                                  
+        for x in done_courses:
+            if x[len(major_type)] != major_type:
+                a = self.__cursor.execute("""major_type from course where subject= ?""", (x[len(major_type)])
+                dat = a.fetchall()
+                if len(dat) > 0:
+                    if(faculty == dat[0]):
+                        count+=1   
+            if(count<3):
+                return "You need to take courses in a minimum of three subject codes listed in the BSc Schedule, you are currently only taking {}".format(count)
+                                    
+           #checks 2 or less courses from outside of the Faculty are included in the planner 
+        count=0                                  
+        a = self.__cursor.execute("""major_type from course where subject= ?""", ((major_type))
+        dat = a.fetchall()
+                                 
+        if len(dat)>0:
+            faculty=dat[0]                      
+                                  
+        for x in done_courses:    
+            a = self.__cursor.execute("""major_type from course where subject= ?""", (x[len(major_type)])
+            dat = a.fetchall()
+                if len(dat) > 0:
+                    if(faculty != dat[0]):
+                        count+=1   
+            if(count>2):
+                return"Only 2 out of faculty courses can be included, currently you are taking {}".format(count)                              
+       
+    
+            
 
         return "This degree planner meets all requirements of graduation"
 
