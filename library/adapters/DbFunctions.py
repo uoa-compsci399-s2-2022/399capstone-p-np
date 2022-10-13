@@ -421,11 +421,12 @@ majorRequirements.year = 2020;""")
                     #return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
                     return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
 
-            #checks 300 level points done
+        done_points = 0
+        #checks 300 level points done
         for x in done_courses:
-            if(x[-3]=="3"):
+            if(x[1][-3]=="3"):
                 done_points += float(self.return_course_points(x[0],x[1]))
-        a = self.__cursor.execute("""select 300_LEVEL_POINTS from majorRequirements
+        a = self.__cursor.execute("""select pointsAboveStage2 from majorRequirements
         where majorName = ? AND
          year = ? AND
          honours = ?""", (major_type,year, honours))
@@ -439,9 +440,10 @@ majorRequirements.year = 2020;""")
           
         #checks number of points Stage 2 or Above.
         for x in done_courses:
-            if(x[-3]=="2" or [-3]=="3"  ):
+            print(x,x[1][0])
+            if(x[1][0]=="2" or x[1][0]=="3"):
                 done_points += float(self.return_course_points(x[0],x[1]))
-        a = self.__cursor.execute("""select 200_LEVEL_POINTS from majorRequirements
+        a = self.__cursor.execute("""select pointsAboveStage1 from majorRequirements
         where majorName = ? AND
          year = ? AND
          honours = ?""", (major_type,year, honours))
@@ -449,9 +451,10 @@ majorRequirements.year = 2020;""")
         
         if len(dat) > 0:
             #changed to specify points
+            print(done_points, dat[0][0])
             if float(done_points) < float(dat[0][0]):
                 diff=float(dat[0][0])-float(done_points)
-                return "You need to take {} more points from at Stage 2 or Above".format(diff)
+                return "You need to take {} more points from at Stage 2 or above".format(diff)
              
          
         #Checks total points done
@@ -473,9 +476,9 @@ majorRequirements.year = 2020;""")
 
 
         #checks Major Specific Points at stage 3
-        for x in done_courses:
+        '''for x in done_courses:
             maj=len(major_type)
-            if(x[-3]=="3"):
+            if(x[1][0]=="3"):
                 if(x[:maj]==major_type):
                     done_points += float(self.return_course_points(x[0],x[1]))
         a = self.__cursor.execute("""select 300_LEVEL_POINTS_MAJOR_SPECIFIC from majorRequirements
@@ -488,15 +491,16 @@ majorRequirements.year = 2020;""")
             #changed to specify points
             if float(done_points) < float(dat[0][0]):
                 diff=float(dat[0][0])-float(done_points)
-                return "You need to take {0} more points at Stage 3 from the {1} schedule".format(diff,major_type)
+                return "You need to take {0} more points at Stage 3 from the {1} schedule".format(diff,major_type)'''
       
     #check if Capstone has been added 
         cap=0
         for x in done_courses:
-             maj=len(major_type)
-            if(x[-3:]=="399" AND x[:maj]==major_type):
+            maj=len(major_type)
+            #if(x[-3:]=="399" and x[:maj] == major_type):
+            if(x[-3:]=="399"):
                 cap=1
-         if(cap==0):
+        if(cap==0):
             return "You need to enroll in the Capstone Course for {}".format(major_type)
                 
          
@@ -552,7 +556,7 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
 
        #checks that there is at least 3 different subjects from within Science Schedule
         count=1
-        a = self.__cursor.execute("""major_type from course where subject= ?""", ((major_type))
+        a = self.__cursor.execute("""major_type from course where subject= ?""", (major_type,))
         dat = a.fetchall()
                                  
         if len(dat)>0:
@@ -560,7 +564,7 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
                                   
         for x in done_courses:
             if x[len(major_type)] != major_type:
-                a = self.__cursor.execute("""major_type from course where subject= ?""", (x[len(major_type)])
+                a = self.__cursor.execute("""major_type from course where subject= ?""", (x[len(major_type)],))
                 dat = a.fetchall()
                 if len(dat) > 0:
                     if(faculty == dat[0]):
@@ -568,20 +572,20 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
             if(count<3):
                 return "You need to take courses in a minimum of three subject codes listed in the BSc Schedule, you are currently only taking {}".format(count)
                                     
-           #checks 2 or less courses from outside of the Faculty are included in the planner 
+           #checks 2 orluded in the planner 
         count=0                                  
-        a = self.__cursor.execute("""major_type from course where subject= ?""", ((major_type))
+        a = self.__cursor.execute("""major_type from course where subject= ?""", (major_type),)
         dat = a.fetchall()
                                  
         if len(dat)>0:
             faculty=dat[0]                      
                                   
         for x in done_courses:    
-            a = self.__cursor.execute("""major_type from course where subject= ?""", (x[len(major_type)])
+            a = self.__cursor.execute("""major_type from course where subject= ?""", (x[len(major_type)]),)
             dat = a.fetchall()
-                if len(dat) > 0:
-                    if(faculty != dat[0]):
-                        count+=1   
+            if len(dat) > 0:
+                if(faculty != dat[0]):
+                    count+=1   
             if(count>2):
                 return"Only 2 out of faculty courses can be included, currently you are taking {}".format(count)                              
        
@@ -628,6 +632,7 @@ print("Not taken maths", a.reccomended_action("chemistry", tim))
 tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330")]]
 print("Not taken maths", a.reccomended_action("chemistry", tim))
 
-tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '260'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
+tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '260'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"),
+                                                                                                        ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360"), ('CHEM', '310')]]
 print(a.reccomended_action("chemistry", tim))
 
