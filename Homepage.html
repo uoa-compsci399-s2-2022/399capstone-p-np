@@ -62,51 +62,87 @@ input[type=submit] {
 .nav{
       scale = 0.75;
 }
+div.recomendedBox{
+     background-color: #ffc680;
+    padding: 10px;
+    border-color: coral;
+    border-style: solid;
+}
+div.WorkingDegreeBox{
+     background-color: #63ff66;
+    padding: 10px;
+    border-color: green;
+    border-style: solid;
+}
+
 </style>
-<div class="container">
-      <h2 style="text-align:left;">Search for a Course:</h2>
-      <div class="container">
-          <!--<form action="/Displaybook" method="POST">
-              <label><b>Book Title:</b></label>
-              <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
-              <br>
-              <label><b>Author:</b></label>
-              <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
-              <br>
-              <label><b>Release year:</b></label>
-              <input type="text" class="form-control" id="release_year" name="Release_year" placeholder="Release year">
-              <br>
-              <label><b>Publisher:</b></label>
-              <input type="text" class="form-control" id="Publisher" name="Publisher" placeholder="Publisher">
-              <br>
-              <button type="submit" class="searchButton">Search</button>
 
 
-              <error>{{error}}</error>
-          </form> -->
+
+<main>
+    <!-- To be put on the left on the Site Navagation pannel -->
+
+    <h2>Degree Planner</h2>
+  <form autocomplete="off" action="/" method="POST">
+                 <div class="autocomplete" style="width:300px;" onclick="addCourse('{{ Course }}')">
+                 <input id="Courses" name="Courses" type="text" name="Degree" placeholder="Major">
+   <input id="Courses" name="Courses" type="text" name="Degree" placeholder="Second Major">          
+   <label for="cars">Year Commenced</label>
+   <select name="year" id="year">
+     <option value="2019">2019</option>
+   </select>
+   <br><br>
+   <input type="submit" value="Submit">
+ </form>
+	
+
+    {% for suggestion in RecomendedAction %}
+        <div class="recomendedBox">
+            {{RecomendedAction[0]}}
+        </div>
+    {% endfor %}
+
+    {% for suggestion in WorkingDegree %}
+        <div class="WorkingDegreeBox">
+            {{WorkingDegree[0]}}
+        </div>
+    {% endfor %}
 
 
-          <form autocomplete="off" action="/Displaybook" method="POST">
-                <div class="autocomplete" style="width:300px;" onclick="addCourse('{{ Course }}')">
-                <input id="Courses" type="text" name="Degree" placeholder="Faculty">
-                </div>
-                <br>
-                <div class="autocomplete" style="width:300px;" onclick="addCountries('{{ countries }}');">
-                <input id="Degree" type="text" name="Course" placeholder="Course">
-                </div>
-                <br>
-                <div class="autocomplete" style="width:300px;" onclick="addYear('{{ year }}')">
-                <input id="Year" type="text" name="year" placeholder="Year">
-                </div>
-                <br>
-                <div class="autocomplete" style="width:300px;" onclick="addSemester('{{ Semester }}')">
-                <input id="Semester" type="text" name="Semester" placeholder="Semester">
-                </div>
-                <input type="submit">
-          </form>
+    <div id="home_page">
+        <h4>Plan your degree with the University of Auckland</h4>
+        <p>To add a course to a semester click on the plus sign of the semester that you want to add a course to.</p>
+        <p>To edit your course selection click on the course you would like to change.</p>
+    </div>
 
-      </div>
-</div>
+
+
+    <div id="MainCourseBox">
+    {% for semester in semesters %}
+        <div id="Semester">
+            <p>{{semester[0]}}</p>
+        {% for course in semester[1:] %}
+            <form action="/Displaybook" method="POST" class="course-buttin">
+                <input type="hidden" class="form-control" id="MultipleSearchTextBox" name="MultipleSearchTextBox" value="{{course[0]}}+{{semester[0]}}+{{semester[0]}}">
+                <button type="submit" class="course-buttin"> <p>Course: {{course[0]}}</p>
+                <p>Requirements: {{course[1]}}</p> </button>
+            </form>
+
+            <!--
+            <a class="btn-nav" id="Course" href="{{ url_for('find_book_bp.find_book') }}">
+                <p>Course: {{course[0]}}</p>
+                <p>Requirements: {{course[1]}}</p>
+            </a> -->
+        {% endfor %}
+            <form action="/Displaybook" method="POST" class="AddCourse">
+                <input type="hidden" class="PlusBox" id="PlusBox" name="PlusBox" value="{{semester[0]}}">
+                <button type="submit" class="AddCourse"> <p>+</p></button>
+            </form>
+        </div>
+    {% endfor %}
+    </div>
+</main>
+
 
 <script>
 
@@ -147,10 +183,7 @@ function autocomplete(inp, arr) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
               /*###############################       ---   My Janky code     ---   ###########################*/
-              if(inp != document.getElementById("Degree"))
-              {
-              document.getElementById("Degree").value = document.getElementById("Courses").value + " ";
-              }
+
 
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
@@ -253,8 +286,5 @@ var event = new Event('input', {
       document.getElementById("Degree").dispatchEvent(event);
 }
 </script>
-
-{% block Display%}
-{% endblock%}
 
 {% endblock %}
