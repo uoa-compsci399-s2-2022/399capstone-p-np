@@ -11,24 +11,27 @@
 </style>
 
 <div id="Displaybook">
-
+    {% for review in reviews %}
     <br>
-    <h1>{{ title }}</h1>
-    <h2>{{semestersOffered}}</h2>
-    <h3>Number of points offered: </h3><b><p>{{ numberOfPoints }}</b></p>
-    <h3>Description: </h3><p>{{ discription }}</p>
-    <h3>Requirements: </h3><p>{{ requirements }}</p>
-    <pRed>{{error}}</pRed>
+    <br>
+    <br>
+    <h1>{{ review[0] }}</h1>
+    <h2>{{review[1]}}</h2>
+    <h3>Number of points offered: </h3><b><p>{{ review[2] }}</b></p>
+    <h3>Description: </h3><p>{{ review[3]}}</p>
+    <h3>Requirements: </h3><p>{{ review[4]}}</p>
+
     <div>
     <form autocomplete="off" action="/" method="POST" class="addRemoveButtons">
-        <input type="hidden" class="form-control" id="MultipleSearchTextBox" name="MultipleSearchTextBox" value="{{title}}+{{Coordinates}}">
+        <input type="hidden" class="form-control" id="MultipleSearchTextBox" name="MultipleSearchTextBox" value="{{review[0]}}+{{review[5]}}">
         <input type="submit" value=" Add " class="inline">
     </form>
         </div><div>
     <form autocomplete="off" action="/" method="POST" class="addRemoveButtons">
-        <input type="hidden" class="form-control" id="DESTROY" name="DESTROY" value="{{title}}+{{Coordinates}}">
+        <input type="hidden" class="form-control" id="DESTROY" name="DESTROY" value="{{review[0]}}+{{review[5]}}">
         <input type="submit" value="Remove">
     </form></div>
+    {% endfor %}
 </div>
 
 {% endblock%}

@@ -113,7 +113,6 @@ class searchTool:
 
         problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
 
-        print(problems_with_course)
         return (problems_with_course)
 
     def worst_problems_with_course(self, courseName, courseNumber, timetable):
@@ -153,8 +152,6 @@ class searchTool:
         probs = []
         for sem in timetable:
             new_timetable.append(sem)
-            probs.append([[course[0]+ " " + str(course[1]), self.worst_problems_with_course(course[0],course[1], new_timetable),self.return_isolated_problems_with_course( course[0],  course[1]) ] for course in sem])
-            print(probs)
         return probs
 
     def will_graduate_depreciated(self, timetable, majorname):
@@ -183,7 +180,6 @@ majorRequirements.year = 2020;""")
                     major_groups[x[0]][1] = major_groups[x[0]][1] + x[5]
 
         for x in major_groups:
-            print(major_groups[x][0],  major_groups[x][1])
             if float(major_groups[x][0]) > major_groups[x][1]:
                 return False
 
@@ -291,7 +287,6 @@ majorRequirements.year = 2020;""")
             totalpoints = x[0]
             done_points = 0
             for course in x[1]:
-                print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
                 if course in done_courses:
                     done_points += self.points_from(course[0], course[1])
 
@@ -331,7 +326,6 @@ majorRequirements.year = 2020;""")
             totalpoints = x[0]
             done_points = 0
             for course in x[1]:
-                #print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
                 if course in done_courses:
                     done_points += self.points_from(course[0], course[1])
 
@@ -374,7 +368,6 @@ majorRequirements.year = 2020;""")
             totalpoints = x[0]
             done_points = 0
             for course in x[1]:
-                print(course[0], course[1],self.points_from(course[0], course[1]), course in done_courses, done_points)
                 temp_group.append((course[0], course[1]))
                 if course in done_courses:
                     done_points += self.points_from(course[0], course[1])
@@ -384,8 +377,6 @@ majorRequirements.year = 2020;""")
         return totake
 
     def reccomended_action(self, major_type, timetable, year = "2020", honours = "0"):
-        print(timetable)
-        print("timetable")
         done_courses = []
         for semester in timetable:
             for course in semester:
@@ -400,9 +391,6 @@ majorRequirements.year = 2020;""")
 
         #Checks required courses
         req_grad = self.required_courses_to_graduate(major_type,"2020")
-        print("required courses print below")
-        print(req_grad)
-        print(done_courses)
         if req_grad != []:
             for x in req_grad:
                 if x not in done_courses:
@@ -415,9 +403,6 @@ majorRequirements.year = 2020;""")
         if req_grad != []:
             for x in might_take:
                 if x not in done_courses:
-                    print(x)
-                    print(done_courses)
-                    print("this is the check")
                     return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
                     return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
 

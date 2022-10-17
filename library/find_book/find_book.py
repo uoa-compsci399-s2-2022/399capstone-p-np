@@ -45,6 +45,8 @@ def find_book():
 
 @find_book_blueprint.route('/Displaybook', methods=['GET', 'POST'])
 def display_book():
+    global found_book_errors
+    found_book_errors = ""
     global currentBookValues
     global currentBook
     values = ''
@@ -55,12 +57,14 @@ def display_book():
         req = request.form
 
         try:
+            #we clicked on one
             values = req["MultipleSearchTextBox"].split('+')
             search = SearchEngine.searchTool()
             Coordinates = values[2]
             values = search.return_all_course_information(str(values[0].split()[0]).upper(), str(values[0].split()[1]))
 
         except:
+            #were serching for one
             try:
                 values = req["PlusBox"]
                 Coordinates = values
@@ -78,22 +82,11 @@ def display_book():
             form_data = values
             return redirect(url_for('find_book_bp.display_books'))
 
-    title = values[0] + " " + values[1]
-    numberOfPoints = values[3]
-    semestersOffered = values[2]
-    discription = values[7]
-    requirements = values[8]
-    error = ""
-    if(values == "Error Course not found"):
-        title = ""
-        numberOfPoints = ""
-        semestersOffered = ""
-        discription = ""
-        requirements = ""
-        error = values
     if Coordinates == "":
-
         Coordinates = home.semesters[0][0]
+
+    record = getCourseArray(values)
+
     data = getCountryesAndCourses()
     return render_template(
         'Search_for_a_book/Display_book.html',
@@ -101,20 +94,38 @@ def display_book():
         home_url=url_for('home_bp.home'),
         find_book=url_for('find_book_bp.find_book'),
 
-        title = title,
-        numberOfPoints = numberOfPoints,
-        semestersOffered = semestersOffered,
-        discription = discription,
-        requirements=requirements,
-        error = error,
-
-        Coordinates=Coordinates,
+        reviews = record,
 
         countries = data[1],
         Semester = data[2],
         year = data[3],
-        Course = data[4]
+        Course = data[4],
+
+        found_book_errors = found_book_errors
     )
+
+def getCourseArray(item):
+    bucket = []
+    for values in item:
+        title = values[0] + " " + values[1]
+        numberOfPoints = values[3]
+        semestersOffered = values[2]
+        discription = values[7]
+        requirements = values[8]
+        error = ""
+        if (values == "Error Course not found"):
+            title = ""
+            numberOfPoints = ""
+            semestersOffered = ""
+            discription = ""
+            requirements = ""
+            error = values
+
+
+        bucket.append([title, semestersOffered, numberOfPoints, discription, requirements, Coordinates])
+    print(bucket[0])
+    return bucket
+
 
 @find_book_blueprint.route('/Displaybooks', methods=['GET', 'POST'])
 def display_books():
@@ -161,11 +172,22 @@ def addBook():
 def setvalues(req):
     global found_book_errors
     search = SearchEngine.searchTool()
+
+    if req["Degree"] != "":
+        CoruseData = []
+        courseInfo = search.return_all_courses()
+        for item in courseInfo:
+            if item[0] == req["Degree"]:
+                CoruseData.append(search.return_all_course_information(item[0], item[1]))
+        print(CoruseData)
+        return CoruseData
+
     if req["Course"] != "":
         if ' ' in req["Course"]:
             courseIndex = req["Course"].split(" ")
             CourseData = search.return_all_course_information(courseIndex[0], courseIndex[1])
-            return CourseData
+
+            return [CourseData]
 
         try:
             courseIndex = req["Course"].split(" ")
@@ -174,42 +196,10 @@ def setvalues(req):
             return "Error Course not found"
         courseIndex = search.return_all_course_information(courseIndex[0])
 
-        return courseIndex
+        return [courseIndex]
 
-    if req["Author"] != "":
-        found_books = repo.repositoryInstance.data.search_book_by_author(req["Author"])
 
-        if (len(found_books) == 0):
-            found_book_errors = "We couldn't find a book that matches your search please try again."
-            return None
-        if (len(found_books) == 1):
-            return display_one_book(found_books[0])
-        return found_books
 
-    if req["Publisher"] != "":
-        found_books = repo.repositoryInstance.data.search_book_by_publishers(req["Publisher"])
-
-        if (len(found_books) == 0):
-            found_book_errors = "We couldn't find a book that matches your search please try again."
-            return None
-        if (len(found_books) == 1):
-            return display_one_book(found_books[0])
-        return found_books
-
-    if req["Release_year"] != "":
-        try:
-            year = int(req["Release_year"])
-        except:
-            found_book_errors = "Please enter a number."
-            return None
-        found_books = repo.repositoryInstance.data.search_book_by_release_year(year)
-
-        if (len(found_books) == 0):
-            found_book_errors = "We couldn't find a book that matches your search please try again."
-            return None
-        if (len(found_books) == 1):
-            return display_one_book(found_books[0])
-        return found_books
 
     found_book_errors = "Please enter a value."
     return None

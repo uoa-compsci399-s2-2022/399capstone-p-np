@@ -82,7 +82,7 @@ input[type=submit] {
               <button type="submit" class="searchButton">Search</button>
 
 
-              <error>{{error}}</error>
+
           </form> -->
 
 
@@ -98,13 +98,9 @@ input[type=submit] {
                 <div class="autocomplete" style="width:300px;" onclick="addYear('{{ year }}')">
                 <input id="Year" type="text" name="year" placeholder="Year">
                 </div>
-                <br>
-                <div class="autocomplete" style="width:300px;" onclick="addSemester('{{ Semester }}')">
-                <input id="Semester" type="text" name="Semester" placeholder="Semester">
-                </div>
                 <input type="submit">
           </form>
-
+            <error>{{found_book_errors}}</error>
       </div>
 </div>
 

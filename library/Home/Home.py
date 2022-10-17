@@ -28,15 +28,12 @@ def home():
     WorkingDegree = []
     Databaseaccess = SearchEngine.searchTool()
     Magor = str(Databaseaccess.return_all_majorNames())
-    # print(countries)
     Magor = Magor[2:len(Magor) - 2]
     Magor = re.sub(r"[\'\,]", '', Magor)
     Magor = Magor.replace("', ' ", '')
-    print(Magor)
 
 
 
-    print("############################################33")
     reqFirstYearZacTest = Databaseaccess.required_100_level_courses_to_graduate("computer-science")
 
     if request.method == "POST":
@@ -74,13 +71,9 @@ def home():
 
 
         for item in semesters:
-            print(item[0] + " compared with " + formOutput.split("+")[1])
             if item[0] == formOutput.split("+")[1]:
                 search = SearchEngine.searchTool()
-                print(formOutput.split("+")[1].split(" ")[0].upper())
                 searchResult = search.return_all_course_information(formOutput.split("+")[0].split(" ")[0].upper(), formOutput.split("+")[0].split(" ")[1])
-                print(searchResult)
-                print(formOutput.split("+")[0])
                 CourseName = formOutput.split("+")[0]
                 CourseName = CourseName.split(" ")[0] + " " + CourseName.split(" ")[1]
                 if destroy:
@@ -150,12 +143,10 @@ def addSemesterToCourse(DataBaseAccess, year, DisplayYear):
     semesters.append(courses)
 
 def StripSemestersOfTitleFluff(semesters):
-    print(semesters)
     cleanSemesters = []
     for item in semesters:
         semester = []
         for course in item[1:]:
             semester.append((course[0].split(" ")[0], course[0].split(" ")[1]))
-            print(semester)
         cleanSemesters.append(semester)
     return cleanSemesters
