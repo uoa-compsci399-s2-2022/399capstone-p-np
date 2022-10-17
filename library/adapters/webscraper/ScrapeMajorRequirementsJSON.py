@@ -92,7 +92,6 @@ def getMajorReq(url):
             if len(courses) != 1:
                 courses = []
         if re.search("[a-z]+.*[A-Z][A-Z][A-Z]*\s[0-9][0-9][0-9].*", text):
-            courses.append("Manual entry required")
             courses.append(text)
         elif re.search("[A-Z][A-Z][A-Z]*\s[0-9][0-9][0-9].*", text) != None:
             a = text.split()[:2]
@@ -109,7 +108,7 @@ def getMajorReq(url):
                 for courseNumber in courseNumbers:
                     courses.append([a[0], ''.join(courseNumber)])
             else:
-                courses.append(text.split()[:2])
+                courses.append([text.split()[0], text.split()[1].strip(',')])
     if len(courses) > 1:
         reqs.append(courses)
     return (major,reqs[1:])
@@ -124,8 +123,17 @@ for link in links:
         for section_link_2 in getSectionLinks(section_link):
             print(section_link_2)
             major = getMajorReq(section_link_2)
-            majors.append(major)
+            majors.append(major) 
             print(major)
+
+
+
+
+double_major = [[[majors[1][0][0][0]+ '-'+ majors[2][0][0][0], 'undergraduate', 'from-2019']] ,majors[1][1] + majors[2][1]]
+majors.append(double_major)
+
+
+
 
 json_data = json.dumps(majors, indent = 4)
 with open("major_reqs.json", "w") as outfile:
