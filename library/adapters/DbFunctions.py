@@ -403,7 +403,7 @@ majorRequirements.year = 2020;""")
         if req_grad != []:
             for x in might_take:
                 if x not in done_courses:
-                    return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
+                    #return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
                     return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
 
         #Checks total points done
