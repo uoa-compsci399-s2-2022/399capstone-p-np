@@ -74,6 +74,8 @@ def home():
             if item[0] == formOutput.split("+")[1]:
                 search = SearchEngine.searchTool()
                 searchResult = search.return_all_course_information(formOutput.split("+")[0].split(" ")[0].upper(), formOutput.split("+")[0].split(" ")[1])
+                print(searchResult)
+                print(formOutput.split("+")[0].split(" ")[1].upper() + formOutput.split("+")[0].split(" ")[0])
                 CourseName = formOutput.split("+")[0]
                 CourseName = CourseName.split(" ")[0] + " " + CourseName.split(" ")[1]
                 if destroy:

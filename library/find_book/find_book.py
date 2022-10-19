@@ -61,7 +61,7 @@ def display_book():
             values = req["MultipleSearchTextBox"].split('+')
             search = SearchEngine.searchTool()
             Coordinates = values[2]
-            values = search.return_all_course_information(str(values[0].split()[0]).upper(), str(values[0].split()[1]))
+            values = [search.return_all_course_information(str(values[0].split()[0]).upper(), str(values[0].split()[1]))]
 
         except:
             #were serching for one
@@ -85,6 +85,7 @@ def display_book():
     if Coordinates == "":
         Coordinates = home.semesters[0][0]
 
+    print(values)
     record = getCourseArray(values)
 
     data = getCountryesAndCourses()
@@ -106,6 +107,7 @@ def display_book():
 
 def getCourseArray(item):
     bucket = []
+    print(item)
     for values in item:
         title = values[0] + " " + values[1]
         numberOfPoints = values[3]
