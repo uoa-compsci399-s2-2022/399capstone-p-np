@@ -3,6 +3,14 @@ from typing import List
 
 from library.domain.model import Publisher, Author, Book
 
+
+
+
+
+####################        Depreciated not used anymore but good referance of how it should be done    ####################
+
+
+
 reader_instance = None
 
 class BooksJSONReader:

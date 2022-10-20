@@ -2,6 +2,8 @@ from datetime import date, datetime
 from typing import List, Iterable
 
 
+####################        Depreciated not used anymore but good referance of how it should be done    ####################
+
 class User:
     def __init__(self, user_name: str, password: str):
         if user_name == "" or not isinstance(user_name, str):

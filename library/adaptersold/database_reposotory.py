@@ -11,6 +11,8 @@ from library.domain.model import User, Book, Author, Publisher
 from library.adapters.repository import AbstractRepository
 
 #testing push to main
+
+####################        Depreciated not used anymore but good referance of how it should be done    ####################
 class SessionContextManager:
     def __init__(self, session_factory):
         self.__session_factory = session_factory

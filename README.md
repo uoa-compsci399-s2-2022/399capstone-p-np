@@ -1,7 +1,9 @@
 # Capstone for Bachelor of Computer science course 399
+# Degree planner for the University of Auckland
 
 
 ## Description
+This website allwes students to plan out their degrees so that they will know with resonable certanty that their courses will allow them to graduate and no conflicts or requirements within the courses or their degree aren't met for example forgetting to do their gen ed's.
 
 This website is written in Python for the backend interfasing the database and GUI, Sql is used to get data from the 
 database, we use HTML and CSS to create the website pages and these have some Java in them to create the dynamic interfaces.
@@ -39,3 +41,19 @@ http://localhost:5000/
 
 We have collected the data from 
 (https://www.calendar.auckland.ac.nz/en/courses/faculty-of-science/chemistry.html). We had to use a web scraper to collect all the data and we are unable to determine what courses are still running but have made it update every year so when the courses change the database is automaticly updated
+
+## Future ideas
+
+To expand upon this website we think that adding a drag and drop system would be ideal to allow users to shift what year a course is in. 
+
+We also think that the data entry is slow and tedious and that a faster way of entering data would be good however we're unsure how to implement this.
+
+Internaly we think that the way data is passed from the GUI to the python isn't correct and needs revisment
+
+We also think that the database's naming and primary key structure needs to be redone and making every course have a number and a degree seperate from each other isn't efficient and has coused many issues and will continue to do so until revised. Although the cost to do that is probably more than the cost to deal with the issues that it generates.
+
+
+## Acknowledgements
+We used the base code from the 235 software devalopment methodologies course.
+We also acknowledge the use of team-frogs assignment 2 website where we grabed large amounts of code and adapted them to this project
+

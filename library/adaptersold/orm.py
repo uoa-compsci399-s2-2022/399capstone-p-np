@@ -6,6 +6,14 @@ from sqlalchemy.orm import mapper, relationship, synonym
 
 from library.domain import model
 
+
+
+
+####################        Depreciated not used anymore but good referance of how it should be done    ####################
+
+
+
+
 # global variable giving access to the MetaData (schema) information of the database
 metadata = MetaData()
 

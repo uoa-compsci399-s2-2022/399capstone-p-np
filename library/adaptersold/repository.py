@@ -15,6 +15,9 @@ from werkzeug.security import generate_password_hash
 repositoryInstance = None
 
 
+####################        Depreciated not used anymore but good referance of how it should be done    ####################
+
+
 class RepositoryException(Exception):
     def __init__(self, message=None):
         pass

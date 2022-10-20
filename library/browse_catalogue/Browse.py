@@ -1,6 +1,16 @@
 from flask import Blueprint
 
 from flask import render_template, redirect, url_for
+
+
+
+
+
+
+####################        Depreciated not used anymore but good referance of how it should be done    ####################
+
+
+
 #import library.adapters.database as database
 import library.adaptersold.repository as repo
 browse_blueprint = Blueprint(
@@ -9,9 +19,10 @@ found_book_errors = ""
 displayBookIndex = 0
 
 
-
+#Displays multiple courses on one page
 @browse_blueprint.route('/browse', methods=['GET', 'POST'])
 def browse():
+    #Initalizing variables and getting data for the page
     global found_book_errors
     global displayBookIndex
     error = found_book_errors
@@ -23,7 +34,7 @@ def browse():
     NumberOfBooksPerPage = 5
     print(type(book_library))
 
-
+    #If number of courses exceeds x create new page
     data = bookList
     if (len(bookList) > NumberOfBooksPerPage):
         data = []
@@ -46,6 +57,7 @@ def browse():
     )
     pass
 
+#Next button on Browse
 @browse_blueprint.route('/NextBookCatalogue', methods=['GET', 'POST'])
 def NextBookCatalogue():
     global displayBookIndex
@@ -54,7 +66,7 @@ def NextBookCatalogue():
         displayBookIndex += 1
     return redirect(url_for("browse_bp.browse"))
 
-
+#Previous button on Browse
 @browse_blueprint.route('/PreviousBookCatalogue', methods=['GET', 'POST'])
 def PreviousBookCatalogue():
     global displayBookIndex

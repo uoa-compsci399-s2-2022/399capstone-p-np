@@ -16,6 +16,8 @@ find_book_blueprint = Blueprint(
     'find_book_bp', __name__
 )
 
+
+#list of global variables that will persist between page loading
 found_book_errors = ""
 form_data = None
 currentBookValues = ("","","","","","","","","")
@@ -23,6 +25,7 @@ currentBook = ""
 displayBookIndex = 0;
 Coordinates = ""
 
+#basic search page that doesn't show any additional information than the search bar
 @find_book_blueprint.route('/search', methods=['GET', 'POST'])
 def find_book():
     #print(course)
@@ -42,7 +45,7 @@ def find_book():
     pass
 
 
-
+#Displays the search bar and handles inputs like a search and the add remove buttons
 @find_book_blueprint.route('/Displaybook', methods=['GET', 'POST'])
 def display_book():
     global found_book_errors
@@ -51,41 +54,48 @@ def display_book():
     global currentBook
     values = ''
     global Coordinates
+
+    #if a button took us here (Add remove search or home page course click)
     if request.method == "POST":
         global displayBookIndex
         displayBookIndex = 0
         req = request.form
 
         try:
-            #we clicked on one
+            #we hit submit on the search bar
             values = req["MultipleSearchTextBox"].split('+')
             search = SearchEngine.searchTool()
             Coordinates = values[2]
             values = [search.return_all_course_information(str(values[0].split()[0]).upper(), str(values[0].split()[1]))]
 
         except:
-            #were serching for one
+            #we clicked on the plus on the home screen
             try:
                 values = req["PlusBox"]
                 Coordinates = values
                 values = None
             except:
+                #we clicked on a course on the home screen
                 values = setvalues(req)
 
 
-
+        #if we didn't get passed a value don't do anything
         if(values == None):
             return redirect(url_for('find_book_bp.find_book'))
 
+        #if there are multiple courses returned display multiple courses
         if isinstance(values[0], list):
             global form_data
             form_data = values
             return redirect(url_for('find_book_bp.display_books'))
 
+    #Sets coordinates in the semester array to be displayed on the home screen
     if Coordinates == "":
         Coordinates = home.semesters[0][0]
 
     print(values)
+
+    #converts values to an array that is then able to be looped over in java
     record = getCourseArray(values)
 
     data = getCountryesAndCourses()
@@ -105,6 +115,7 @@ def display_book():
         found_book_errors = found_book_errors
     )
 
+#returns an array of courses that can be looped over in java in the home page
 def getCourseArray(item):
     bucket = []
     print(item)
@@ -170,13 +181,17 @@ def addBook():
 
     return redirect(url_for("find_book_bp.display_book"))
 
-
+#calls functions that preform the search algorithm
 def setvalues(req):
     global found_book_errors
     search = SearchEngine.searchTool()
 
-    if req["Degree"] != "" and req["Course"] == req["Degree"]:
+
+
+    #if the faculty search is filled and they didn't enter a spesific course return all courses that match
+    if req["Degree"] != "" and str(req["Course"].strip()) in str(req["Degree"]):
         CoruseData = []
+        print(req["Degree"] + "data")
         courseInfo = search.return_all_courses()
         for item in courseInfo:
             if item[0] == req["Degree"]:
@@ -184,12 +199,12 @@ def setvalues(req):
         print(CoruseData)
         return CoruseData
 
+    #if the course search is for a spesific course just return that one
     if req["Course"] != "":
         if ' ' in req["Course"]:
             courseIndex = req["Course"].split(" ")
             CourseData = search.return_all_course_information(courseIndex[0], courseIndex[1])
             print(CourseData)
-
             return [CourseData]
 
         try:
@@ -306,8 +321,10 @@ class ReviewForm(FlaskForm):
     book_id = HiddenField("Book id")
     submit = SubmitField('Submit')
 
+#this converts the sql return value into the format that the home page needs to return the data and splits the name
+#into the faculty and the course number due to the way that we have addressed it
 def getCountryesAndCourses():
-
+    # it cleans the array returned as a string into a string that can then be displayed directly on the screen
     search = SearchEngine.searchTool()
     global found_book_errors
     countries = str(search.return_all_courses())
@@ -315,9 +332,7 @@ def getCountryesAndCourses():
     countries = countries[3:len(countries)-3]
     countries = re.sub(r"[\'\,]", '', countries)
     countries = countries.replace("', ' ", '')
-    #print(countries)
-    #print(countries)
-    #countries = "pears"
+
     error = found_book_errors
     found_book_errors = ""
     semester = "1, 2"
@@ -325,6 +340,8 @@ def getCountryesAndCourses():
     count = 0
     course = ""
     falseflag = False
+
+    #removes spaces from every second word
     while count < len(countries):
         if countries[count] == " ":
             falseflag = not falseflag
