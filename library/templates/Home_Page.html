@@ -75,6 +75,29 @@ div.WorkingDegreeBox{
     border-style: solid;
 }
 
+#Download {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #2f3c7a;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+#Download:hover {background-color: #475ab8}
+
+#Download:active {
+  background-color: #657ef7;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 </style>
 
 
@@ -109,7 +132,7 @@ div.WorkingDegreeBox{
         <p>To edit your choice of course click your course from the list of added courses and change it to the course you want.</p>
     </div>
 
-
+    <a href="/static/DegreePlanner.txt" id="Download" download>Click Here to download your courses</a>
 
     <div id="MainCourseBox">
     {% for semester in semesters %}

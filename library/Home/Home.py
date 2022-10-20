@@ -11,13 +11,13 @@ import library.domain.model as model
 import library.find_book.find_book as findbook
 import datetime
 import re
+import csv
+import os
 
 home_blueprint = Blueprint(
     'home_bp', __name__
 )
-semesters = [["2020 Semester 1",["110 COMPSCI", "3 courses at 3rd level"], ["120 COMPSCI", "215 COMPSCI"], ["315 COMPSCI", "215 COMPSCI"],["399 COMPSCI", "3 courses at 3rd level"], ["315 COMPSCI", "215 COMPSCI"], ["315 COMPSCI", "215 COMPSCI"], ["315 COMPSCI", "215 COMPSCI"]],
-                 ["2020 Semester 2",["230 Compsci", "120 Compsci"]],
-                 ["2021 Semester 1",["210 Compsci", "130 Compsci"]]]
+semesters = []
 
 MagorSelected = ""
 
@@ -31,14 +31,15 @@ def home():
     Magor = Magor[2:len(Magor) - 2]
     Magor = re.sub(r"[\'\,]", '', Magor)
     Magor = Magor.replace("', ' ", '')
-
-
+    UpdateDegreePlanner()
 
     reqFirstYearZacTest = Databaseaccess.required_100_level_courses_to_graduate("computer-science")
 
     if request.method == "POST":
         req = request.form
         destroy = False
+
+
         try:
             formOutput = req["MultipleSearchTextBox"]
         except:
@@ -86,7 +87,7 @@ def home():
 
 
                 else:
-                    item.append([CourseName, searchResult[11]])
+                    item.append([CourseName, searchResult[8]])
 
     RecomendedAction = []
     if MagorSelected != "":
@@ -136,6 +137,8 @@ def autofillCoursesWithRequirements(values):
     addSemesterToCourse(DataBaseAccess, year2, DisplayYear + 1)
     addSemesterToCourse(DataBaseAccess, year3, DisplayYear + 2)
 
+    UpdateDegreePlanner()
+
 
 def addSemesterToCourse(DataBaseAccess, year, DisplayYear):
     courses = [str(DisplayYear)]
@@ -143,6 +146,7 @@ def addSemesterToCourse(DataBaseAccess, year, DisplayYear):
         courseData = DataBaseAccess.return_all_course_information(item[0], item[1])
         courses.append([courseData[0] + " " + courseData[1], courseData[8]])
     semesters.append(courses)
+    UpdateDegreePlanner()
 
 def StripSemestersOfTitleFluff(semesters):
     cleanSemesters = []
@@ -151,4 +155,20 @@ def StripSemestersOfTitleFluff(semesters):
         for course in item[1:]:
             semester.append((course[0].split(" ")[0], course[0].split(" ")[1]))
         cleanSemesters.append(semester)
+    UpdateDegreePlanner()
     return cleanSemesters
+
+def UpdateDegreePlanner():
+    ROOT_DIR = os.path.abspath(os.curdir)
+
+    f = open(ROOT_DIR + '\\library\\static\\DegreePlanner.txt', 'w+')
+    f.write(MagorSelected + "\n")
+    for year in semesters:
+        f.write(year[0] + "\n")
+        bucket = ""
+        for course in year:
+            if course[0][0] == "2":
+                continue
+            bucket+= " " + course[0]
+        f.write(bucket + "\n")
+    f.close()

@@ -175,7 +175,7 @@ def setvalues(req):
     global found_book_errors
     search = SearchEngine.searchTool()
 
-    if req["Degree"] != "":
+    if req["Degree"] != "" and req["Course"] == req["Degree"]:
         CoruseData = []
         courseInfo = search.return_all_courses()
         for item in courseInfo:
@@ -188,6 +188,7 @@ def setvalues(req):
         if ' ' in req["Course"]:
             courseIndex = req["Course"].split(" ")
             CourseData = search.return_all_course_information(courseIndex[0], courseIndex[1])
+            print(CourseData)
 
             return [CourseData]
 
@@ -320,7 +321,7 @@ def getCountryesAndCourses():
     error = found_book_errors
     found_book_errors = ""
     semester = "1, 2"
-    year = "2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025"
+    year = "2020, 2021, 2022, 2023"
     count = 0
     course = ""
     falseflag = False
