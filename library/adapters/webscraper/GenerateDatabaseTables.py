@@ -121,7 +121,7 @@ CREATE TABLE "preReq" (
     "preReqNumber"    CHAR NOT NULL,
     "subject"    CHAR NOT NULL,
     "courseNumber"    CHAR NOT NULL,
-    PRIMARY KEY("subject","courseNumber","subject","courseNumber"),
+    PRIMARY KEY("subject","courseNumber","preReqSubject","preReqNumber"),
     FOREIGN KEY("preReqSubject","preReqNumber") REFERENCES "course"("subject","courseNumber"),
     FOREIGN KEY("subject","courseNumber") REFERENCES "course"("subject","courseNumber")
 );""")
