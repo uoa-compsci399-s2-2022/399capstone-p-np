@@ -87,46 +87,18 @@ class searchTool:
         else:
             return 0
 
-    def problems_with_course(self, courseName, courseNumber, timetable):
-        #the timetable is given as a list of all subjects done in (y1S1, y1S2, y2s1, y2s2)
-        timetable = []
-        done_courses = []
-        doing = []
-        for sem in timetable:
-            if (courseName, courseNumber) not in sem:
-                for course in sem:
-                    timetable.append(course)
-            else:
-                doing = sem
-                exit
-
-        problems_with_course = {}
-
-        a = self.__cursor.execute("select * from preReq where preReqSubject = ? and preReqNumber = ?", (courseName, courseNumber))
-        problems_with_course.update({"prereqs" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in done_courses]})
-
-        a = self.__cursor.execute("select * from restriction where restrictionSubject = ? and restrictionNumber = ?", (courseName, courseNumber))
-        problems_with_course.update({"restrictions" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) in done_courses or (x[2],x[3]) in doing]})
-
-        a = self.__cursor.execute("select * from corequisite where corequisiteSubject = ? and corequisiteNumber = ?", (courseName, courseNumber))
-        problems_with_course.update({"corequisite" : [(x[2],x[3]) for x in a.fetchall() if (x[2],x[3]) not in doing]})
-
-        problems_with_course.update({"other_problems": self.return_isolated_problems_with_course(courseName, courseNumber)})
-
-        return (problems_with_course)
-
     def worst_problems_with_course(self, courseName, courseNumber, timetable):
         done_courses = []
         doing = []
-        for semester in timetable:
-
-            if (courseName, courseNumber) not in semester:
-                for course in semester:
-                    done_courses.append(course)
-            else:
-                for course in semester:
-
-                    doing.append(course)
+        fin = True
+        for year in timetable:
+            for course in year:
+                if (courseName, courseNumber) in year:
+                    doing = year
+                    done_courses = done_courses + year
+                    fin = False
+                if fin:
+                    done_courses.append(course)   
 
         a = self.__cursor.execute("select * from preReq where subject = ? and courseNumber = ?", (courseName, courseNumber))
         res = [(x[0],str(x[1])) for x in a.fetchall()]
@@ -149,9 +121,12 @@ class searchTool:
 
     def problems_with_timetable(self, timetable):
         new_timetable = []
-        probs = []
-        for sem in timetable:
-            new_timetable.append(sem)
+        probs = ""
+        for year in timetable:
+            new_timetable.append(year)
+            for course in year:
+                if self.worst_problems_with_course(course[0], course[1], new_timetable) != "":
+                    probs = self.worst_problems_with_course(course[0], course[1], new_timetable)
         return probs
 
     def will_graduate_depreciated(self, timetable, majorname):
@@ -384,10 +359,8 @@ majorRequirements.year = 2020;""")
 
         #Checks co-req, pre-req and restrictions
         pro = self.problems_with_timetable(timetable)
-        for semester in pro:
-            for course in semester:
-                if course[1] != "":
-                    return course[1]
+        if pro != "":
+            return pro
 
         #Checks required courses
         req_grad = self.required_courses_to_graduate(major_type,"2020")
@@ -424,12 +397,6 @@ majorRequirements.year = 2020;""")
             if float(done_points) < float(dat[0][0]):
                 return "You need to do more points in general"
 
-
-        
-
-        
-
-        
         a = self.__cursor.execute("""select courseScheduleLink.subject, SUBSTR(courseScheduleLink.courseNumber, 1,
 LENGTH(courseScheduleLink.courseNumber)-1) as "CourseNumber",
 course.pointsValue
@@ -476,6 +443,10 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
             if gen_points < float(dat[0][0]):
                 return "You need to do more points gen ed papers"
 
+        for course in done_courses:
+            if course[1] == "399":
+                return "You need to do the capstone"
+
 
         return "Your course will allow you to graduate"
 
@@ -507,7 +478,7 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
 
 a = searchTool()
 #print(a.return_all_majorNames())
-tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
+'''tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
 tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351')]]
 print("Not taken maths", a.reccomended_action("chemistry", tim))
 
@@ -518,5 +489,8 @@ tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'),
 print("Not taken maths", a.reccomended_action("chemistry", tim))
 
 #tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '310'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
-#print(a.reccomended_action("chemistry", tim))
+#print(a.reccomended_action("chemistry", tim))'''
+
+tim = [[('COMPSCI', '313'), ('CHEM', '120')]]
+print(a.problems_with_timetable(tim))
 

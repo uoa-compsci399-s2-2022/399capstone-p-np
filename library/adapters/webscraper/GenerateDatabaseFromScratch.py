@@ -19,6 +19,14 @@ inner join majorRequirements
 on scheduleID == "Open Schedule"
 or scheduleID == "Engineering, Medical and Health Sciences, Science (EMHSS) Schedule";""")
 
+
+cursor.execute("""insert into "group"(groupID, majorID, subject, courseNumber)
+Values (13, 10, "COMPSCI", "399");""") 
+
+cursor.execute("""insert into "majorGroupLink"(groupID, majorID, pointsRequired)
+Values (13, 10, 15);""") 
+
+
 sqliteConnection.commit()
 cursor.close()
 
