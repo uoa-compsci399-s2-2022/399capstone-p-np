@@ -451,14 +451,13 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         where majorName = ? AND
          year = ? AND
          honours = ?""", (major_type,year, honours))
-        dat = a.fetchall()
+        dat = a.fetchall() 
         
         if len(dat) > 0:
             if gen_points < float(dat[0][0]):
                 return "You need to do more points gen ed papers"
 
-        for course in done_courses:
-            if course[1] == "399":
+        if "399" not in [x[1] for x in done_courses]:
                 return "You need to do the capstone"
 
 
@@ -507,4 +506,4 @@ print("Not taken maths", a.reccomended_action("chemistry", tim))
 
 
 tim = [[('COMPSCI', '210'), ('COMPSCI', '110')]]
-print(a.worst_problems_with_course("COMPSCI","210",  tim))'''
+print(a.worst_problems_with_course("COMPSCI","210",  tim))''' 
