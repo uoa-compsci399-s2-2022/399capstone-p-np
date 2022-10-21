@@ -403,8 +403,12 @@ majorRequirements.year = 2020;""")
         if req_grad != []:
             for x in might_take:
                 if x not in done_courses:
-                    #return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
-                    return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"
+                    #return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"d
+                    totake = []
+                    for x in might_take:
+                        if x not in done_courses:
+                            totake += (x,)
+                    return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in totake]) + " in order to graduate"
 
         #Checks total points done
         done_points = 0
@@ -510,9 +514,9 @@ print("Not taken maths", a.reccomended_action("chemistry", tim))
 tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", ("108"))]]
 print("Not taken maths", a.reccomended_action("chemistry", tim))
 
-tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330")]]
+tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "310")]]
 print("Not taken maths", a.reccomended_action("chemistry", tim))
 
-tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '260'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
-print(a.reccomended_action("chemistry", tim))
+#tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '310'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
+#print(a.reccomended_action("chemistry", tim))
 
