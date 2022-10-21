@@ -194,8 +194,8 @@ while True:
     if event == None or event == '-END-':
         break
     if event == '-register-':
-        if values['-subject-'] == "":
-            sg.popup('need subject')
+        if values['-subject-'] == "" or values['-couseNumber-'] == "":
+            sg.popup('need subject and couseNumber')
         else:
             if not len(subject_array) == 0:
                 subject_array.clear()

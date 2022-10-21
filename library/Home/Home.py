@@ -93,9 +93,22 @@ def home():
     if MagorSelected != "":
         CleanSemesterData = StripSemestersOfTitleFluff(semesters)
         RecomendedAction = [Databaseaccess.reccomended_action(MagorSelected, CleanSemesterData)]
+
+    totalNumberOfCourses = 0
+    for item in semesters:
+        totalNumberOfCourses += len(item)-1
+
     if RecomendedAction == ["Your course will allow you to graduate"]:
-        RecomendedAction = []
-        WorkingDegree = ["Your degree will allow you to graduate"]
+        value = checkTotalCoursesLevel()
+        if value != "":
+            RecomendedAction = [value]
+            WorkingDegree = []
+        elif totalNumberOfCourses >= 24:
+            RecomendedAction = []
+            WorkingDegree = ["Your degree will allow you to graduate"]
+        else:
+            RecomendedAction = ["You need to take at least 24 pappers to graduate"]
+            WorkingDegree = []
 
     return render_template(
         'Home_Page.html',
@@ -110,6 +123,26 @@ def home():
         #user = ("Welcome " + str(session['user_name']))
     )
 
+def checkTotalCoursesLevel():
+    global semesters
+    recomendataion = ""
+    level2 = 0
+    level3 = 0
+    level2Goal = 12
+    level3Goal = 5
+    for item in semesters:
+        for course in item[1:]:
+            courseLevel = course[0].split(" ")[1][0]
+            if(courseLevel != "1" and courseLevel != "2"):
+                level3+=1
+            elif(courseLevel != "1"):
+                level2+=1
+
+    if level3 <= level3Goal:
+        recomendataion = "You need to take more courses at level 3"
+    if level2 <= level2Goal:
+        recomendataion = "You need to take more courses at level 2"
+    return recomendataion
 
 def TransferSemestersToZacesters(data):
     newdata =[]
