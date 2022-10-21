@@ -98,7 +98,21 @@ class searchTool:
                     done_courses = done_courses + year
                     fin = False
                 if fin:
-                    done_courses.append(course)   
+                    done_courses.append(course) 
+
+
+        data = self.__cursor.execute("""select group_concat( preReqSubject || "-" || preReqNumber), * from preReqGroup where subject = ? and courseNumber = ? group by groupID;""", (courseName, courseNumber)).fetchall()
+        print(courseName, courseNumber,data)
+        for group in data:
+            course_in_group = [(x.split("-")[0],x.split("-")[1]) for x in group[0].split(",")]
+            done_points_group = 0
+            for done_course in done_courses:
+                print(done_course, course_in_group)
+                if done_course in course_in_group:
+                    done_points_group += self.points_from(done_course[0], done_course[1])
+            
+            if done_points_group < float(group[6]):
+                return "You need " + str(group[6] - done_points_group) + " more points from "+  ", ".join([x for x in group[0].split(",") if (x.split("-")[0],x.split("-")[1]) not in done_courses])   + " to take " + group[3] +"-"+ group[4]        
 
         a = self.__cursor.execute("select * from preReq where subject = ? and courseNumber = ?", (courseName, courseNumber))
         res = [(x[0],str(x[1])) for x in a.fetchall()]
@@ -489,8 +503,8 @@ tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'),
 print("Not taken maths", a.reccomended_action("chemistry", tim))
 
 #tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '310'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
-#print(a.reccomended_action("chemistry", tim))'''
+#print(a.reccomended_action("chemistry", tim))
 
-tim = [[('COMPSCI', '313'), ('CHEM', '120')]]
-print(a.problems_with_timetable(tim))
 
+tim = [[('COMPSCI', '210'), ('COMPSCI', '110')]]
+print(a.worst_problems_with_course("COMPSCI","210",  tim))'''

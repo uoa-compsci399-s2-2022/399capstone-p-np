@@ -164,6 +164,19 @@ CREATE TABLE "groupMiscData" (
 	FOREIGN KEY("majorID") REFERENCES "majorGroupLink"
 );""")
 
+cursor.execute("""
+CREATE TABLE "preReqGroup" (
+    "preReqSubject"    CHAR NOT NULL,
+    "preReqNumber"    CHAR NOT NULL,
+    "subject"    CHAR NOT NULL,
+    "courseNumber"    CHAR NOT NULL,
+    "groupID"     INTEGER,
+    "points" INTEGER,
+    PRIMARY KEY("subject","courseNumber","preReqSubject","preReqNumber","groupID"),
+    FOREIGN KEY("preReqSubject","preReqNumber") REFERENCES "course"("subject","courseNumber"),
+    FOREIGN KEY("subject","courseNumber") REFERENCES "course"("subject","courseNumber")
+);""")
+
 
 print("created new tables")
 sqliteConnection.commit()

@@ -26,6 +26,15 @@ Values (13, 10, "COMPSCI", "399");""")
 cursor.execute("""insert into "majorGroupLink"(groupID, majorID, pointsRequired)
 Values (13, 10, 15);""") 
 
+cursor.execute("""INSERT into preReqGroup("preReqSubject", "preReqNumber", "subject" , "courseNumber","groupID", "points")
+values("COMPSCI", "105", "COMPSCI", "210", "1",15); """) 
+
+cursor.execute("""INSERT into preReqGroup("preReqSubject", "preReqNumber", "subject" , "courseNumber","groupID", "points")
+values("COMPSCI", "107", "COMPSCI", "210", "1",15); """) 
+
+cursor.execute("""INSERT into preReqGroup("preReqSubject", "preReqNumber", "subject" , "courseNumber","groupID", "points")
+values("COMPSCI", "130", "COMPSCI", "210", "1",15); """) 
+
 
 sqliteConnection.commit()
 cursor.close()
