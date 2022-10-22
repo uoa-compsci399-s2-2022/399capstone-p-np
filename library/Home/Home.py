@@ -98,11 +98,10 @@ def home():
     #for item in semesters:
         #totalNumberOfCourses += len(item)-1
 
-    #if RecomendedAction == ["Your course will allow you to graduate"]:
+    if RecomendedAction == ["Your course will allow you to graduate"]:
 
-        #if totalNumberOfCourses >= 24:
-            #RecomendedAction = []
-            #WorkingDegree = ["Your degree will allow you to graduate"]
+        RecomendedAction = []
+        WorkingDegree = ["Your degree will allow you to graduate"]
         #else:
             #RecomendedAction = ["You need to take at least 24 pappers to graduate"]
             #WorkingDegree = []
