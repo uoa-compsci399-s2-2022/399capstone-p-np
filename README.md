@@ -11,24 +11,41 @@ The python uses the flask framework and the jinja is used to create the pages.
 
 We have also created an application that will allow the university staff to eddit what courses are avalible and remove courses that don't exist or make changes to them. This is in the "GUI for back end admin updates" folder.
 
-The download button is set to download to within the project so you won't have misilanious .txt files floating around from our assignment.
-## Python version
-
-Please use Python version 3.6 or newer versions for development. Some of the depending libraries of our web application do not support Python versions below 3.6!
-
+The link to our project management tool is here https://399p-np.atlassian.net/jira/software/projects/PNP/boards/1
+The library's that we are useing are in recomended.txt these will be installed for you later in the instalation instructions.
 
 ## Installation
+**Installation Instructions**
 
-**Installation via requirements.txt**
+Once the project is installd onto your computer, you will need to install python to run it. Install python from this link:
 
-```shell
-$ py -3 -m venv venv
-$ venv\Scripts\activate
-$ pip install -r requirements.txt
-```
-(You might need to also type in pip install markupsafe==2.0.1, if (ImportError: cannot import name 'soft_unicode' from 'markupsafe))
+https://www.python.org/downloads/
 
-When using PyCharm for requirements installation, set the virtual environment using 'File'->'Settings' and select your project from the left menu. Select 'Project Interpreter', click on the gearwheel button and select 'Add'. Click the 'Existing environment' radio button to select the virtual environment. 
+Install python 3.10.8 onto your computer. The download immage should look like this:
+![img.png](img.png)
+
+Then we need to go to this website: https://www.jetbrains.com/pycharm/download/#section=windows and install the community eddition.
+When you open pycharm tell it to open the project by selecting the folder 399capstone-p-np.
+
+Here you should see another version on this readme open up in pycharm. Go to the top right where the big green play button is to the left of that shere should be a drop down click it and select edit configurations.
+
+Under Script path select the script inside the 399 capstone project called wsgi.py and below that in the execution section tick run with python Console. Prees Ok and Agree to close the window.
+
+Now press ctrl-alt-s to open settings and select 399 capstone. select python interpreter and select system interperater and select apply to close the window.
+
+Open the command prompt as administrator and enter the following commands:
+py -m pip install flask
+py -m pip install python-dotenv
+Close the command prompt
+
+Now open the requirements.txt document and right click and select install all
+
+All the files and dependancies have been installed
+
+Now press the green play button to run (In the top right of the screen)
+
+
+
 
 ## Execution of the web application
 
