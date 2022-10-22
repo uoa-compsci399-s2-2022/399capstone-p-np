@@ -13,6 +13,12 @@ sqliteConnection = sqlite3.connect(database)
 cursor = sqliteConnection.cursor()
 
 #THIS ASSUMES EVERYTHING IS A SCIENCE MAJOR
+cursor.execute("""  DELETE FROM scheduleMajorLink
+WHERE 1==1; """)
+
+cursor.execute("""  DELETE FROM preReqGroup
+WHERE 1==1; """)
+
 cursor.execute("""insert into scheduleMajorLink (scheduleID, majorID)
 select scheduleID, majorRequirements.majorID from  schedule 
 inner join majorRequirements 
@@ -23,8 +29,11 @@ or scheduleID == "Engineering, Medical and Health Sciences, Science (EMHSS) Sche
 cursor.execute("""insert into "group"(groupID, majorID, subject, courseNumber)
 Values (13, 10, "COMPSCI", "399");""") 
 
-cursor.execute("""insert into "majorGroupLink"(groupID, majorID, pointsRequired)
-Values (13, 10, 15);""") 
+try:
+    cursor.execute("""insert into "majorGroupLink"(groupID, majorID, pointsRequired)
+    Values (13, 10, 15);""") 
+except:
+    pass
 
 cursor.execute("""INSERT into preReqGroup("preReqSubject", "preReqNumber", "subject" , "courseNumber","groupID", "points")
 values("COMPSCI", "105", "COMPSCI", "210", "1",15); """) 
@@ -117,6 +126,11 @@ cursor.execute("""INSERT into preReqGroup("preReqSubject", "preReqNumber", "subj
 values("MATHS", "254", "COMPSCI", "367", "16",15); """) 
 cursor.execute("""INSERT into preReqGroup("preReqSubject", "preReqNumber", "subject" , "courseNumber","groupID", "points")
 values("COMPSCI", "225", "COMPSCI", "367", "16",15); """) 
+
+cursor.execute("""UPDATE majorRequirements
+SET totalPointsNeeded = 360
+WHERE
+      "level" = "undergraduate" """) 
 
 
 sqliteConnection.commit()
