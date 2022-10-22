@@ -397,19 +397,7 @@ majorRequirements.year = 2020;""")
                             totake += (x,)
                     return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in totake]) + " in order to graduate"
 
-        #Checks total points done
-        done_points = 0
-        for x in done_courses:
-            done_points += float(self.return_course_points(x[0],x[1]))
-        a = self.__cursor.execute("""select totalPointsNeeded from majorRequirements
-        where majorName = ? AND
-         year = ? AND
-         honours = ?""", (major_type,year, honours))
-        dat = a.fetchall()
-        if len(dat) > 0:
-
-            if float(done_points) < float(dat[0][0]):
-                return "You need to do more points in general"
+        
 
         a = self.__cursor.execute("""select courseScheduleLink.subject, SUBSTR(courseScheduleLink.courseNumber, 1,
 LENGTH(courseScheduleLink.courseNumber)-1) as "CourseNumber",
@@ -460,6 +448,20 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         if "399" not in [x[1] for x in done_courses]:
                 return "You need to do the capstone"
 
+
+        #Checks total points done
+        done_points = 0
+        for x in done_courses:
+            done_points += float(self.return_course_points(x[0],x[1]))
+        a = self.__cursor.execute("""select totalPointsNeeded from majorRequirements
+        where majorName = ? AND
+         year = ? AND
+         honours = ?""", (major_type,year, honours))
+        dat = a.fetchall()
+        if len(dat) > 0:
+
+            if float(done_points) < float(dat[0][0]):
+                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points in general"
 
         return "Your course will allow you to graduate"
 
