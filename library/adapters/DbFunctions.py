@@ -371,6 +371,10 @@ majorRequirements.year = 2020;""")
             for course in semester:
                 done_courses.append(course)
 
+        for year_of_data in timetable:
+            if len(year_of_data) > 10:
+                return "You can only do 10 papers a year. "
+
         #Checks co-req, pre-req and restrictions
         pro = self.problems_with_timetable(timetable)
         if pro != "":
@@ -475,9 +479,7 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
             if float(done_points) < float(dat[0][0]):
                 return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 2"
 
-        for year in timetable:
-            if len(year) > 10:
-                return "You can only do 10 papers a year. "
+        
 
 
         #Checks total points done
