@@ -102,12 +102,10 @@ class searchTool:
 
 
         data = self.__cursor.execute("""select group_concat( preReqSubject || "-" || preReqNumber), * from preReqGroup where subject = ? and courseNumber = ? group by groupID;""", (courseName, courseNumber)).fetchall()
-        print(courseName, courseNumber,data)
         for group in data:
             course_in_group = [(x.split("-")[0],x.split("-")[1]) for x in group[0].split(",")]
             done_points_group = 0
             for done_course in done_courses:
-                print(done_course, course_in_group)
                 if done_course in course_in_group:
                     done_points_group += self.points_from(done_course[0], done_course[1])
             
@@ -371,36 +369,7 @@ majorRequirements.year = 2020;""")
             for course in semester:
                 done_courses.append(course)
 
-        #Checks 200/300 level points
-        done_points = 0
-        for x in done_courses:
-            print(x, self.return_course_points(x[0],x[1]))
-            if x[1][0] == "3" or x[1][0] == "2":
-                done_points += float(self.return_course_points(x[0],x[1]))
-        a = self.__cursor.execute("""select pointsAboveStage1 from majorRequirements
-        where majorName = ? AND
-         year = ? AND
-         honours = ?""", (major_type,year, honours))
-        dat = a.fetchall()
-        if len(dat) > 0:
-            print(float(done_points) , float(dat[0][0]))
-            if float(done_points) < float(dat[0][0]):
-                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 1" 
-
-
-        #Checks 300 level points
-        done_points = 0
-        for x in done_courses:
-            if x[1][0] == "3":
-                done_points += float(self.return_course_points(x[0],x[1]))
-        a = self.__cursor.execute("""select pointsAboveStage1 from majorRequirements
-        where majorName = ? AND
-         year = ? AND
-         honours = ?""", (major_type,year, honours))
-        dat = a.fetchall()
-        if len(dat) > 0:
-            if float(done_points) < float(dat[0][0]):
-                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 2" 
+        
 
         #Checks co-req, pre-req and restrictions
         pro = self.problems_with_timetable(timetable)
@@ -494,7 +463,34 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
                 return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points in general"
 
 
-            
+        #Checks 200/300 level points
+        done_points = 0
+        for x in done_courses:
+            if x[1][0] == "3" or x[1][0] == "2":
+                done_points += float(self.return_course_points(x[0],x[1]))
+        a = self.__cursor.execute("""select pointsAboveStage1 from majorRequirements
+        where majorName = ? AND
+         year = ? AND
+         honours = ?""", (major_type,year, honours))
+        dat = a.fetchall()
+        if len(dat) > 0:
+            if float(done_points) < float(dat[0][0]):
+                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 1" 
+
+
+        #Checks 300 level points
+        done_points = 0
+        for x in done_courses:
+            if x[1][0] == "3":
+                done_points += float(self.return_course_points(x[0],x[1]))
+        a = self.__cursor.execute("""select pointsAboveStage1 from majorRequirements
+        where majorName = ? AND
+         year = ? AND
+         honours = ?""", (major_type,year, honours))
+        dat = a.fetchall()
+        if len(dat) > 0:
+            if float(done_points) < float(dat[0][0]):
+                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 2"     
 
 
 
@@ -528,7 +524,7 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
 
 a = searchTool()
 #print(a.return_all_majorNames())
-'''tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
+tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
 tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351')]]
 print("Not taken maths", a.reccomended_action("chemistry", tim))
 
@@ -539,4 +535,4 @@ tim = [[('CHEM', '110'), ('CHEM', '260'), ('CHEM', '260'), ('CHEM', '260'), ('CH
 print("done", a.reccomended_action("chemistry", tim))
 
 #tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '310'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
-#print(a.reccomended_action("chemistry", tim))'''
+#print(a.reccomended_action("chemistry", tim))
