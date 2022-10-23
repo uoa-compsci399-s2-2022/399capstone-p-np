@@ -23,8 +23,6 @@ https://www.python.org/downloads/
 Install python 3.10.8 onto your computer. The download image should look like this:
 ![img.png](img.png)
 
-Make sure pip is installed and added to path.  https://www.alphr.com/pip-is-not-recognized-as-an-internal-or-external-command/
-
 Then we need to go to this website: https://www.jetbrains.com/pycharm/download/#section=windows and install the community eddition.
 When you open pycharm tell it to open the project by selecting the folder 399capstone-p-np.
 
@@ -39,7 +37,7 @@ py -m pip install flask
 py -m pip install python-dotenv
 Close the command prompt
 
-Now open the requirements.txt document and right click and select install all
+Now open the requirements.txt document and right click and select install all. (Or use pip 
 
 All the files and dependancies have been installed
 
