@@ -369,6 +369,11 @@ majorRequirements.year = 2020;""")
             for course in semester:
                 done_courses.append(course)
 
+        #Checks user has only taken 10 papers a year
+        for year in timetable:
+            if len(year) > 10:
+                return "You can only do 10 papers a year. "
+
         
 
         #Checks co-req, pre-req and restrictions
@@ -449,20 +454,6 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
                 return "You need to do the capstone"
 
 
-        #Checks total points done
-        done_points = 0
-        for x in done_courses:
-            done_points += float(self.return_course_points(x[0],x[1]))
-        a = self.__cursor.execute("""select totalPointsNeeded from majorRequirements
-        where majorName = ? AND
-         year = ? AND
-         honours = ?""", (major_type,year, honours))
-        dat = a.fetchall()
-        if len(dat) > 0:
-            if float(done_points) < float(dat[0][0]):
-                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points in general"
-
-
         #Checks 200/300 level points
         done_points = 0
         for x in done_courses:
@@ -492,6 +483,19 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
             if float(done_points) < float(dat[0][0]):
                 return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 2"     
 
+
+        #Checks total points done
+        done_points = 0
+        for x in done_courses:
+            done_points += float(self.return_course_points(x[0],x[1]))
+        a = self.__cursor.execute("""select totalPointsNeeded from majorRequirements
+        where majorName = ? AND
+         year = ? AND
+         honours = ?""", (major_type,year, honours))
+        dat = a.fetchall()
+        if len(dat) > 0:
+            if float(done_points) < float(dat[0][0]):
+                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points in general"
 
 
         return "Your course will allow you to graduate"
