@@ -12,17 +12,18 @@ The python uses the flask framework and the jinja is used to create the pages.
 We have also created an application that will allow the university staff to edit what courses are available and remove courses that don't exist or make changes to them. This is in the "GUI for back-end admin updates" folder.
 
 The link to our project management tool is here https://399p-np.atlassian.net/jira/software/projects/PNP/boards/1
-The library's that we are useing are in recomended.txt these will be installed for you later in the instalation instructions.
+The library's that we are useing are in requirements.txt these will be installed for you later in the installation instructions.
 
 ## Installation
 **Installation Instructions**
-
-Once the project is installd onto your computer, you will need to install python to run it. Install python from this link:
+Once the project is installed onto your computer, you will need to install python to run it. Install python from this link:
 
 https://www.python.org/downloads/
 
-Install python 3.10.8 onto your computer. The download immage should look like this:
+Install python 3.10.8 onto your computer. The download image should look like this:
 ![img.png](img.png)
+
+Make sure pip is installed and added to path.  https://www.alphr.com/pip-is-not-recognized-as-an-internal-or-external-command/
 
 Then we need to go to this website: https://www.jetbrains.com/pycharm/download/#section=windows and install the community eddition.
 When you open pycharm tell it to open the project by selecting the folder 399capstone-p-np.
