@@ -466,7 +466,7 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         for x in done_courses:
             if x[1][0] == "3":
                 done_points += float(self.return_course_points(x[0],x[1]))
-        a = self.__cursor.execute("""select pointsAboveStage1 from majorRequirements
+        a = self.__cursor.execute("""select pointsAboveStage2 from majorRequirements
         where majorName = ? AND
          year = ? AND
          honours = ?""", (major_type,year, honours))
