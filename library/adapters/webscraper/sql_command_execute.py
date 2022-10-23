@@ -4,7 +4,7 @@ import os
 
 class execute:
     def __init__(self):
-        self.__sqliteConnection = sqlite3.connect("\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db")
+        self.__sqliteConnection = sqlite3.connect("\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("library") + 1]) + "\\adapters\\399courses.db")
         self.__cursor = self.__sqliteConnection.cursor()
 
     def data_fetch(self):

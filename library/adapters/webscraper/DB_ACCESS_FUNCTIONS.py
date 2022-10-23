@@ -6,7 +6,7 @@ import sql_command_execute
 exe = sql_command_execute.execute()
 
 dir = os.path.dirname(__file__)
-file_name = os.path.join(dir,"\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("399capstone-p-np") + 1]) + "\\library\\adapters\\399courses.db")
+file_name = os.path.join(dir,"\\".join(os.getcwd().split("\\")[:os.getcwd().split("\\").index("library") + 1]) + "\\adapters\\399courses.db")
 
 DATABASE = file_name
 
