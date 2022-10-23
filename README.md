@@ -41,6 +41,8 @@ Now open the requirements.txt document and right click and select install all. (
 
 All the files and dependancies have been installed
 
+IMPORTANT: RENAME your folder 399capstone-p-np-main to 399capstone-p-np if applicable. (only if it is downloaded as a zip file)
+
 Now press the green play button to run (In the top right of the screen)
 
 
