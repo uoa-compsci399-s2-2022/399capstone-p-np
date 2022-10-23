@@ -102,10 +102,12 @@ class searchTool:
 
 
         data = self.__cursor.execute("""select group_concat( preReqSubject || "-" || preReqNumber), * from preReqGroup where subject = ? and courseNumber = ? group by groupID;""", (courseName, courseNumber)).fetchall()
+        print(courseName, courseNumber,data)
         for group in data:
             course_in_group = [(x.split("-")[0],x.split("-")[1]) for x in group[0].split(",")]
             done_points_group = 0
             for done_course in done_courses:
+                print(done_course, course_in_group)
                 if done_course in course_in_group:
                     done_points_group += self.points_from(done_course[0], done_course[1])
             
@@ -369,13 +371,6 @@ majorRequirements.year = 2020;""")
             for course in semester:
                 done_courses.append(course)
 
-        #Checks user has only taken 10 papers a year
-        for year in timetable:
-            if len(year) > 10:
-                return "You can only do 10 papers a year. "
-
-        
-
         #Checks co-req, pre-req and restrictions
         pro = self.problems_with_timetable(timetable)
         if pro != "":
@@ -416,9 +411,7 @@ where
 majorRequirements.majorName = ? AND
 majorRequirements.year = ? AND
 majorRequirements.honours = ?
-
 union 
-
 select courseScheduleLink.subject, courseScheduleLink.courseNumber as "CourseNumber",
 course.pointsValue
 from courseScheduleLink inner join majorRequirements inner join scheduleMajorLink inner JOIN course
@@ -453,7 +446,6 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         if "399" not in [x[1] for x in done_courses]:
                 return "You need to do the capstone"
 
-
         #Checks 200/300 level points
         done_points = 0
         for x in done_courses:
@@ -481,7 +473,11 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
         dat = a.fetchall()
         if len(dat) > 0:
             if float(done_points) < float(dat[0][0]):
-                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 2"     
+                return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points above stage 2"
+
+        for year in timetable:
+            if len(year) > 10:
+                return "You can only do 10 papers a year. "
 
 
         #Checks total points done
@@ -494,9 +490,9 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
          honours = ?""", (major_type,year, honours))
         dat = a.fetchall()
         if len(dat) > 0:
+
             if float(done_points) < float(dat[0][0]):
                 return "You need to do "+  str(float(dat[0][0]) - float(done_points)) +" more points in general"
-
 
         return "Your course will allow you to graduate"
 
@@ -527,16 +523,3 @@ majorRequirements.honours = ?;""", (major_type, year, honours,major_type, year, 
 
 
 a = searchTool()
-#print(a.return_all_majorNames())
-tim = [[("COMPSCI", "210"),('COMPSCI', '225'),("COMPSCI", "230"),("COMPSCI", "220")],[("COMPSCI", "110"),('COMPSCI', '120'),("ACCTG", "151G")],[("CAREER", "100G"),('COMPSCI', '340'),("COMPSCI", "250")],[("PHIL", "105"),('BIOSCI', '101'),("COMPSCI", "130"),("COMPSCI", "351"),("COMPSCI", "315")]]
-tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351')]]
-print("Not taken maths", a.reccomended_action("chemistry", tim))
-
-tim = [[('CHEM', '110'), ('CHEM', '120')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", ("108"))]]
-print("Not taken maths", a.reccomended_action("chemistry", tim))
-
-tim = [[('CHEM', '110'), ('CHEM', '260'), ('CHEM', '260'), ('CHEM', '260'), ('CHEM', '260'), ('CHEM', '260'), ('CHEM', '360'), ('CHEM', '360')],    [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "310")]]
-print("done", a.reccomended_action("chemistry", tim))
-
-#tim = [[('CHEM', '110'), ('CHEM', '120')],  [('CHEM', '310'), ("ACCTG", "151G"), ("BIOSCI", "100G")],  [('CHEM', '251'), ('CHEM', '252'), ('CHEM', '253'), ('CHEM', '351'), ("MATHS", "108"), ("CHEM", "330"), ("CHEM", "340"), ("CHEM", "360")]]
-#print(a.reccomended_action("chemistry", tim))
