@@ -3,25 +3,24 @@
 
 
 ## Description
-This website allwes students to plan out their degrees so that they will know with resonable certanty that their courses will allow them to graduate and no conflicts or requirements within the courses or their degree aren't met for example forgetting to do their gen ed's.
+This website allows students to plan out their degrees so that they will know with reasonable certainty that their courses will allow them to graduate and no conflicts or requirements within the courses or their degree aren't met for example forgetting to do their gen ed's.
 
-This website is written in Python for the backend interfasing the database and GUI, Sql is used to get data from the 
+This website is written in Python for the backend interfacing the database and GUI, SQL is used to get data from the 
 database, we use HTML and CSS to create the website pages and these have some Java in them to create the dynamic interfaces.
 The python uses the flask framework and the jinja is used to create the pages.
 
-We have also created an application that will allow the university staff to eddit what courses are avalible and remove courses that don't exist or make changes to them. This is in the "GUI for back end admin updates" folder.
+We have also created an application that will allow the university staff to edit what courses are available and remove courses that don't exist or make changes to them. This is in the "GUI for back-end admin updates" folder.
 
 The link to our project management tool is here https://399p-np.atlassian.net/jira/software/projects/PNP/boards/1
-The library's that we are useing are in recomended.txt these will be installed for you later in the instalation instructions.
+The library's that we are useing are in requirements.txt these will be installed for you later in the installation instructions.
 
 ## Installation
 **Installation Instructions**
-
-Once the project is installd onto your computer, you will need to install python to run it. Install python from this link:
+Once the project is installed onto your computer, you will need to install python to run it. Install python from this link:
 
 https://www.python.org/downloads/
 
-Install python 3.10.8 onto your computer. The download immage should look like this:
+Install python 3.10.8 onto your computer. The download image should look like this:
 ![img.png](img.png)
 
 Then we need to go to this website: https://www.jetbrains.com/pycharm/download/#section=windows and install the community eddition.
@@ -38,9 +37,11 @@ py -m pip install flask
 py -m pip install python-dotenv
 Close the command prompt
 
-Now open the requirements.txt document and right click and select install all
+Now open the requirements.txt document and right click and select install all. (Or use pip 
 
 All the files and dependancies have been installed
+
+IMPORTANT: RENAME your folder 399capstone-p-np-main to 399capstone-p-np if applicable. (only if it is downloaded as a zip file)
 
 Now press the green play button to run (In the top right of the screen)
 
