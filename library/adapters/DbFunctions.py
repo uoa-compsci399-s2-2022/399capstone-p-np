@@ -311,6 +311,7 @@ majorRequirements.year = 2020;""")
         for x in res:
             group.append([x[1],[(z.split("-")[0],z.split("-")[1]) for z in x[0].split(",")]])
 
+
         for x in group:
             totalpoints = x[0]
             done_points = 0
@@ -320,7 +321,8 @@ majorRequirements.year = 2020;""")
 
             if float(done_points) < float(totalpoints):
                 totake += x[1]
-        return (totake,  float(totalpoints) - float(done_points))
+                return (totake,  float(totalpoints) - float(done_points))
+        return ""
 
     #This function gives you a list of courses that you need to take some from to graduate.
     def take_from_these(self,  major_type, timetable, year = "2020", honours = "0"):
@@ -389,17 +391,18 @@ majorRequirements.year = 2020;""")
 
         #CHecks if they are missing poitnfs from some group
         might_takea = self.might_want_to_take_points(  major_type, timetable,"2020")
-        might_take = might_takea[0]
-        might_points = might_takea[1]
-        if req_grad != []:
-            for x in might_take:
-                if x not in done_courses:
-                    #return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"d
-                    totake = []
-                    for x in might_take:
-                        if x not in done_courses:
-                            totake += (x,)
-                    return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in totake]) + " in order to graduate"
+        if might_takea != "":
+            might_take = might_takea[0]
+            might_points = might_takea[1]
+            if req_grad != []:
+                for x in might_take:
+                    if x not in done_courses:
+                        #return "You need to get more points from " + ", ".join([x[0]+x[1] for x in might_take]) + " in order to graduate"d
+                        totake = []
+                        for x in might_take:
+                            if x not in done_courses:
+                                totake += (x,)
+                        return "You need to get "+ str(might_points)+ " more points from " + ", ".join([x[0]+x[1] for x in totake]) + " in order to graduate"
 
         
 
